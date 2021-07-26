@@ -1,0 +1,24 @@
+<div class="container"> <br>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto"> <i class="fas fa-search h4 text-body"></i></div>
+                    <div class="col"> 
+                        <input class="form-control form-control-lg form-control-borderless" type="search"
+                            placeholder="Search for anime" value="" name="q" id="q" rel="on" autocomplete="off"
+                            style="width: 200px;" id="typeahead-focus" type="text" [(ngModel)]="keyword" [ngbTypeahead]="search"
+                            [resultTemplate]="rt" [inputFormatter]="formatter" (focus)="focus$.next($any($event).target.value)"
+                            (click)="click$.next($any($event).target.value)" (keyup)="getInfo()" (selectItem)="selectedItem($event)"
+                            #instance="ngbTypeahead"></div>
+                    <div class="col-auto"> <button class="btn btn-lg btn-success" type="submit">Search</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<ng-template #rt let-r="result" let-t="term">
+    <img [src]="r['imgurl']" class="mr-1" style="width: 80px;height: 80px;">
+    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
