@@ -18,6 +18,11 @@ export class InfomationService {
   getNavSearchResult(keyword:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/search/anime?q=${keyword}&page=1`);
   }
+  getTopUpCommingAnime():Observable<any>{
+    return this.http.get(`${this.apiUrl}/top/anime/1/upcoming`);
+  }
 
-
+  getAnimeNews(id:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/anime/${id}/news`);
+  }
 }

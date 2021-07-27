@@ -27,64 +27,201 @@
           </div> -->
     </ng-template>
 </ngb-carousel>
-
+<div style="margin:0 auto;
+width: 50%;display: block;margin-top: 3%;text-align: center;">
+    <p>Search for your favorite anime!</p>
+</div>
 <app-searchbar></app-searchbar>
+<div style="margin:0 auto;
+width: 50%;display: block;margin-top: 3%;text-align: center;">
+    <p>... or browse by category.</p>
+</div>
+<div style="margin:0 auto;
+width: 50%;display: block;margin-top: 3%;">
+    <button type="button" class="btn btn-primary">Action</button>
+    <button type="button" class="btn btn-secondary">Adventure</button>
+    <button type="button" class="btn btn-success">Comedy</button>
+    <button type="button" class="btn btn-danger">Mystery</button>
+    <button type="button" class="btn btn-warning">Drama</button>
+    <button type="button" class="btn btn-info">Fantasy</button>
+    <button type="button" class="btn btn-light">Horror</button>
+    <button type="button" class="btn btn-dark">Sports</button>
+    <button type="button" class="btn btn-secondary">Psychological</button>
+    <button type="button" class="btn btn-info">Sci Fi</button>
+    <button type="button" class="btn btn-success">School</button>
+    <button type="button" class="btn btn-primary">Music</button>
+    <button type="button" class="btn btn-dark">Supernatural</button>
+
+    <button type="button" class="btn btn-primary">Historical</button>
+    <button type="button" class="btn btn-danger">View All</button>
+</div>
 
 <div class="section row272" style="margin-top:5% ;">
     <div class="section-content fluid">
-        <div class="title-bar group"  style="margin:0 auto;
-        width: 50%;display: block;">
+
+        <div class="row " style="margin-left:0px;">
+            <div class=" col-lg-8 ">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 30px;">
+                    <div class="title-bar group">
 
 
-            <h3  style="margin:0 auto;
-            width: 50%;display: block;">Newest Update!</h3>
+                        <h3 style="margin:0 auto;
+                    width: 50%;display: block;"><img style="height: 40px;width: 40px;"
+                                src="https://image.flaticon.com/icons/png/128/86/86029.png"> New Update!</h3>
 
-        </div>
-        <div 
-            class="row justify-content-center"
-            style="margin-left:0px;">
-            <div class="col-12 col-sm-6 col-lg-8">
-                <div *ngFor="let o of newestItem,index as i">
-                    <div class="subtray">
-                        <div class="item">
-                            <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
-                                <img class="_slideimg" img_index="1" width="100%" height="100%" src="{{o.image_url}}"
-                                    alt="Zing TV"></a>
-
-                            <div class="description">
-                                <h4 class="title">
-                                    <a class="_trackLink" >
-                                        {{o.title}}
-                                    </a>
-                                </h4>
-                                <h5 class="subtitle">
-                                    <a class="_trackLink ellipsis" 
-                                        >
-                                        {{o.score}}<i class="far fa-star"></i>
-                                    </a>
-                                </h5>
-                            </div><!-- END .description -->
-                        </div>
-                        <!--END .item-->
                     </div>
-                    <!--END .subtray-->
+                    <div *ngFor="let o of newestItem,index as i">
+                        <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
+                            [closeDelay]="100" placement="right" container="body" tooltipClass="tooltip-inner">
+                            <div class="item">
+                                <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                    <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                        src="{{o.image_url}}" alt="???"></a>
+
+                                <div class="description">
+                                    <h4 class="title">
+                                        <a class="_trackLink">
+                                            {{o.title}}
+                                        </a>
+                                    </h4>
+                                    <h5 class="subtitle">
+                                        <a class="_trackLink ellipsis">
+                                            {{o.score}}<i class="far fa-star"></i>
+                                        </a>
+                                    </h5>
+                                </div><!-- END .description -->
+                            </div>
+                            <!--END .item-->
+                        </div>
+                        <!--END .subtray-->
+                    </div>
+                    <div style="display: block;">
+                        <div style="margin:0 auto;
+            width: 50%;display: block;" id="pagi-newest">
+                            <div style="margin:0 auto;
+             width: 70%;display: block;">
+                                <ngb-pagination [(page)]="pageNewest" [pageSize]="pageSizeNewest"
+                                    [collectionSize]="dataNewest.length" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="getNewest()">
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 30px;margin-top: 2%;">
+                    <div class="title-bar group">
+
+
+                        <h3 style="margin:0 auto;
+                    width: 50%;display: block;"><img style="height: 40px;width: 40px;"
+                                src="https://image.flaticon.com/icons/png/128/86/86029.png" (click)="debug()"> Anime & Manga News!</h3>
+
+                    </div>
+                    <!-- <div class="article-list listing-layout responsive unique">
+                        <article class="article-item  type-text picked-trending" *ngFor="let o of newItems">
+                            <p class="article-thumbnail">
+                                <a
+                                    >
+
+                                    <img src={{o.image_url}}
+                                        alt=""
+                                        class="unveil">
+                                </a>
+                            </p>
+                            <header>
+                                <p class="article-title">
+                                    <a
+                                        href="/">{{o.title}}</a>
+                                </p>
+                                <p class="article-meta">
+                                    <span class="article-publish">
+                                        <span class="friendly-time">3 giờ trước</span>
+                                        <span class="time">08:54</span>
+                                        <span class="date">27/7/2021</span>
+                                    </span>
+
+
+                                    <a href="/the-gioi.html" title="Thế giới">
+                                        <span class="category-parent">Thế giới</span>
+                                    </a>
+
+                                </p>
+                                <p class="article-count">
+                                    <span class="like-count"></span>
+                                    <span class="dislike-count"></span>
+                                    <span class="rating-count">0</span>
+                                    <span class="viral-count hide"></span>
+                                    <span class="comment-count hide"></span>
+                                </p>
+                                <p class="article-summary">{{o.intro}}</p>
+
+                            </header>
+                            <img class="tracking unveil" alt=""
+                                src="//log.zingnews.vn/imps?type=article&amp;appid=zingweb&amp;id=1243804&amp;pos=zingweb_home_sectionlatest1">
+                        </article>
+                    </div> -->
+                    <div style="display: block;">
+                        <div style="margin:0 auto;
+            width: 50%;display: block;" id="pagi-newest">
+                            <div style="margin:0 auto;
+             width: 70%;display: block;">
+                                <ngb-pagination [(page)]="pageNewest" [pageSize]="pageSizeNewest"
+                                    [collectionSize]="dataNewest.length" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="getNewest()">
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-4" id="side-info">
+
+                <div class="right-box top-film">
+
+
+                    <h2 class="right-box-header star-icon"><span>
+                            <img style="height: 40px;width: 40px;"
+                                src="https://image.flaticon.com/icons/png/128/40/40894.png" (click)="debug()"> Upcoming Anime</span>
+                    </h2>
+
+                    <div class="right-box-content" style="
+                    margin-top: 13px; ">
+                        <div class="content">
+                            <ul class="list-top-movie">
+                                <li class="list-top-movie-item" id="list-top-movie-item" *ngFor="let o of upComingItem">
+                                    <a class="list-top-movie-link" title="{{o.title}}" href="/a">
+                                        <span class="status">{{o.rank}}<img style="height: 10px;width: 10px;"
+                                                src="https://image.flaticon.com/icons/png/128/889/889518.png">
+                                        </span>
+                                        <div class="list-top-movie-item-thumb"
+                                            style="background-image: url({{o.image_url}})">
+                                        </div>
+                                        <div class="list-top-movie-item-info">
+                                            <span class="list-top-movie-item-vn">{{o.title}}</span>
+                                            <span class="list-top-movie-item-en">
+                                                {{o.title}}</span>
+                                            <span *ngIf="o.start_date"
+                                                class="list-top-movie-item-view">{{o.start_date}}</span>
+                                            <span *ngIf="!o.start_date" class="list-top-movie-item-view">Coming
+                                                Soon!</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-primary" (click)="prevUpComing()"><i
+                                    class="fas fa-arrow-left"></i></button>
+                            <button type="button" class="btn btn-primary" (click)="nextUpComing()"
+                                style="float: right;"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-6 col-sm-4" id="side-info">
-                a
-            </div>
         </div>
-
     </div>
-
 </div>
-<!-- <div   style="margin:0 auto;
-width: 50%;display: block;">
-    <div  style="margin:0 auto;
-    width: 50%;display: block;" >
-        <ngb-pagination [(page)]="pageNewest" [pageSize]="pageSize" [collectionSize]="collectionSize" [maxSize]="3"
-            [boundaryLinks]=true (pageChange)="getPage()">
-        </ngb-pagination>
-    </div>
-</div> -->
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>

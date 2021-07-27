@@ -8,3 +8,20 @@
     height: 40px;
     width: 40px;
 }
+.pagination {
+    display: inline-flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 50%;
+}
+.tooltip-inner {
+    max-width: 340px;
+    text-align: left;
+    background-color: #fff;
+    color: #000;
+    border-radius: 30px;
+    box-shadow: 0 0 3px #00000040;
+    word-wrap: normal;
+  }
+
+  

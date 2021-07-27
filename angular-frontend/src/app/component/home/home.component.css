@@ -25,11 +25,16 @@ a:hover{text-decoration:underline;}
 .fluid{width:960px;margin:0 auto;}
 .section{position:relative;width:100%;}
 .section-content{overflow:hidden;position:relative;}
-.title-bar{margin:22px auto 15px;position:relative;min-height:39px;}
+.title-bar{    margin: 22px auto 15px;
+    position: relative;
+    min-height: 39px;
+    padding-top: 4px;
+    background-color: #c76e27;    width: 95.3%;
+    float: left;}
 .title-bar h3{float:left;text-shadow:#fff 0 1px 1px;width:100%;}
 .inner-section{width:99999px;}
 .subtray{float:left;}
-.subtray .item{position:relative;display:block;overflow:hidden;margin:0 10px 10px 0;height: 220px;width: 150px;}
+.subtray .item{position:relative;display:block;overflow:hidden;margin:0 10px 10px 0;height: 205px;width: 140px;}
 .description{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuMDEiLz4KICAgIDxzdG9wIG9mZnNldD0iMyUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMSUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wNCIvPgogICAgPHN0b3Agb2Zmc2V0PSIzMyUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4yMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI3MyUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC42MSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuODciLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
     background:-moz-linear-gradient(top,rgba(255,255,255,0) 0,rgba(255,255,255,.01) 2%,rgba(0,0,0,.01) 3%,rgba(0,0,0,.04) 11%,rgba(0,0,0,.21) 33%,rgba(0,0,0,.61) 73%,rgba(0,0,0,.87) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,rgba(255,255,255,0)),color-stop(2%,rgba(255,255,255,.01)),color-stop(3%,rgba(0,0,0,.01)),color-stop(11%,rgba(0,0,0,.04)),color-stop(33%,rgba(0,0,0,.21)),color-stop(73%,rgba(0,0,0,.61)),color-stop(100%,rgba(0,0,0,.87)));background:-webkit-linear-gradient(top,rgba(255,255,255,0) 0,rgba(255,255,255,.01) 2%,rgba(0,0,0,.01) 3%,rgba(0,0,0,.04) 11%,rgba(0,0,0,.21) 33%,rgba(0,0,0,.61) 73%,rgba(0,0,0,.87) 100%);background:-o-linear-gradient(top,rgba(255,255,255,0) 0,rgba(255,255,255,.01) 2%,rgba(0,0,0,.01) 3%,rgba(0,0,0,.04) 11%,rgba(0,0,0,.21) 33%,rgba(0,0,0,.61) 73%,rgba(0,0,0,.87) 100%);background:-ms-linear-gradient(top,rgba(255,255,255,0) 0,rgba(255,255,255,.01) 2%,rgba(0,0,0,.01) 3%,rgba(0,0,0,.04) 11%,rgba(0,0,0,.21) 33%,rgba(0,0,0,.61) 73%,rgba(0,0,0,.87) 100%);background:linear-gradient(to bottom,rgba(255,255,255,0) 0,rgba(255,255,255,.01) 2%,rgba(0,0,0,.01) 3%,rgba(0,0,0,.04) 11%,rgba(0,0,0,.21) 33%,rgba(0,0,0,.61) 73%,rgba(0,0,0,.87) 100%);filter:progid: DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#de000000', GradientType=0);}
 .description{position:absolute;bottom:0;left:0;width:100%;height:60px;-webkit-transition:all .4s ease;-moz-transition:all .4s ease;transition:all .4s ease;}
@@ -43,30 +48,212 @@ a:hover{text-decoration:underline;}
 .prev:hover{background-position:10px -460px;}
 .section .item .title{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 @media all and (max-width:1005px){
-.fluid{width:718px;}
+
 }
+@media all and (min-width:1001px) and (max-width:1499px){
+    .title-bar{width: 97.3%;}
+    }
 @media all and (min-width:1280px) and (max-width:1499px){
 .fluid{width:1206px;}
+.title-bar{width: 96%;}
 }
 @media all and (min-width:1500px){
 .fluid{width:1451px;}
 }
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
     #side-info{display: none;}
+    .title-bar{width: 97%;}
 }
+@media only screen and (max-width: 500px) {
+    .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 146px;width: 100px;}
+    .fluid{width:400px;}
+    .title-bar h3{font-size: 16px;}
+    #pagi-newest{margin-left: -32px!important;}
+    .title-bar{width: 87%;}
+}
+
+
 .ellipsis{white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;}
 /*! CSS Used from: https://zingtv-static.zdn.vn/skins/tv_v3/css/style-custom1.0.css */
 .ellipsis{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 /*! CSS Used from: https://static-zmp3.zadn.vn/skins/ztv_custom/css/style.0.0.3.css */
 a,a:hover{text-decoration:none;}
-/*! CSS Used fontfaces */
-@font-face{font-family:"Open Sans";src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-regular-webfont.eot);src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-regular-webfont.eot#iefix) format("embedded-opentype"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-regular-webfont.woff) format("woff"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-regular-webfont.ttf) format("truetype"),url('https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-regular-webfont.svg#Open Sans') format("svg");font-weight:400;font-style:normal;}
-@font-face{font-family:"Open Sans";src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-italic-webfont.eot);src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-italic-webfont.eot#iefix) format("embedded-opentype"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-italic-webfont.woff) format("woff"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-italic-webfont.ttf) format("truetype"),url('https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-italic-webfont.svg#Open Sans') format("svg");font-weight:400;font-style:italic;}
-@font-face{font-family:"Open Sans";src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibold-webfont.eot);src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibold-webfont.eot#iefix) format("embedded-opentype"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibold-webfont.woff) format("woff"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibold-webfont.ttf) format("truetype"),url('https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibold-webfont.svg#Open Sans') format("svg");font-weight:500;font-style:normal;}
-@font-face{font-family:"Open Sans";src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibolditalic-webfont.eot);src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibolditalic-webfont.eot#iefix) format("embedded-opentype"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibolditalic-webfont.woff) format("woff"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibolditalic-webfont.ttf) format("truetype"),url('https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-semibolditalic-webfont.svg#Open Sans') format("svg");font-weight:500;font-style:italic;}
-@font-face{font-family:"Open Sans";src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bold-webfont.eot);src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bold-webfont.eot#iefix) format("embedded-opentype"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bold-webfont.woff) format("woff"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bold-webfont.ttf) format("truetype"),url('https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bold-webfont.svg#Open Sans') format("svg");font-weight:700;font-style:normal;}
-@font-face{font-family:"Open Sans";src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bolditalic-webfont.eot);src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bolditalic-webfont.eot#iefix) format("embedded-opentype"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bolditalic-webfont.woff) format("woff"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bolditalic-webfont.ttf) format("truetype"),url('https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-bolditalic-webfont.svg#Open Sans') format("svg");font-weight:700;font-style:italic;}
-@font-face{font-family:"Open Sans";src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-light-webfont.eot);src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-light-webfont.eot#iefix) format("embedded-opentype"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-light-webfont.woff) format("woff"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-light-webfont.ttf) format("truetype"),url('https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-light-webfont.svg#Open Sans') format("svg");font-weight:300;font-style:normal;}
-@font-face{font-family:"Open Sans";src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-lightitalic-webfont.eot);src:url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-lightitalic-webfont.eot#iefix) format("embedded-opentype"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-lightitalic-webfont.woff) format("woff"),url(https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-lightitalic-webfont.ttf) format("truetype"),url('https://zingtv-static.zdn.vn/skins/tv_v3/fonts/opensans/opensans-lightitalic-webfont.svg#Open Sans') format("svg");font-weight:300;font-style:italic;}
+/*! CSS Used from: https://anime47.com/skin/24032017/css/public.css */
+img{max-width:100%;}
+.clear{clear:both;line-height:0px;overflow:hidden;display:block;height:0px;max-height:0px;}
+/*! CSS Used from: https://anime47.com/skin/24032017/css/style.css?v=1.47 */
+*{margin:0;padding:0;}
+.clear{clear:both;}
+::-webkit-input-placeholder{color:#9f9f9f;}
+:-moz-placeholder{color:#9f9f9f;}
+::-moz-placeholder{color:#9f9f9f;}
+:-ms-input-placeholder{color:#9f9f9f;}
+.ad-top-300-250{width:300px;height:250px;margin-bottom:2px;}
+.right-box{margin:20px 0px;}
+.right-box .right-box-header{font:25px/25px 'UTMCafetaRegular';color:#1e1c08;text-shadow:1px 1px 1px #1a1a1a;text-transform:uppercase;height:32px;}
 
+.right-box .right-box-header span{padding-left:35px;padding-top:3px;display:block;}
+.right-box .right-box-content{float:left;overflow:hidden;position:relative;padding:5px;background:#4F4E52 url(https://anime47.com/skin/24032017/img/item_bg.gif) repeat;border-bottom:1px solid #868489;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;font-size:11px;width:100%;height:auto;}
+.right-box .right-box-content a{color:#f2f2f2;}
+.right-box .right-box-content .list-top-movie{list-style-type:none;margin:0px;padding:0px;position:relative;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item{clear:both;padding:9px 5px;border-bottom:1px solid #1F1F1F;overflow:hidden;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child{padding:0;height:120px;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item:nth-child(2n){background:#131313;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item:last-child{border-bottom:0px;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item-thumb{float:left;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item-info{float:left;margin-left:10px;z-index:1;position:relative;width:79%;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child .list-top-movie-item-info{bottom:-38px;width:100%;padding:0;margin:0 10px;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item-info .list-top-movie-item-vn,.right-box .right-box-content .list-top-movie .list-top-movie-item-info .list-top-movie-item-en,.right-box .right-box-content .list-top-movie .list-top-movie-item-info .list-top-movie-item-view{display:block;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item .list-top-movie-item-info .list-top-movie-item-vn{font-size:12px;color:#FFF;font-weight:bold;margin-bottom:5px;margin-right:5px;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child .list-top-movie-item-info .list-top-movie-item-vn{font-size:14px;text-transform:uppercase;bottom:-17px;position:relative;text-shadow:-1px 0 20px #482c6d, 0 1px 20px #482c6d, 1px 0 20px #482c6d, 0 -1px 20px #482c6d;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item .list-top-movie-item-info .list-top-movie-item-en{font-size:12px;color:#696969;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child .list-top-movie-item-info .list-top-movie-item-en{color:#fff;bottom:-15px;position:relative;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item-info .list-top-movie-item-vn:hover{color:#dacb46;text-decoration:none;}
+.right-box .right-box-content a{line-height:18px;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item a .status{background:#811204;color:#fff;padding:2px 4px;font-size:10px;font-weight:bold;position:absolute;right:5px;z-index:2;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child a .status{top:5px;}
+/*! CSS Used from: https://anime47.com/skin/24032017/css/vtlai.css?v=1.3 */
+.right-box .right-box-content .list-top-movie .list-top-movie-item .list-top-movie-item-thumb{background-repeat:no-repeat;background-size:cover;width:17%;height:60px;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child .list-top-movie-item-thumb{width:100%;height:120px;position:absolute;z-index:1;}
+.list-top-movie-link:hover .list-top-movie-item-vn{color:#DACB46!important;text-decoration:none;}
+.list-top-movie-link .list-top-movie-item-view{color:#696969;text-decoration:none;}
+.list-top-movie .list-top-movie-item:first-child .list-top-movie-link .list-top-movie-item-view{position:absolute;right:25px;bottom:-18px;color:#fff;}
+.list-top-movie-link:hover .list-top-movie-item-thumb{opacity:0.7;}
+.ad-container{height:auto!important;}
+@media screen and (max-width: 800px){
+body > .container > .row > .col-lg-4{padding:0;}
+}
+@media screen and (max-width: 480px){
+.right-box .list-top-movie-link{display:block;}
+.right-box .list-top-movie-link .list-top-movie-item-info{position:static!important;float:none!important;margin-left:110px!important;padding:0!important;width:auto!important;}
+}
+/*! CSS Used from: https://anime47.com/skin/24032017/css/tab.css?v2.5 */
+.tabs{float:left;position:relative;left:3%;margin-top:10px;}
+.tabs .tab{float:left;height:30px;padding-top:10px;margin-bottom:5px;cursor:pointer;overflow:hidden;font-weight:bold;font-size:11px;*padding-top:0;}
+.tabs .tab a{color:#c3c3c3;}
+.tabs .tab:hover .name{color:#eee;background:#2c2c2c;}
+.tabs .tab:hover .name:before{border-bottom-color:#2c2c2c;}
+.tabs .tab:hover .name:after{border-top-color:#2c2c2c;}
+.tabs .tab .name{background:#607D8B;display:block;padding:2px 10px;line-height:10px;position:relative;font-size:11px;height:15px;transition:all .1s;transition-delay:0s;transition-timing-function:linear;-moz-transition:all .1s;-moz-transition-delay:0s;-moz-transition-timing-function:linear;-webkit-transition:all .1s;-webkit-transition-delay:0s;-webkit-transition-timing-function:linear;*padding:10px;}
+.tabs .tab .name:before,.tabs .tab .name:after{transition:all .1s;transition-delay:0s;transition-timing-function:linear;-moz-transition:all .1s;-moz-transition-delay:0s;-moz-transition-timing-function:linear;-webkit-transition:all .1s;-webkit-transition-delay:0s;-webkit-transition-timing-function:linear;content:"";display:block;width:100%;height:10px;position:absolute;box-sizing:initial;}
+.tabs .tab .name:before{border-bottom:10px solid #607D8B;border-left:10px solid transparent;top:-19px;left:-1px;}
+.tabs .tab .name:after{border-top:10px solid #607D8B;border-right:10px solid transparent;bottom:-19px;right:-1px;top:13px \0;}
+.tabs .tab.active a{color:#352702;}
+.tabs .tab.active .name{background:#eaab0c;color:#352702;}
+.tabs .tab.active .name:before{border-bottom-color:#eaab0c;}
+.tabs .tab.active .name:after{border-top-color:#eaab0c;}
+.tabs .tab.active:hover .name{color:#3f2e02;background:#f3b61c;}
+.tabs .tab.active:hover .name:before{border-bottom-color:#f3b61c;}
+.tabs .tab.active:hover .name:after{border-top-color:#f3b61c;}
+.tabs .tab+.tab{margin-left:10px;}
+/*! CSS Used from: https://anime47.com/skin/24032017/css/bootstrap.css?v_1.1 ; media=screen */
+@media screen{
+a:focus{outline:none;}
+a:active,a:hover{outline:none;}
+img{border:0;}
+@media print{
+*{color:#000!important;text-shadow:none!important;background:transparent!important;box-shadow:none!important;}
+a,a:visited{text-decoration:underline;}
+a[href]:after{content:" (" attr(href) ")";}
+img{page-break-inside:avoid;}
+img{max-width:100%!important;}
+h2{orphans:3;widows:3;}
+h2{page-break-after:avoid;}
+}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+a{color:#46E1FF;text-decoration:none;}
+a:hover,a:focus{color:#dacb46;text-decoration:none;}
+a:focus{outline:none;}
+img{vertical-align:middle;}
+h2{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:500;line-height:1.1;}
+h2{margin-top:20px;margin-bottom:10px;}
+h2{font-size:32px;}
+ul{margin-top:0;margin-bottom:10px;}
+.col-lg-4{position:relative;min-height:1px;padding-left:10px;padding-right:10px;}
+@media (min-width: 992px){
+.col-lg-4{float:left;}
+.col-lg-4{width:320px;}
+}
+.hidden{display:none!important;visibility:hidden!important;}
+}
+/*! CSS Used fontfaces */
+@font-face{font-family:'UTMCafetaRegular';src:url('https://anime47.com/skin/24032017/font/utm_cafeta-webfont.eot');src:url('https://anime47.com/skin/24032017/font/utm_cafeta-webfont.eot#iefix') format('embedded-opentype'), url('https://anime47.com/skin/24032017/font/utm_cafeta-webfont.woff') format('woff'), url('https://anime47.com/skin/24032017/font/utm_cafeta-webfont.ttf') format('truetype'), url('https://anime47.com/skin/24032017/font/utm_cafeta-webfont.svg#UTMCafetaRegular') format('svg');font-weight:normal;font-style:normal;}
+
+
+/*! CSS Used from: https://static-znews.zadn.vn/releases/web/v1.4.41/css/externals.css */
+@media (max-width: 480px){
+    .article-list.listing-layout.responsive .article-item .article-thumbnail{width:100%;margin-bottom:7px;}
+    }
+    /*! CSS Used from: Embedded */
+    *{-moz-box-sizing:border-box;box-sizing:border-box;text-rendering:geometricPrecision;outline:none;}
+    div,span,p,img,article,header{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+    *{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+    article,header{display:block;}
+    a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration:none;color:#333;cursor:pointer;}
+    a img{border:none;outline:none;}
+    a:hover{color:#3399cc;}
+    .hide{display:none!important;}
+    .article-item{float:left;position:relative;width:100%;font-family:'Roboto', Ubuntu, sans-serif;line-height:1.4;}
+    .article-item[topic-id*="3535"] header .article-title::before{content:"Quizz";text-transform:uppercase;color:#FFF!important;display:inline;margin-right:3px;padding:4px 3px 2px!important;background:#ffb600;border-radius:2px;font-size:8px;letter-spacing:1px;line-height:inherit;font-family:sans-serif;vertical-align:middle;font-weight:normal;top:-1px;}
+    .article-item .article-title{font-weight:bold;color:#333;font-family:Arial, Helvetica, sans-serif;text-align:left;}
+    .article-item .article-title a{color:#333;}
+    .article-item .article-title a:hover{color:#006BA0;}
+    .article-item .article-title:before{margin-right:1px;display:inline-block;color:#555;font-size:.8em;}
+    .article-item .article-meta{margin:5px 0;font-size:11px;line-height:16px;text-transform:uppercase;color:#666;display:none;}
+    .article-item .article-meta>*{margin-right:5px;display:inline-block;}
+    .article-item .article-meta>*:last-child{border:0;padding-right:0;margin-right:0;}
+    .article-item .article-meta .category{margin-right:5px;text-transform:uppercase;font-weight:normal;color:#444;letter-spacing:1px;}
+    .article-item .article-meta .category:empty{display:none;}
+    .article-item .article-meta a:hover span{color:#3399cc;}
+    .article-item .article-meta .article-publish{color:#aaa;}
+    .article-item .article-meta .article-publish .friendly-time{display:none;}
+    .article-item .article-meta .category-parent{display:none;}
+    .article-item .article-count{display:none;margin:5px 0;font-size:11px;line-height:16px;color:#666;}
+    .article-item .article-thumbnail{overflow:hidden;margin-bottom:8px;position:relative;}
+    .article-item .article-thumbnail a{display:block;width:100%;height:100%;position:relative;padding-bottom:66.67%;}
+    .article-item .article-thumbnail img{position:absolute;top:0;left:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;}
+    .article-item .article-thumbnail img[data-src]{-o-object-fit:none;object-fit:none;background:#f1f1f1;}
+    .article-item .article-thumbnail img.unveil:not([data-src]){-webkit-animation:fadeInImages .3s ease;-moz-animation:fadeInImages .3s ease;animation:fadeInImages .3s ease;}
+    .article-item .article-thumbnail:hover+header .article-title a{color:#006BA0;}
+    .article-item .article-summary{display:none;color:#888;line-height:1.4;}
+    .article-item.type-picture .article-title::before{content:"";font-family:'themify';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;position:relative;top:1px;}
+    .article-item.type-video .article-title::before{content:"";font-family:'themify';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;position:relative;top:1px;}
+    .article-item.type-video .article-thumbnail a{color:#fff;}
+    .article-item.type-video .article-thumbnail a::before{content:"";font-family:'themify';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;position:relative;top:1px;font-family:'znews-icon';background-color:#0076bf;position:absolute;top:auto;left:0;bottom:0;z-index:3;font-size:0.725em;padding-left:0.6em;padding-right:0.6em;padding-top:0.65em;height:1.55em;}
+    .article-item.type-video .article-thumbnail a .duration-video{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-moz-box-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;align-items:center;position:absolute;bottom:0;left:0;width:auto;z-index:2;font-size:0.725em;padding:0 0.5em 0 2.7em;height:2.2em;visibility:hidden;font-weight:500;background-color:rgba(117,117,117,0.8);border-top-right-radius:1px;}
+    .article-item.type-video .article-thumbnail a .duration-video.show-time{visibility:visible;}
+    .article-item.type-picture .article-title::before,.article-item.type-video .article-title::before{font-size:.8em;color:#bbbbbb;font-family:'znews-icon';background:inherit;top:0;}
+    .article-item img.tracking{position:absolute;top:0px;left:0px;width:1px;height:1px;overflow:hidden;display:block;z-index:-1;}
+    .article-list{float:left;width:100%;}
+    .article-list .article-item{margin-bottom:15px;font-size:1.2rem;}
+    .article-list .article-item .article-title{font-size:1em;}
+    .article-list.listing-layout .article-item{margin-bottom:10px;}
+    .article-list.listing-layout .article-item .article-thumbnail{width:120px;float:left;margin-right:8px;margin-bottom:0;}
+    .article-list.listing-layout .article-item:last-child{margin-bottom:0!important;}
+    .article-list.listing-layout.responsive .article-item{margin-bottom:29px;}
+    .article-list.listing-layout.responsive .article-item .article-thumbnail{width:33%;float:left;margin-right:15px;}
+    .article-list.listing-layout.responsive .article-item .article-summary{font-size:0.7em;display:block;}
+    .article-list.listing-layout.responsive .article-item .article-title{font-size:1em;letter-spacing:0;line-height:1.3;}
+    .article-list.listing-layout.responsive .article-item .article-title a:before{font-size:14px;}
+    .article-list.listing-layout.responsive .article-item .article-meta{margin:4px 0;display:block;}
+    .article-list.listing-layout.responsive .article-item:after{content:"";display:block;width:100%;height:1px;background:#eee;position:absolute;left:0;bottom:-15px;}
+    .article-list.listing-layout.responsive .article-item:last-child{margin-bottom:0;}
+    .article-list.listing-layout.responsive .article-item:last-child:after{display:none;}
+    @media (min-width: 1360px){
+    .article-list.listing-layout.responsive .article-item .article-title{font-size:1.1em;}
+    .article-list.listing-layout.responsive .article-item .article-meta{margin:6px 0;}
+    }
+    @media (width: 320px){
+    .article-list.listing-layout.responsive .article-item .article-title{font-size:0.85em;}
+    .article-list.listing-layout.responsive .article-item .article-thumbnail{width:120px;}
+    .article-list.listing-layout.responsive .article-item .article-summary{display:none;}
+    }
+    /*! CSS Used from: https://static-znews.zadn.vn/releases/web/v1.4.41/css/page_home.css */
+    #page-homepage #section-latest .article-list .article-item .article-meta .category-parent{display:inline-block;}
+    #page-homepage #section-latest .article-list .article-item .article-meta .category{display:none;}
+    #page-homepage .article-item .article-meta .article-publish .friendly-time{display:inline-block;}
+    #page-homepage .article-item .article-meta .article-publish .time,#page-homepage .article-item .article-meta .article-publish .date{display:none;}
+    /*! CSS Used keyframes */
+    @-webkit-keyframes fadeInImages{0%{opacity:0;}to{opacity:1;}}
+    @-moz-keyframes fadeInImages{0%{opacity:0;}to{opacity:1;}}
+    @keyframes fadeInImages{0%{opacity:0;}to{opacity:1;}}
