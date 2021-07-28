@@ -6,7 +6,7 @@ div,h3,h4,h5{margin:0;padding:0;}
 img{border:0;}
 h3,h4,h5{font-weight:400;font-size:100%;}
 img{max-width:100%;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;}
-.title-bar h3{font-family:"Open Sans",Helvetica,Arial,sans-serif;}
+.title-bar h3{font-family:cursive;}
 a{color:#0f820c;}
 a:hover{text-decoration:underline;}
 .group:after{display:block;visibility:hidden;clear:both;height:0;content:" ";font-size:0;}
@@ -29,7 +29,7 @@ a:hover{text-decoration:underline;}
     position: relative;
     min-height: 39px;
     padding-top: 4px;
-    background-color: #c76e27;    width: 95.3%;
+    background-color: #ff5722;    width: 95.3%;
     float: left;}
 .title-bar h3{float:left;text-shadow:#fff 0 1px 1px;width:100%;}
 .inner-section{width:99999px;}
@@ -47,8 +47,8 @@ a:hover{text-decoration:underline;}
 .prev{background-position:10px -340px;left:0;border-radius:0 8px 8px 0;-webkit-border-radius:0 8px 8px 0;-moz-border-radius:0 8px 8px 0;-o-border-radius:0 8px 8px 0;}
 .prev:hover{background-position:10px -460px;}
 .section .item .title{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-@media all and (max-width:1005px){
-
+@media all and (min-width:1499px){
+    #side-info-tab2{margin-top: 150%;}
 }
 @media all and (min-width:1001px) and (max-width:1499px){
     .title-bar{width: 97.3%;}
@@ -56,7 +56,13 @@ a:hover{text-decoration:underline;}
 @media all and (min-width:1280px) and (max-width:1499px){
 .fluid{width:1206px;}
 .title-bar{width: 96%;}
+#side-info-tab2{margin-top: 190%;}
 }
+@media all and (min-width:1000px) and (max-width:1289px){
+    .fluid{width:1206px;}
+    .title-bar{width: 96%;}
+    #side-info-tab2{margin-top: 190%;}
+    }
 @media all and (min-width:1500px){
 .fluid{width:1451px;}
 }
@@ -70,6 +76,7 @@ a:hover{text-decoration:underline;}
     .title-bar h3{font-size: 16px;}
     #pagi-newest{margin-left: -32px!important;}
     .title-bar{width: 87%;}
+    .info-tab{padding-left: 30px;}
 }
 
 
@@ -90,9 +97,9 @@ img{max-width:100%;}
 :-ms-input-placeholder{color:#9f9f9f;}
 .ad-top-300-250{width:300px;height:250px;margin-bottom:2px;}
 .right-box{margin:20px 0px;}
-.right-box .right-box-header{font:25px/25px 'UTMCafetaRegular';color:#1e1c08;text-shadow:1px 1px 1px #1a1a1a;text-transform:uppercase;height:32px;}
+.right-box .right-box-header{font-size: 20px;font-family: cursive ;color:#1e1c08;text-transform:uppercase;height:32px;}
 
-.right-box .right-box-header span{padding-left:35px;padding-top:3px;display:block;}
+.right-box .right-box-header span{padding-left:0px;padding-top:0px;display:block;}
 .right-box .right-box-content{float:left;overflow:hidden;position:relative;padding:5px;background:#4F4E52 url(https://anime47.com/skin/24032017/img/item_bg.gif) repeat;border-bottom:1px solid #868489;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;font-size:11px;width:100%;height:auto;}
 .right-box .right-box-content a{color:#f2f2f2;}
 .right-box .right-box-content .list-top-movie{list-style-type:none;margin:0px;padding:0px;position:relative;}
@@ -209,13 +216,13 @@ ul{margin-top:0;margin-bottom:10px;}
     .article-item .article-meta .article-publish .friendly-time{display:none;}
     .article-item .article-meta .category-parent{display:none;}
     .article-item .article-count{display:none;margin:5px 0;font-size:11px;line-height:16px;color:#666;}
-    .article-item .article-thumbnail{overflow:hidden;margin-bottom:8px;position:relative;}
+    .article-item .article-thumbnail{overflow:hidden;margin-bottom:8px;position:relative;border: solid 2px;}
     .article-item .article-thumbnail a{display:block;width:100%;height:100%;position:relative;padding-bottom:66.67%;}
     .article-item .article-thumbnail img{position:absolute;top:0;left:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;}
     .article-item .article-thumbnail img[data-src]{-o-object-fit:none;object-fit:none;background:#f1f1f1;}
     .article-item .article-thumbnail img.unveil:not([data-src]){-webkit-animation:fadeInImages .3s ease;-moz-animation:fadeInImages .3s ease;animation:fadeInImages .3s ease;}
     .article-item .article-thumbnail:hover+header .article-title a{color:#006BA0;}
-    .article-item .article-summary{display:none;color:#888;line-height:1.4;}
+    .article-item .article-summary{display:none;color:#3a0f0f;line-height:1.4;}
     .article-item.type-picture .article-title::before{content:"";font-family:'themify';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;position:relative;top:1px;}
     .article-item.type-video .article-title::before{content:"";font-family:'themify';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;position:relative;top:1px;}
     .article-item.type-video .article-thumbnail a{color:#fff;}
@@ -257,3 +264,8 @@ ul{margin-top:0;margin-bottom:10px;}
     @-webkit-keyframes fadeInImages{0%{opacity:0;}to{opacity:1;}}
     @-moz-keyframes fadeInImages{0%{opacity:0;}to{opacity:1;}}
     @keyframes fadeInImages{0%{opacity:0;}to{opacity:1;}}
+
+.search-header{
+    font-family: cursive;
+    font-size: 30px;
+}

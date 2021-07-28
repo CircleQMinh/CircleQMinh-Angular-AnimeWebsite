@@ -25,4 +25,10 @@ export class InfomationService {
   getAnimeNews(id:number):Observable<any>{
     return this.http.get(`${this.apiUrl}/anime/${id}/news`);
   }
+  getAnimeByPopularity():Observable<any>{
+    return this.http.get(`${this.apiUrl}/top/anime/1/favorite`);
+  }
+  getAnimeSchedule(day:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/schedule/${day}`);
+  }
 }

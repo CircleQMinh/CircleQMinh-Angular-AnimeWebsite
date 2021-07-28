@@ -29,15 +29,16 @@
 </ngb-carousel>
 <div style="margin:0 auto;
 width: 50%;display: block;margin-top: 3%;text-align: center;">
-    <p>Search for your favorite anime!</p>
+    <p class="search-header">Search for your favorite anime!</p>
 </div>
 <app-searchbar></app-searchbar>
 <div style="margin:0 auto;
 width: 50%;display: block;margin-top: 3%;text-align: center;">
-    <p>... or browse by category.</p>
+    <p class="search-header">... or browse by category.</p>
 </div>
 <div style="margin:0 auto;
 width: 50%;display: block;margin-top: 3%;">
+    
     <button type="button" class="btn btn-primary">Action</button>
     <button type="button" class="btn btn-secondary">Adventure</button>
     <button type="button" class="btn btn-success">Comedy</button>
@@ -51,23 +52,40 @@ width: 50%;display: block;margin-top: 3%;">
     <button type="button" class="btn btn-success">School</button>
     <button type="button" class="btn btn-primary">Music</button>
     <button type="button" class="btn btn-dark">Supernatural</button>
-
-    <button type="button" class="btn btn-primary">Historical</button>
-    <button type="button" class="btn btn-danger">View All</button>
+    <button type="button" class="btn btn-success">Slice Of Life</button>
+    <button type="button" class="btn btn-danger">Harem</button>
+    <button type="button" class="btn btn-warning">Vampire</button>
+    <button type="button" class="btn btn-primary">Shounen</button>
+    <button type="button" class="btn btn-dark">Shoujo</button>
+    <hr style="margin-top: 10px;">
+    <button type="button" class="btn btn-danger" style="margin:0 auto;
+    width: 50%;display: block;margin-top: 3%;text-align: center;" routerLink="/search">View All Category</button>
+    <div style="margin:0 auto;
+    width: 50%;display: block;margin-top: 3%;text-align: center;">
+        <p class="search-header">Other search option</p>
+    </div>
+    <div style="margin:0 auto;
+    width: 50%;display: block;margin-top: 3%;text-align: center;">
+           <button type="button" class="btn btn-warning" ngbTooltip="Anime of the specified season"
+           style="margin-right: 10px;">Year/Season</button>
+           <button type="button" class="btn btn-primary" ngbTooltip="Search anime or manga by the letter/character it starts with">Starting Letter</button>
+    </div>
+ 
 </div>
+
+
 
 <div class="section row272" style="margin-top:5% ;">
     <div class="section-content fluid">
 
         <div class="row " style="margin-left:0px;">
             <div class=" col-lg-8 ">
-                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 30px;">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 20px;  background-color: #bfd0df;" id="info-tab">
                     <div class="title-bar group">
 
 
                         <h3 style="margin:0 auto;
-                    width: 50%;display: block;"><img style="height: 40px;width: 40px;"
-                                src="https://image.flaticon.com/icons/png/128/86/86029.png"> New Update!</h3>
+                    width: 50%;display: block;"><i class="far fa-clock"></i> New Update!</h3>
 
                     </div>
                     <div *ngFor="let o of newestItem,index as i">
@@ -110,16 +128,16 @@ width: 50%;display: block;margin-top: 3%;">
                     </div>
                 </div>
 
-                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 30px;margin-top: 2%;">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 30px;margin-top: 2%;
+                background-color: aliceblue;">
                     <div class="title-bar group">
 
 
                         <h3 style="margin:0 auto;
-                    width: 50%;display: block;"><img style="height: 40px;width: 40px;"
-                                src="https://image.flaticon.com/icons/png/128/86/86029.png" (click)="debug()"> Anime & Manga News!</h3>
+                    width: 100%;display: block;"><i class="fas fa-bullhorn"></i> Anime & Manga News!</h3>
 
                     </div>
-                    <!-- <div class="article-list listing-layout responsive unique">
+                    <div class="article-list listing-layout responsive unique">
                         <article class="article-item  type-text picked-trending" *ngFor="let o of newItems">
                             <p class="article-thumbnail">
                                 <a
@@ -137,39 +155,25 @@ width: 50%;display: block;margin-top: 3%;">
                                 </p>
                                 <p class="article-meta">
                                     <span class="article-publish">
-                                        <span class="friendly-time">3 giờ trước</span>
-                                        <span class="time">08:54</span>
-                                        <span class="date">27/7/2021</span>
+                                        <span class="time">{{o.date | date:'shortTime'}} </span>
+                                        <span class="date">{{o.date | date:'longDate'}} </span>
                                     </span>
 
-
-                                    <a href="/the-gioi.html" title="Thế giới">
-                                        <span class="category-parent">Thế giới</span>
-                                    </a>
-
-                                </p>
-                                <p class="article-count">
-                                    <span class="like-count"></span>
-                                    <span class="dislike-count"></span>
-                                    <span class="rating-count">0</span>
-                                    <span class="viral-count hide"></span>
-                                    <span class="comment-count hide"></span>
                                 </p>
                                 <p class="article-summary">{{o.intro}}</p>
 
                             </header>
-                            <img class="tracking unveil" alt=""
-                                src="//log.zingnews.vn/imps?type=article&amp;appid=zingweb&amp;id=1243804&amp;pos=zingweb_home_sectionlatest1">
+                          
                         </article>
-                    </div> -->
+                    </div>
                     <div style="display: block;">
                         <div style="margin:0 auto;
             width: 50%;display: block;" id="pagi-newest">
                             <div style="margin:0 auto;
              width: 70%;display: block;">
-                                <ngb-pagination [(page)]="pageNewest" [pageSize]="pageSizeNewest"
-                                    [collectionSize]="dataNewest.length" [maxSize]="3" [boundaryLinks]=true
-                                    (pageChange)="getNewest()">
+                                <ngb-pagination [(page)]="pageNewpaper" [pageSize]="pageNewPaperSize"
+                                    [collectionSize]="pageNewpaperCount" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="getAnimeNewPage()">
                                 </ngb-pagination>
                             </div>
 
@@ -185,12 +189,10 @@ width: 50%;display: block;margin-top: 3%;">
 
 
                     <h2 class="right-box-header star-icon"><span>
-                            <img style="height: 40px;width: 40px;"
-                                src="https://image.flaticon.com/icons/png/128/40/40894.png" (click)="debug()"> Upcoming Anime</span>
+                        <i class="fas fa-trophy"></i> Top Upcoming Anime</span>
                     </h2>
 
-                    <div class="right-box-content" style="
-                    margin-top: 13px; ">
+                    <div class="right-box-content">
                         <div class="content">
                             <ul class="list-top-movie">
                                 <li class="list-top-movie-item" id="list-top-movie-item" *ngFor="let o of upComingItem">
@@ -204,7 +206,7 @@ width: 50%;display: block;margin-top: 3%;">
                                         <div class="list-top-movie-item-info">
                                             <span class="list-top-movie-item-vn">{{o.title}}</span>
                                             <span class="list-top-movie-item-en">
-                                                {{o.title}}</span>
+                                                {{o.type}}</span>
                                             <span *ngIf="o.start_date"
                                                 class="list-top-movie-item-view">{{o.start_date}}</span>
                                             <span *ngIf="!o.start_date" class="list-top-movie-item-view">Coming
@@ -216,6 +218,45 @@ width: 50%;display: block;margin-top: 3%;">
                             <button type="button" class="btn btn-primary" (click)="prevUpComing()"><i
                                     class="fas fa-arrow-left"></i></button>
                             <button type="button" class="btn btn-primary" (click)="nextUpComing()"
+                                style="float: right;"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="right-box top-film"  id="side-info-tab2">
+
+
+                    <h2 class="right-box-header star-icon"><span>
+                        <i class="fas fa-trophy"></i> Top Rated Anime</span>
+                    </h2>
+
+                    <div class="right-box-content">
+                        <div class="content">
+                            <ul class="list-top-movie">
+                                <li class="list-top-movie-item" id="list-top-movie-item" *ngFor="let o of bestItems">
+                                    <a class="list-top-movie-link" title="{{o.title}}" href="/a">
+                                        <span class="status">{{o.rank}}<img style="height: 10px;width: 10px;"
+                                                src="https://image.flaticon.com/icons/png/128/889/889518.png">
+                                        </span>
+                                        <div class="list-top-movie-item-thumb"
+                                            style="background-image: url({{o.image_url}})">
+                                        </div>
+                                        <div class="list-top-movie-item-info">
+                                            <span class="list-top-movie-item-vn">{{o.title}}</span>
+                                            <span class="list-top-movie-item-en">
+                                                Rating : {{o.score}} <i class="fas fa-star"></i></span>
+                                            <span *ngIf="o.start_date"
+                                                class="list-top-movie-item-view">{{o.start_date}}</span>
+                                            <span *ngIf="!o.start_date" class="list-top-movie-item-view">Coming
+                                                Soon!</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-primary" (click)="prevBest()"><i
+                                    class="fas fa-arrow-left"></i></button>
+                            <button type="button" class="btn btn-primary" (click)="nextBest()"
                                 style="float: right;"><i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>

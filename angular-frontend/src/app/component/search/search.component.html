@@ -1,0 +1,188 @@
+<app-nav></app-nav>
+<div class="container-fluid no-padding">
+    <div class="row">
+
+        <div class="col">
+
+
+            <ol class="breadcrumb">
+                <li><a href="/"><span itemprop="name">Tìm kiếm</span></a></li>
+                <li><a >
+                        <select style="background-color: transparent;color: yellowgreen;">
+                            <option value="">Status-Genre-Type  </option>
+                            <option value="airing">Season-Year</option>
+                            <option value="completed">Name-Letter</option>
+
+                        </select>
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="list-movie-filter" style="margin-bottom: 10px;" id="list-movie-filter">
+
+                <div class="list-movie-filter-main">
+                    <form id="form-filter" class="form-inline">
+
+                        <div class="list-movie-filter-item" style="margin-left: 2%;">
+                            <label for="filter-eptype">Status</label>
+                            <select class="form-control" id="filter-eptype" name="status">
+                                <option value="">--All--</option>
+                                <option value="airing">Airing</option>
+                                <option value="completed">Completed</option>
+                                <option value="upcoming">Upcoming</option>
+
+                            </select>
+                        </div>
+
+                        <div class="list-movie-filter-item">
+                            <label for="filter-genre">Genre</label>
+                            <select class="form-control" id="filter-genre" name="genre">
+                                <option value="">--All--</option>
+                                <option value="1">Action</option>
+                                <option value="2">Adventure</option>
+                                <option value="3">Cars</option>
+                                <option value="4">Comedy </option>
+                                <option value="5">Dementia </option>
+                                <option value="6">Demons </option>
+                                <option value="7">Mystery</option>
+                                <option value="8">Drama </option>
+                                <option value="9">Ecchi </option>
+                                <option value="10">Fantasy </option>
+                                <option value="11">Game </option>
+                                <option value="12">Hentai </option>
+                                <option value="13">Historical </option>
+                                <option value="14">Horror </option>
+                                <option value="15">Kids </option>
+                                <option value="16">Magic </option>
+                                <option value="17">Martial Arts</option>
+                                <option value="18">Mecha</option>
+                                <option value="19">Music</option>
+                                <option value="20">Parody</option>
+                                <option value="21">Samurai</option>
+                                <option value="22">Romance</option>
+                                <option value="23">School</option>
+                                <option value="24">Sci Fi</option>
+                                <option value="25">Shoujo</option>
+                                <option value="26">Shoujo Ai</option>
+                                <option value="27">Shounen</option>
+                                <option value="28">Shounen Ai</option>
+                                <option value="29">Space</option>
+                                <option value="30">Sports</option>
+                                <option value="31">Super Power</option>
+                                <option value="32">Vampire</option>
+                                <option value="33">Yaoi</option>
+                                <option value="34">Yuri</option>
+                                <option value="35">Harem</option>
+                                <option value="36">Slice Of Life</option>
+                                <option value="37">Supernatural</option>
+                                <option value="38">Military</option>
+                                <option value="39">Police</option>
+                                <option value="40">Psychological</option>
+                                <option value="41">Thriller</option>
+                                <option value="42">Seinen</option>
+                                <option value="43">Josei</option>
+                            </select>
+                        </div>
+
+
+                        <!-- <div class="list-movie-filter-item">
+                            <label for="filter-year">Năm phát hành</label>
+                            <select id="filter-year" name="year" class="form-control">
+                                <option value=""> </option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                                <option value="2014">2014</option>
+                                <option value="2013">2013</option>
+                                <option value="2012">2012</option>
+                                <option value="2011">2011</option>
+                                <option value="2010">2010</option>
+                            </select>
+                        </div> -->
+                        <div class="list-movie-filter-item">
+                            <label for="filter-sort">Type</label>
+                            <select class="form-control" id="filter-sort" name="sort">
+                                <option value="all">--All--</option>
+                                <option value="tv">Tv</option>
+                                <option value="ova">OVA</option>
+                                <option value="movie">Movie</option>
+                                <option value="special">Special</option>
+                                <option value="music">Music</option>
+                            </select>
+                        </div>
+                        <div class="list-movie-filter-item" style="margin-top: 24px;">
+                            <button type="button" class="btn btn-danger">Search</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="section row272" style="margin-top:2% ;">
+    <div class="section-content fluid">
+        <div class="row">
+            <div class=" col ">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;"
+                    id="info-tab">
+
+                    <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
+                        <li><a href="/"><span itemprop="name">Search Result :</span></a></li>
+
+                    </ol>
+
+                    <div *ngFor="let o of results,index as i">
+                        <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
+                            [closeDelay]="100" placement="bottom" container="body" tooltipClass="tooltip-inner">
+                            <div class="item">
+                                <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                    <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                        src="{{o.image_url}}" alt="???"></a>
+
+                                <div class="description">
+                                    <h4 class="title">
+                                        <a class="_trackLink">
+                                            {{o.title}}
+                                        </a>
+                                    </h4>
+                                    <h5 class="subtitle">
+                                        <a class="_trackLink ellipsis">
+                                            {{o.score}}<i class="far fa-star"></i>
+                                        </a>
+                                    </h5>
+                                </div><!-- END .description -->
+                            </div>
+                            <!--END .item-->
+                        </div>
+                        <!--END .subtray-->
+                    </div>
+                    <div style="display: block;">
+                        <div style="margin:0 auto;
+            width: 50%;display: block;" id="pagi-newest">
+                            <div style="margin:0 auto;
+             width: 70%;display: block;">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="results.length" [maxSize]="3" [boundaryLinks]=true>
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

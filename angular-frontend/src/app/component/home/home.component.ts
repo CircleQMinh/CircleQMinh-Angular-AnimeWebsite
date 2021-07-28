@@ -1,3 +1,4 @@
+import { WeekDay } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { InfomationService } from 'src/app/service/infomation.service';
@@ -21,15 +22,23 @@ export class HomeComponent implements OnInit {
   pageSizeUpComing = 7
 
   dataNewpaper: any[] = []
-  newSoure: any[] = [44511, 38000, 37999, 1, 2]
+  newSoure: any[] = [44511, 38000, 37999, 1, 918]
   newItems: any[] = []
   pageNewpaper = 0
   pageNewpaperCount = 0
-  pageNewPaperSize = 4
+  pageNewPaperSize = 5
+
+  dataBest: any[] = []
+  bestItems: any[] = []
+  pageBest: number = 0
+  pageSizeBest = 10
+
+  weekday: string = ""
+  scheduleData:any[]=[]
 
   constructor(private infoService: InfomationService) { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.infoService.getAnimeByYearAndSeason("2021", "summer").subscribe(
       data => {
         this.dataNewest = data.anime
@@ -49,13 +58,74 @@ export class HomeComponent implements OnInit {
         console.log(error)
       }
     )
-    this.newSoure.forEach(element => {
-      this.getAnimeNew(element)
-      console.log(element)
-      console.log(this.dataNewpaper)
+
+    this.newSoure.forEach(async element => {
+      var response = await this.infoService.getAnimeNews(element).toPromise();
+      if (response) {
+        // console.log(response.articles);
+        response.articles.forEach((a: any) => {
+          this.dataNewpaper.push(a)
+        });
+      }
+      this.pageNewpaperCount = this.dataNewpaper.length
+      this.shuffleNew(this.dataNewpaper)
       this.getAnimeNewPage()
-      console.log(this.newItems)
     });
+
+    this.infoService.getAnimeByPopularity().subscribe(
+      data => {
+        this.dataBest = data.top
+        this.getBest()
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    // var t = new Date()
+    // this.weekday = this.getWeekday(t.getDay())
+    // this.infoService.getAnimeSchedule(this.weekday).subscribe(
+    //   data => {
+    //     switch (this.weekday) {
+
+    //       case "sunday": {
+    //         this.scheduleData=data.sunday
+    //         break
+    //       }
+    //       case "monday": {
+    //         this.scheduleData=data.monday
+    //         break
+    //       }
+    //       case "tuesday": {
+    //         this.scheduleData=data.tuesday
+    //         break
+    //       }
+    //       case "wednesday": {
+    //         this.scheduleData=data.wednesday
+    //         break
+    //       }
+    //       case "thursday": {
+    //         this.scheduleData=data.thursday
+    //         break
+    //       }
+    //       case "friday": {
+    //         this.scheduleData=data.friday
+    //         break
+    //       }
+    //       case "saturday": {
+    //         this.scheduleData=data.saturday
+    //         break
+    //       }
+
+    //       default: {
+    //         break
+    //       }
+    //     }
+    //     console.log(this.scheduleData)
+    //   },
+    //   error => {
+    //     console.log(error)
+    //   }
+    // )
 
   }
   getNewest() {
@@ -84,21 +154,25 @@ export class HomeComponent implements OnInit {
       this.getUpComing()
     }
   }
-  async getAnimeNew(num: number) {
-    this.infoService.getAnimeNews(num).subscribe(
-      data => {
-        let a: any[] = []
-        a = data.articles
-        a.forEach(element => {
-          this.dataNewpaper.push(element)
-        });
-      },
-      error => {
-        console.log(error)
-      }
-    )
+  getBest() {
+    this.bestItems = []
+    for (let i = 0; i < this.pageSizeBest; i++) {
+      this.bestItems.push(this.dataBest[i + this.pageSizeBest * this.pageBest])
+    }
+  }
+  prevBest() {
+    if (this.pageBest > 0) {
+      this.pageBest -= 1
+      this.getBest()
+    }
   }
 
+  nextBest() {
+    if (this.pageBest < 6) {
+      this.pageBest += 1
+      this.getBest()
+    }
+  }
   getAnimeNewPage() {
     this.newItems = []
     for (let i = 0; i < this.pageNewPaperSize; i++) {
@@ -106,16 +180,56 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  debug() {
-    console.log("newItems")
-    console.log(this.newItems)
-    console.log("dataNewPapaer")
-    console.log(this.dataNewpaper)
-    this.getAnimeNewPage()
+  shuffleNew(array: any[]): any[] {
+    var currentIndex = array.length, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
   }
 
+  getWeekday(num: number): string {
+    switch (num) {
 
+      case 0: {
+        return "sunday"
 
+      }
+      case 1: {
+        return "monday"
+      }
+      case 2: {
+        return "tuesday"
+      }
+      case 3: {
+        return "wednesday"
+      }
+      case 4: {
+        return "thursday"
+      }
+      case 5: {
+        return "friday"
+      }
+      case 6: {
+        return "saturday"
+      }
+
+      default: {
+        return ""
+      }
+    }
+
+  }
 
 
 

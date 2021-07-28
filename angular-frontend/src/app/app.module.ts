@@ -12,6 +12,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchbarComponent } from './component/searchbar/searchbar.component';
+import { SearchComponent } from './component/search/search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SearchbarComponent } from './component/searchbar/searchbar.component';
     HomeComponent,
     NavComponent,
     FooterComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
