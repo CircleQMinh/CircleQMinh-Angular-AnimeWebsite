@@ -18,6 +18,9 @@ export class SearchbarComponent implements OnInit {
 
   clickedItem: any;
 
+  keywordError: boolean = false
+  isLoading: boolean = false
+
   results: { name: string, imgurl: string, id: string }[] = []
   constructor(private infoService: InfomationService) { }
   keyword!: string;
@@ -27,7 +30,7 @@ export class SearchbarComponent implements OnInit {
   focus$ = new Subject<string>();
   click$ = new Subject<string>();
 
-  search: OperatorFunction<string, readonly { name: string, imgurl: string, id: string  }[]> = (text$: Observable<string>) => {
+  search: OperatorFunction<string, readonly { name: string, imgurl: string, id: string }[]> = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
     const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
     const inputFocus$ = this.focus$;
@@ -47,24 +50,29 @@ export class SearchbarComponent implements OnInit {
     // let a : {name: string, flag: string} ={'name': 'Alabama', 'flag': '5/5c/Flag_of_Alabama.svg/45px-Flag_of_Alabama.svg.png'}
   }
   getInfo() {
-    if(this.keyword.length>2){
+    this.keywordError = false
+    if (this.keyword.length > 2) {
+      this.isLoading=true
       this.infoService.getNavSearchResult(this.keyword).subscribe(
-        data=>{
-          this.searchData=data.results
-          this.results=[]
-      
+        data => {
+          this.searchData = data.results
+          this.results = []
+
           this.searchData.forEach(element => {
-            let item : {name:string, imgurl: string, id: string }={'name':element.title,'imgurl':element.image_url,'id':element.mal_id}
+            let item: { name: string, imgurl: string, id: string } = { 'name': element.title, 'imgurl': element.image_url, 'id': element.mal_id }
             this.results.push(item)
 
           });
-
+          this.isLoading=false
         },
-        error=>{
+        error => {
 
         }
       )
     }
-
+    else{
+      this.keywordError=true;
+    }
   }
+ 
 }
