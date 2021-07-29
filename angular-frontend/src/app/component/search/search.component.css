@@ -185,8 +185,26 @@ a:hover{text-decoration:underline;}
 }
 
 
-.ellipsis{white-space:nowrap;overflow:hidden;display:block;text-overflow:ellipsis;}
-/*! CSS Used from: https://zingtv-static.zdn.vn/skins/tv_v3/css/style-custom1.0.css */
-.ellipsis{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-/*! CSS Used from: https://static-zmp3.zadn.vn/skins/ztv_custom/css/style.0.0.3.css */
-a,a:hover{text-decoration:none;}
+
+:focus{outline:auto 3px rgba(255,102,1,.9);}
+@media all and (-ms-high-contrast:none){
+:focus{box-shadow:none!important;box-shadow:0 0 2pt 1pt #ff6601!important;}
+}
+ul li{margin-bottom:.4rem;}
+::-ms-clear{display:none;}
+/*! CSS Used from: https://www.cdc.gov/TemplatePackage/4.0/assets/css/print.min.css ; media=print */
+@media print{
+*{transform:none!important;-webkit-print-color-adjust:exact;color-adjust:exact!important;}
+
+ul{margin-bottom:1.5rem;margin-top:0;}
+ul:last-child{margin-bottom:0;}
+::-webkit-input-placeholder{color:transparent;}
+:-moz-placeholder{color:transparent;}
+::-moz-placeholder{color:transparent;}
+:-ms-input-placeholder{color:transparent;}
+a,h4{orphans:3;widows:3;}
+}
+/*! CSS Used from: Embedded */
+ul.a2z{list-style:none;}
+ul.a2z li{display:inline-block;}
+ul.a2z li + li{margin-left:10px;}

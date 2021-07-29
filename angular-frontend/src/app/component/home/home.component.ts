@@ -1,7 +1,9 @@
 import { WeekDay } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { InfomationService } from 'src/app/service/infomation.service';
+import { SearchService } from 'src/app/service/search.service';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +38,8 @@ export class HomeComponent implements OnInit {
   weekday: string = ""
   scheduleData:any[]=[]
 
-  constructor(private infoService: InfomationService) { }
+  constructor(private infoService: InfomationService,private searchService:SearchService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.infoService.getAnimeByYearAndSeason("2021", "summer").subscribe(
@@ -81,6 +84,8 @@ export class HomeComponent implements OnInit {
         console.log(error)
       }
     )
+
+
     // var t = new Date()
     // this.weekday = this.getWeekday(t.getDay())
     // this.infoService.getAnimeSchedule(this.weekday).subscribe(
@@ -128,6 +133,44 @@ export class HomeComponent implements OnInit {
     // )
 
   }
+
+  goToSearchGenre(genre:number){
+    this.searchService.searchMode=1
+    if(genre==null){
+      this.searchService.genre=String("")
+    }
+    else{
+      this.searchService.genre=String(genre)
+    }
+
+    this.router.navigateByUrl("/search")
+  }
+  goToSearchSeason(){
+    this.searchService.searchMode=2
+    let today:Date=new Date()
+    this.searchService.season=this.getCurrentSeason(today.getMonth())
+    this.router.navigateByUrl("/search")
+  }
+  goToSearchLetter(){
+    this.searchService.searchMode=3
+    this.router.navigateByUrl("/search")
+  }
+  getCurrentSeason(month:number):string{
+    if(month<3){
+      return "winter"
+    }
+    else if(month>=3&&month<6){
+      return "spring"
+    }
+    else if(month>=6&&month<9){
+      return "summer"
+    }
+    else {
+      return "fall"
+    }
+  }
+
+
   getNewest() {
     this.newestItem = []
     for (let i = 0; i < this.pageSizeNewest; i++) {

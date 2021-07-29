@@ -23,5 +23,23 @@
     box-shadow: 0 0 3px #00000040;
     word-wrap: normal;
   }
+.letter-button{
+    width: 20px;
+    height: 20px;
+    background-color: #d5d534;
+    color: #000;
+    text-align: center;
+    font-family: cursive;
+    cursor: pointer;
+}
+.letter-button :active{
+    width: 20px;
+    height: 20px;
+    background-color: #d54c34;
+    color: #000;
+    text-align: center;
+    font-family: cursive;
+    cursor: pointer;
+}
 
   
