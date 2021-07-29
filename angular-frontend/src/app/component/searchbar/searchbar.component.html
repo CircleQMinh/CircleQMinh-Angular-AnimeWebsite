@@ -8,7 +8,8 @@
             <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
 
             </div>
-            <p *ngIf="isLoading">Getting search result...</p>
+            <p  *ngIf="isLoading"> Getting search results ...</p>
+
 
         </div>
 
@@ -20,12 +21,12 @@
                     <div class="col">
 
                         <input class="form-control form-control-lg form-control-borderless" type="search"
-                            placeholder="Search for anime" value="" name="q" id="q" rel="on" autocomplete="off"
+                            placeholder="Type here to search..." value="" name="q" id="q" rel="on" autocomplete="off"
                             style="width: 100%;text-align: center;" id="typeahead-focus" type="text"
                             [(ngModel)]="keyword" [ngbTypeahead]="search" [resultTemplate]="rt"
                             [inputFormatter]="formatter" (focus)="focus$.next($any($event).target.value)"
                             (click)="click$.next($any($event).target.value)" (keyup)="getInfo();click$.next($any($event).target.value)"
-                            (selectItem)="selectedItem($event)" #instance="ngbTypeahead">
+                            (selectItem)="selectedItem($event)" #instance="ngbTypeahead" #searchbar>
                     </div>
 
                 </div>
@@ -33,14 +34,8 @@
         </div>
     </div>
 </div>
-<div style="margin:0 auto;
-width: 50%;display: block;margin-top: 10px;text-align: center;">
-    <div class="col-auto"> <button class="btn btn-lg btn-success" type="submit">Search <i
-                class="fas fa-search"></i></button></div>
 
-
-</div>
-<ng-template #rt let-r="result" let-t="term">
+<ng-template #rt let-r="result" let-t="term" style="height: 400px;width: 100%;">
     <img [src]="r['imgurl']" class="mr-1" style="width: 80px;height: 80px;">
     <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
 </ng-template>

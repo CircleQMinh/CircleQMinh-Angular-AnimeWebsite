@@ -21,6 +21,7 @@ export class SearchbarComponent implements OnInit {
   keywordError: boolean = false
   isLoading: boolean = false
 
+
   results: { name: string, imgurl: string, id: string }[] = []
   constructor(private infoService: InfomationService) { }
   keyword!: string;
@@ -51,6 +52,7 @@ export class SearchbarComponent implements OnInit {
   }
   getInfo() {
     this.keywordError = false
+
     if (this.keyword.length > 2) {
       this.isLoading=true
       this.infoService.getNavSearchResult(this.keyword).subscribe(
@@ -63,6 +65,7 @@ export class SearchbarComponent implements OnInit {
             this.results.push(item)
 
           });
+
           this.isLoading=false
         },
         error => {

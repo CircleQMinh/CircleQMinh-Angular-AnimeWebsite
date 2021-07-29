@@ -39,27 +39,27 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 <div style="margin:0 auto;
 width: 50%;display: block;margin-top: 3%;">
     
-    <button type="button" class="btn btn-primary">Action</button>
-    <button type="button" class="btn btn-secondary">Adventure</button>
-    <button type="button" class="btn btn-success">Comedy</button>
-    <button type="button" class="btn btn-danger">Mystery</button>
-    <button type="button" class="btn btn-warning">Drama</button>
-    <button type="button" class="btn btn-info">Fantasy</button>
-    <button type="button" class="btn btn-light">Horror</button>
-    <button type="button" class="btn btn-dark">Sports</button>
-    <button type="button" class="btn btn-secondary">Psychological</button>
-    <button type="button" class="btn btn-info">Sci Fi</button>
-    <button type="button" class="btn btn-success">School</button>
-    <button type="button" class="btn btn-primary">Music</button>
-    <button type="button" class="btn btn-dark">Supernatural</button>
-    <button type="button" class="btn btn-success">Slice Of Life</button>
-    <button type="button" class="btn btn-danger">Harem</button>
-    <button type="button" class="btn btn-warning">Vampire</button>
-    <button type="button" class="btn btn-primary">Shounen</button>
-    <button type="button" class="btn btn-dark">Shoujo</button>
+    <button type="button" class="btn btn-primary" (click)="goToSearchGenre(1)">Action</button>
+    <button type="button" class="btn btn-secondary" (click)="goToSearchGenre(2)">Adventure</button>
+    <button type="button" class="btn btn-success" (click)="goToSearchGenre(4)">Comedy</button>
+    <button type="button" class="btn btn-danger" (click)="goToSearchGenre(7)">Mystery</button>
+    <button type="button" class="btn btn-warning" (click)="goToSearchGenre(8)">Drama</button>
+    <button type="button" class="btn btn-info" (click)="goToSearchGenre(10)">Fantasy</button>
+    <button type="button" class="btn btn-light" (click)="goToSearchGenre(14)">Horror</button>
+    <button type="button" class="btn btn-dark" (click)="goToSearchGenre(30)">Sports</button>
+    <button type="button" class="btn btn-secondary" (click)="goToSearchGenre(40)">Psychological</button>
+    <button type="button" class="btn btn-info" (click)="goToSearchGenre(24)">Sci Fi</button>
+    <button type="button" class="btn btn-success" (click)="goToSearchGenre(23)">School</button>
+    <button type="button" class="btn btn-primary" (click)="goToSearchGenre(19)">Music</button>
+    <button type="button" class="btn btn-dark" (click)="goToSearchGenre(37)">Supernatural</button>
+    <button type="button" class="btn btn-success" (click)="goToSearchGenre(36)">Slice Of Life</button>
+    <button type="button" class="btn btn-danger" (click)="goToSearchGenre(35)">Harem</button>
+    <button type="button" class="btn btn-warning" (click)="goToSearchGenre(32)">Vampire</button>
+    <button type="button" class="btn btn-primary" (click)="goToSearchGenre(27)">Shounen</button>
+    <button type="button" class="btn btn-dark" (click)="goToSearchGenre(25)">Shoujo</button>
     <hr style="margin-top: 10px;">
     <button type="button" class="btn btn-danger" style="margin:0 auto;
-    width: 50%;display: block;margin-top: 3%;text-align: center;" routerLink="/search">View All Category</button>
+    width: 50%;display: block;margin-top: 3%;text-align: center;"(click)="goToSearchGenre(null!)">View All Category</button>
     <div style="margin:0 auto;
     width: 50%;display: block;margin-top: 3%;text-align: center;">
         <p class="search-header">Other search option</p>
@@ -67,8 +67,10 @@ width: 50%;display: block;margin-top: 3%;">
     <div style="margin:0 auto;
     width: 50%;display: block;margin-top: 3%;text-align: center;">
            <button type="button" class="btn btn-warning" ngbTooltip="Anime of the specified season"
-           style="margin-right: 10px;">Year/Season</button>
-           <button type="button" class="btn btn-primary" ngbTooltip="Search anime or manga by the letter/character it starts with">Starting Letter</button>
+           style="margin-right: 10px;" (click)="goToSearchSeason()">Year/Season</button>
+           <button type="button" class="btn btn-primary" 
+           (click)="goToSearchLetter()"
+           ngbTooltip="Search anime or manga by the letter/character it starts with">Starting Letter</button>
     </div>
  
 </div>

@@ -12,7 +12,7 @@ export class InfomationService {
   constructor(private http: HttpClient,private route:Router) { }
 
   getAnimeByYearAndSeason(year:string,season:string):Observable<any>{
-    return this.http.get(`${this.apiUrl}/season/${year}/${season}`);
+    return this.http.get(`${this.apiUrl}/season`);
   }
   // https://api.jikan.moe/v3/search/anime?q=Fate/Zero&page=1
   getNavSearchResult(keyword:string):Observable<any>{
