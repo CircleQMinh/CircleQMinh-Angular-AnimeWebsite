@@ -86,51 +86,6 @@ export class HomeComponent implements OnInit {
     )
 
 
-    // var t = new Date()
-    // this.weekday = this.getWeekday(t.getDay())
-    // this.infoService.getAnimeSchedule(this.weekday).subscribe(
-    //   data => {
-    //     switch (this.weekday) {
-
-    //       case "sunday": {
-    //         this.scheduleData=data.sunday
-    //         break
-    //       }
-    //       case "monday": {
-    //         this.scheduleData=data.monday
-    //         break
-    //       }
-    //       case "tuesday": {
-    //         this.scheduleData=data.tuesday
-    //         break
-    //       }
-    //       case "wednesday": {
-    //         this.scheduleData=data.wednesday
-    //         break
-    //       }
-    //       case "thursday": {
-    //         this.scheduleData=data.thursday
-    //         break
-    //       }
-    //       case "friday": {
-    //         this.scheduleData=data.friday
-    //         break
-    //       }
-    //       case "saturday": {
-    //         this.scheduleData=data.saturday
-    //         break
-    //       }
-
-    //       default: {
-    //         break
-    //       }
-    //     }
-    //     console.log(this.scheduleData)
-    //   },
-    //   error => {
-    //     console.log(error)
-    //   }
-    // )
 
   }
 
@@ -298,8 +253,8 @@ export class HomeComponent implements OnInit {
 
 
   images = ['https://pbs.twimg.com/media/EV4xVijWoAASlxY.jpg',
-    'https://zingtv-photo.zadn.vn/tv/1/8/7/2/1872a312fb96c74eb24241b22ad30b18.jpg',
-    'https://www.mooreschools.com/cms/lib/OK01000367/Centricity/Domain/5471/Anime%20Banner.png'];
+    'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/93219448-4662-47cb-b585-be7672a62984/de7hrdt-7d75b97d-698d-47d1-879f-c4b8830bb1e4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzkzMjE5NDQ4LTQ2NjItNDdjYi1iNTg1LWJlNzY3MmE2Mjk4NFwvZGU3aHJkdC03ZDc1Yjk3ZC02OThkLTQ3ZDEtODc5Zi1jNGI4ODMwYmIxZTQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xa9_HW3ctkYwD1TZfxlHzSOwezeksLlHrLhH5OvK3Ag',
+    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6e5f72102808543.5fed3c28a58f1.png'];
 
   paused = false;
   unpauseOnArrow = false;

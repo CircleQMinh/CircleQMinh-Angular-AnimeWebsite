@@ -1,0 +1,102 @@
+<app-nav></app-nav>
+
+<div class="container-fluid no-padding" style="margin-top: 1%;">
+    <div class="row">
+
+        <div class="col">
+
+
+            <ol class="breadcrumb">
+                <li><a href="/"><span itemprop="name">Anime</span></a></li>
+                <li><a style="background-color: transparent;color: yellowgreen;">
+                    {{anime.title}}
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+<div class="section row272" style="margin-top:5px ;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col ">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+                        height: 100%;" id="info-tab">
+
+                    <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
+                        <li><a style="color: yellowgreen;"><span itemprop="name">{{anime.title}} </span></a></li>
+
+                    </ol> 
+                    <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+
+                    </div>
+                    <p style="color: white;" *ngIf="isLoading"> Getting search results ...</p>
+                    <div class="section info-program" style="width: 97%;margin-bottom: 1%;padding-left: 15px;">
+                        <div class="section-content fluid">
+                            <div class="outside-des">
+                                <img src="{{anime.image_url}}"
+                                    alt="{{anime.title}}">
+                                <div class="box-description">
+                                    <h1 itemprop="name" id="anime-name"><strong>{{anime.title}}</strong></h1>
+                                    <div class="function-social">
+                                        <div pid="IWZ9ZW06" type="tv_program" class="_subscription btn-social subcribe">
+                                            <a href="#"><span></span>Add to Favorite</a>
+                                            <span class="_total_subs_user"><i></i><b></b>{{anime.favorites}}</span>
+                                           
+                                        </div><!-- END .subcribe -->
+                                        
+    
+                                    </div><!-- END .function-social -->
+
+                                 
+
+
+                                    <div class="tag">
+                                        <strong>Genre: </strong>
+
+                                        <h3 *ngFor="let g of anime.genres"><a href="/search" title="{{g.name}}">{{g.name}} </a></h3>
+
+                                       
+
+                                    </div><!-- END .tag -->
+
+                                    <h3 id="_description" class="rows2" expand="rows2"><b>Description : </b>{{anime.synopsis}}</h3>
+                                    <br>
+                                  
+                                </div><!-- END .box-description -->
+                            </div><!-- END .outside-des -->
+                            <div class="box-statistics">
+
+                                <ul>
+                                    <li><strong>Status: </strong>{{anime.status}}</li>
+                                    <li><strong>Viewed: </strong>{{anime.members}}</li>
+                                    <li><strong>Episodes: </strong>{{anime.episodes}}</li>
+                                    <li><strong>Score: </strong>{{anime.score}}<i class="far fa-star"></i></li>
+                                    <li><strong>Type: </strong>{{anime.type}}</li>
+                                    <li><strong>Duration: </strong>{{anime.duration}}</li>
+
+
+                                </ul>
+                            </div><!-- END .box-statistics -->
+                        </div><!-- END .section-content fluid -->
+                       
+               
+                    </div>
+                    <ol class="breadcrumb" style="margin-top: 15px;width: 97%;"  style="color: yellowgreen;">
+                        <li><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i class="fas fa-tv"></i> Watch</button></li>
+                        <li><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i class="fas fa-share"></i> Share</button></li>
+                        <li><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i class="far fa-heart"></i> Add to Favorite</button></li>
+                    </ol> 
+                </div>
+
+               
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<app-footer></app-footer>

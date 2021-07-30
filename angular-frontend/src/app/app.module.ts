@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchbarComponent } from './component/searchbar/searchbar.component';
 import { SearchComponent } from './component/search/search.component';
+import { AnimeInfoComponent } from './component/anime-info/anime-info.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchComponent } from './component/search/search.component';
     NavComponent,
     FooterComponent,
     SearchbarComponent,
-    SearchComponent
+    SearchComponent,
+    AnimeInfoComponent
   ],
   imports: [
     BrowserModule,

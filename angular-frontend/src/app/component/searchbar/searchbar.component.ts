@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Subject, OperatorFunction, Observable, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
@@ -23,7 +24,7 @@ export class SearchbarComponent implements OnInit {
 
 
   results: { name: string, imgurl: string, id: string }[] = []
-  constructor(private infoService: InfomationService) { }
+  constructor(private infoService: InfomationService, private router: Router) { }
   keyword!: string;
   searchData: any[] = []
   @ViewChild('instance', { static: true })
@@ -46,15 +47,15 @@ export class SearchbarComponent implements OnInit {
 
   selectedItem(item: any) {
     this.clickedItem = item.item;
-    console.log(item);
 
+    this.router.navigateByUrl(`/anime/${this.clickedItem.id}`)
     // let a : {name: string, flag: string} ={'name': 'Alabama', 'flag': '5/5c/Flag_of_Alabama.svg/45px-Flag_of_Alabama.svg.png'}
   }
   getInfo() {
     this.keywordError = false
 
     if (this.keyword.length > 2) {
-      this.isLoading=true
+      this.isLoading = true
       this.infoService.getNavSearchResult(this.keyword).subscribe(
         data => {
           this.searchData = data.results
@@ -66,16 +67,16 @@ export class SearchbarComponent implements OnInit {
 
           });
 
-          this.isLoading=false
+          this.isLoading = false
         },
         error => {
 
         }
       )
     }
-    else{
-      this.keywordError=true;
+    else {
+      this.keywordError = true;
     }
   }
- 
+
 }
