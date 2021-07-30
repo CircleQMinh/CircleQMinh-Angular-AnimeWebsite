@@ -1,6 +1,6 @@
 # CircleQMinh-Angular-AnimeWebsite
-CircleQMinh/Angular-AnimeWebsite
-https://circleqminh.github.io/random-anime-website/home
+CircleQMinh/Angular-AnimeWebsite<br>
+Visit site : https://circleqminh.github.io/random-anime-website/home <br>
 26-07-2021 : layout đơn giản và thiết lập api.<br>
 27-07-2021 : update thêm vài chức năng trang chủ.<br>
 28-07-2021 : hoàn thành trang chủ và thêm layout trang tìm kiếm.<br>
