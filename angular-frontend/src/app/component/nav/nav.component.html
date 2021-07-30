@@ -2,7 +2,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-warning" style="z-index: 999;height: 90px;margin-top: -25px;">
-    <a class="navbar-brand" routerLink="/home"><i class="fas fa-store"></i> Tron's Info</a>
+    <a class="navbar-brand" routerLink="/home"><i class="fas fa-store"></i> Circle's Random Anime Site</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
@@ -25,39 +25,46 @@
                 <button class="btn btn-outline-primary" routerLink="/home"><i class="fas fa-home"></i> Home</button>
             </li>
             <li class="nav-item">
-                <button class="btn btn-outline-primary"><i class="fas fa-info"></i> Visit Manga Site</button>
+                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"><i class="fas fa-info"></i> Visit Manga Site</button>
             </li>
             <li class="nav-item active">
-                <button class="btn btn-outline-primary" routerLink="/home"> <i class="far fa-newspaper"></i> News
+                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"> <i class="far fa-newspaper"></i> News
                 </button>
             </li>
-            <li class="nav-item active">
-                <button class="btn btn-outline-primary" routerLink="/home"><i class="fas fa-vote-yea"></i>
-                    Status</button>
-            </li>
-            <li class="nav-item">
-                <button class="btn btn-outline-primary" routerLink="/blogs"><i class="fas fa-calendar-check"></i>
-                    Year</button>
-            </li>
-            <li class="nav-item">
-                <button class="btn btn-outline-primary"><i class="fas fa-draw-polygon"></i> Schedule</button>
+            <li class="nav-item dropdown">
+                <div class="btn-group mr-3">
+                    <div class="btn-group" ngbDropdown role="group">
+                        <button class="btn btn-outline-primary"   aria-label="dropdownMenu1" id="dropdownMenu1" ngbDropdownToggle><i class="fas fa-bars"></i>
+                            Status</button>
+                        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu1">
+                            <a ngbDropdownItem (click)=" goToSearchStatus('')"><i class="fas fa-clipboard-list"></i> All</a>
+                            <hr>
+                            <a ngbDropdownItem (click)=" goToSearchStatus('airing')"><i class="fas fa-tv"></i>
+                                Airing</a>
+                            <a ngbDropdownItem (click)=" goToSearchStatus('completed')"><i class="fas fa-check"></i>
+                                Complete</a>
+                            <a ngbDropdownItem (click)=" goToSearchStatus('upcoming')"><i class="far fa-clock"></i>
+                                Upcoming</a>
+                        </div>
+                    </div>
+                </div>
             </li>
             <li class="nav-item dropdown">
                 <div class="btn-group mr-3">
                     <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
                         <button class="btn btn-outline-primary" ngbDropdownToggle><i class="fas fa-bars"></i>
-                            Genre</button>
+                           Year</button>
                         <div class="dropdown-menu" ngbDropdownMenu>
-                            <a ngbDropdownItem routerLink="/products"><i class="fas fa-clipboard-list"></i> All</a>
+                            <a ngbDropdownItem (click)="goToSearchYear('')"><i class="fas fa-clipboard-list"></i> All</a>
                             <hr>
-                            <a ngbDropdownItem routerLink="/products/category/Fruit"><i class="fas fa-apple-alt"></i>
-                                Fruit</a>
-                            <a ngbDropdownItem routerLink="/products/category/Vegetable"><i class="fas fa-seedling"></i>
-                                Vegetable</a>
-                            <a ngbDropdownItem routerLink="/products/category/Confectionery"><i
-                                    class="fas fa-candy-cane"></i> Confectionery</a>
-                            <a ngbDropdownItem routerLink="/products/category/Snack"><i class="fas fa-pizza-slice"></i>
-                                Snack</a>
+                            <a ngbDropdownItem (click)="goToSearchYear('2021')"><i class="far fa-calendar-alt"></i> 2021</a>
+                            <a ngbDropdownItem (click)="goToSearchYear('2020')"><i class="far fa-calendar-alt"></i> 2020</a>
+                            <a ngbDropdownItem (click)="goToSearchYear('2019')"><i class="far fa-calendar-alt"></i> 2019</a>
+                            <a ngbDropdownItem (click)="goToSearchYear('2018')"><i class="far fa-calendar-alt"></i> 2018</a>
+                            <a ngbDropdownItem (click)="goToSearchYear('2017')"><i class="far fa-calendar-alt"></i> 2017</a>
+                            <a ngbDropdownItem (click)="goToSearchYear('2016')"><i class="far fa-calendar-alt"></i> 2016</a>
+                            <a ngbDropdownItem (click)="goToSearchYear('2015')"><i class="far fa-calendar-alt"></i> 2015</a>
+
                         </div>
                         <div class="dropdown-menu" ngbDropdownMenu>
                             <a ngbDropdownItem routerLink="/products"><i class="fas fa-clipboard-list"></i> All</a>
@@ -74,49 +81,43 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <div class="btn-group mr-3">
+                    <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                        <button class="btn btn-outline-primary" ngbDropdownToggle><i class="fas fa-bars"></i>
+                            Genre</button>
+                        <div class="dropdown-menu" ngbDropdownMenu>
+                            <a ngbDropdownItem (click)=" goToSearchGenre(null!)"><i class="fas fa-clipboard-list"></i> All</a>
+                            <hr>
+                            <a ngbDropdownItem (click)="goToSearchGenre(1)">Action</a>
+                            <a ngbDropdownItem (click)="goToSearchGenre(2)">Adventure</a>
+                            <a ngbDropdownItem (click)="goToSearchGenre(7)">Mystery</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(4)">Comedy</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(10)">Fantasy</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(14)">Horror</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(30)">Sports</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(40)">Psychological</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(36)">Slice Of Life</a>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
             
             <li class="nav-item">
-                <button class="btn btn-outline-primary"><i class="fas fa-info"></i> About us</button>
+                <button class="btn btn-outline-primary"  ngbTooltip="Work in progress :v !"><i class="fas fa-info"></i> About us</button>
             </li>
             
          
             <li class="nav-item">
-                <button class="btn btn-outline-primary"><i class="far fa-question-circle"></i>Help</button>
+                <button class="btn btn-outline-primary"  ngbTooltip="Work in progress :v !"><i class="far fa-question-circle"></i>Help</button>
             </li>
-            <!-- <li class="nav-item" style="margin: 0px ;" routerLink="/cart-detail"> 
-          <app-cart-status ></app-cart-status>
-        </li>
-  
-        <li class="nav-item" *ngIf="!isLogin()">
-          <button class="btn btn-outline-primary"  routerLink="/login"><i class="fas fa-sign-in-alt"></i> Sign In</button>
-        </li>
-        <li class="nav-item"  *ngIf="!isLogin()">
-          <button class="btn btn-outline-primary" routerLink="/register"><i class="fas fa-edit"></i> Register</button>
-        </li>
-        <li class="nav-item" style="margin-top: 7px;" *ngIf="isLogin()">
-          <p >Xin chào {{this.username}} !</p>
-        </li>
-        <li  class="nav-item"        *ngIf="isLogin()" >
-          <img src="{{this.url}}"
-          style="width: 40px;height: 40px;border-radius: 50%;border: 2px solid black;" 
-   routerLink="/account-info">
-        </li>
-        <li class="nav-item" *ngIf="isLogin()" >
-          <button class="btn btn-outline-danger" (click)="this.loginService.tryLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
-        </li>
-       -->
+
         </ul>
     </div>
 
 
 </nav>
-<!-- Header-->
-<!-- 
-<input type="text" class="tbsearch inputSearch" value="" name="q" id="q" rel="on" autocomplete="off"
-    style="width: 200px;" id="typeahead-focus" type="text" [(ngModel)]="keyword" [ngbTypeahead]="search"
-    [resultTemplate]="rt" [inputFormatter]="formatter" (focus)="focus$.next($any($event).target.value)"
-    (click)="click$.next($any($event).target.value)" (keyup)="getInfo()" (selectItem)="selectedItem($event)"
-    #instance="ngbTypeahead">
-<button class="btn btn-outline-primary"><i class="fas fa-search"></i></button> -->
+
 
 

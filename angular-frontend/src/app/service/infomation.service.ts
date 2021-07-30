@@ -31,4 +31,7 @@ export class InfomationService {
   getAnimeSchedule(day:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/schedule/${day}`);
   }
+  getAnime(id:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/anime/${id}`);
+  }
 }

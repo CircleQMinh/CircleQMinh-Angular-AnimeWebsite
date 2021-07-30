@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 <div class="container-fluid no-padding">
-    <div class="row">
+    <div class="row" style="margin-top:1%">
 
         <div class="col">
 
@@ -156,7 +156,7 @@
                             <label for="filter-year">Year : </label>
                             <select id="filter-year" class="form-control" name="year" [(ngModel)]="year"
                                 (change)="onSeasonYearChange()">
-                                <option value="">2021</option>
+                                <option value="">2021(Current-Year)</option>
                                 <option value="2021">2021</option>
                                 <option value="2020">2020</option>
                                 <option value="2019">2019</option>
@@ -233,7 +233,7 @@
                         height: 100%;" id="info-tab">
 
                     <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
-                        <li><a ><span itemprop="name">Search Result :</span></a></li>
+                        <li><a style="color: yellowgreen;"><span itemprop="name">Search Result :</span></a></li>
 
                     </ol>
                     <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
@@ -243,7 +243,8 @@
                     <div>
                         <div *ngFor="let o of results,index as i">
                             <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
-                                [closeDelay]="100" placement="auto"  [autoClose]="'outside'" container="body" tooltipClass="tooltip-inner">
+                                [closeDelay]="100" placement="auto"  [autoClose]="'outside'" container="body" tooltipClass="tooltip-inner"
+                                routerLink="/anime/{{o.mal_id}}">
                                 <div class="item">
                                     <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
                                         <img class="_slideimg" img_index="1" width="100%" height="100%"

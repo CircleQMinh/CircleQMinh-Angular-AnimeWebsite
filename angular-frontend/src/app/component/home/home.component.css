@@ -72,7 +72,7 @@ a:hover{text-decoration:underline;}
 }
 @media only screen and (max-width: 500px) {
     .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 146px;width: 100px;}
-    .fluid{width:400px;}
+    .fluid{width:100%;}
     .title-bar h3{font-size: 16px;}
     #pagi-newest{margin-left: -32px!important;}
     .title-bar{width: 87%;}
