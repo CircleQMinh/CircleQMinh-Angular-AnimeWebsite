@@ -2,6 +2,7 @@ import { WeekDay } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { delay } from 'rxjs/operators';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
 
@@ -36,88 +37,113 @@ export class HomeComponent implements OnInit {
   pageSizeBest = 10
 
   weekday: string = ""
-  scheduleData:any[]=[]
+  scheduleData: any[] = []
 
-  constructor(private infoService: InfomationService,private searchService:SearchService,
+  isLoading: boolean = true
+
+  constructor(private infoService: InfomationService, private searchService: SearchService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.infoService.getAnimeByYearAndSeason("2021", "summer").subscribe(
-      data => {
-        this.dataNewest = data.anime
-        this.getNewest()
-      },
-      error => {
-        console.log(error)
-      }
-    )
-    this.infoService.getTopUpCommingAnime().subscribe(
-      data => {
-        //console.log(data.top)
-        this.dataUpComing = data.top
-        this.getUpComing()
-      },
-      error => {
-        console.log(error)
-      }
-    )
 
-    this.newSoure.forEach(async element => {
-      var response = await this.infoService.getAnimeNews(element).toPromise();
-      if (response) {
-        // console.log(response.articles);
-        response.articles.forEach((a: any) => {
-          this.dataNewpaper.push(a)
-        });
-      }
-      this.pageNewpaperCount = this.dataNewpaper.length
-      this.shuffleNew(this.dataNewpaper)
-      this.getAnimeNewPage()
-    });
 
-    this.infoService.getAnimeByPopularity().subscribe(
-      data => {
-        this.dataBest = data.top
-        this.getBest()
-      },
-      error => {
-        console.log(error)
-      }
-    )
 
+
+
+
+
+
+    setTimeout(() => {
+      this.infoService.getAnimeByYearAndSeason("2021", "summer").subscribe(
+        data => {
+          this.dataNewest = data.anime
+          this.getNewest()
+        },
+        error => {
+          console.log(error)
+        }
+      )
+
+
+    }, 1000);
+    setTimeout(() => {
+      this.infoService.getTopUpCommingAnime().subscribe(
+        data => {
+          //console.log(data.top)
+          this.dataUpComing = data.top
+          this.getUpComing()
+        },
+        error => {
+          console.log(error)
+        }
+      )
+
+
+    }, 1250);
+    setTimeout(() => {
+      this.newSoure.forEach(async element => {
+        var response = await this.infoService.getAnimeNews(element).toPromise();
+        if (response) {
+          // console.log(response.articles);
+          response.articles.forEach((a: any) => {
+            this.dataNewpaper.push(a)
+          });
+        }
+        this.pageNewpaperCount = this.dataNewpaper.length
+        this.shuffleNew(this.dataNewpaper)
+        this.getAnimeNewPage()
+      });
+
+
+    }, 1500);
+    setTimeout(() => {
+
+      this.infoService.getAnimeByPopularity().subscribe(
+        data => {
+          this.dataBest = data.top
+          this.getBest()
+
+        },
+        error => {
+          console.log(error)
+        }
+      )
+      this.isLoading=false
+
+    }, 2000);
 
 
   }
 
-  goToSearchGenre(genre:number){
-    this.searchService.searchMode=1
-    if(genre==null){
-      this.searchService.genre=String("")
+  goToSearchGenre(genre: number) {
+    this.searchService.searchMode = 1
+    if (genre == null) {
+      this.searchService.genre = String("")
     }
-    else{
-      this.searchService.genre=String(genre)
+    else {
+      this.searchService.genre = String(genre)
     }
 
     this.router.navigateByUrl("/search")
   }
-  goToSearchSeason(){
-    this.searchService.searchMode=2
-    let today:Date=new Date()
-    this.searchService.season=this.getCurrentSeason(today.getMonth())
+  goToSearchSeason() {
+    this.searchService.searchMode = 2
+    let today: Date = new Date()
+    this.searchService.season = this.getCurrentSeason(today.getMonth())
     this.router.navigateByUrl("/search")
   }
-  goToSearchLetter(){
-    this.searchService.searchMode=3
+  goToSearchLetter() {
+    this.searchService.searchMode = 3
     this.router.navigateByUrl("/search")
   }
-  getCurrentSeason(month:number):string{
-    if(month<3){
+  getCurrentSeason(month: number): string {
+    if (month < 3) {
       return "winter"
     }
-    else if(month>=3&&month<6){
+    else if (month >= 3 && month < 6) {
       return "spring"
     }
-    else if(month>=6&&month<9){
+    else if (month >= 6 && month < 9) {
       return "summer"
     }
     else {

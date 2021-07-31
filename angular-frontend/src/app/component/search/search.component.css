@@ -1,0 +1,63 @@
+.subtray{float:left;float: left;
+    padding-right: 2%;margin-top: 1%;margin-bottom: 5px;
+    width: 50%;}
+.subtray .item{position:relative;display:block;overflow:hidden;margin:0 10px 10px 0;height: 205px;width: 140px;}
+
+
+@media all and (min-width:1499px){
+    #side-info-tab2{margin-top: 150%;}
+    .subtray{width: 16.66%;height: 250px;}
+    .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 250px;width: 100%;}
+     .title-bar{width: 97.9%;}
+    
+}
+
+@media all and (min-width:1280px) and (max-width:1499px){
+.fluid{width:1206px;}
+.title-bar{width: 98%;}
+.subtray{width: 16.66%;height: 200px;}
+.subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 200px;width: 100%;}
+#side-info-tab2{margin-top: 190%;}
+}
+@media all and (min-width:1000px) and (max-width:1280px){
+    .fluid{width:100%;}
+    .title-bar{width: 98%;}
+    #side-info-tab2{margin-top: 190%;}
+    .subtray{width: 20%;height: 200px;}
+    .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 200px;width: 100%;}
+}
+@media all and (min-width:700px) and (max-width:1000px){
+
+    .title-bar{width: 98%;}
+    .subtray{width: 20%;height: 200px;}
+    .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 200px;width: 100%;}
+}
+@media all and (min-width:500px) and (max-width:700px){
+
+    .title-bar{width: 98%;}
+    .subtray{width: 25%;height: 200px;}
+    .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 200px;width: 100%;}
+}
+@media only screen and (max-width: 500px) {
+    .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 146px;width: 100%;}
+    .fluid{width:100%;}
+    .title-bar h3{font-size: 16px;}
+    .title-bar{width: 84%;}
+    .info-tab{padding-left: 30px;}
+    .search-header{font-size: 14px;}
+}
+
+@media all and (min-width:300px) and (max-width:500px){
+
+    .title-bar{width: 98%;}
+    .subtray{width: 50%;height: 220px;}
+    .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 100%;width: 100%;}
+}
+@media all and (min-width:1500px){
+.fluid{width:1451px;}
+}
+@media only screen and (max-width: 1000px) {
+    #side-info{display: none;}
+    .title-bar{width: 97%;}
+}
+
