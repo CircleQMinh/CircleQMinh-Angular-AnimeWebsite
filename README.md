@@ -7,3 +7,4 @@ Visit site : https://circleqminh.github.io/random-anime-website/home <br>
 29-07-2021 : hoàn thành trang tìm kiếm.<br>
 30-07-2021 : thêm trang thông tin anime, thiết lập nav và link tại trang chủ.<br>
 31-07-2021 : chỉnh sửa css cho các trang.<br>
+01-08-2021 : thêm vài thông tin cho trang thông tin anime.<br>
