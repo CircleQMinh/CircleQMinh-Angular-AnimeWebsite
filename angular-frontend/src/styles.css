@@ -311,7 +311,33 @@ ul{list-style:none;}
     justify-content: center;
 }
 
+.div-center-content{
+    margin:0 auto;
+    width: 50%;display: block;margin-top: 3%;text-align: center;
+}
+.theme-song{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
 
+    width:57%;
+    margin-left: 3%;
+    margin-top: 3%;
+}
+.theme-song div p{
+    display: inline-block;
+}
+.theme-song div button{
+    display: inline-block;
+    margin-left: 1%;
+}
+.trailer-player{
+    width:37%;
+    margin-left: 3%;
+}
+.loading{
+    width: 20%;
+}
 @media all and (min-width:1499px){
     #side-info-tab2{margin-top: 150%;}
  
@@ -353,7 +379,30 @@ ul{list-style:none;}
 }
 @media all and (min-width:500px) and (max-width: 600px) {
     .info-program .box-description{    width: 50%;display: contents;
-        text-align: left;}   .function-social{display: none;}
+        text-align: left;}   
+    .function-social{display: none;}
+    .theme-song{
+
+        margin-top: 3%;
+    }
+}
+@media all and (min-width:850px) and (max-width: 1000px) {
+
+    .trailer-player{
+        width: 90%;
+        height: 450px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+@media all and (min-width:500px) and (max-width: 850px) {
+
+    .trailer-player{
+        width: 90%;
+        height: 375px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 }
 @media only screen and (max-width: 500px) {
     .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 150px;width: 115px;}
@@ -371,11 +420,38 @@ ul{list-style:none;}
         display: grid;
         border: none;
     }
-  
+    
+    #action-button-list1 li button{
+        font-size: 10px;
+    }
+    .theme-song{
+        /* display: none; */
+        display: contents;
+        font-size: 10px;
+    }
+    .theme-song div{
+        width: 100%;
+    }
+    .theme-song div button{
+
+        font-size: 10px;
+        padding: 2px;
+    }
+    .trailer-player{
+        width: 90%;
+        height: 185px;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 5%;
+    }
 }
 @media (max-width:300px){
     .navbar-brand{ font-size: 10px;}
     .info-program img{width: 100px;}
+    #related{
+        font-size: 10px;
+    }
+   
 }
 
   

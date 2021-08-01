@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
       )
 
 
-    }, 1250);
+    }, 2050);
     setTimeout(() => {
       this.newSoure.forEach(async element => {
         var response = await this.infoService.getAnimeNews(element).toPromise();
@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
       });
 
 
-    }, 1500);
+    }, 3200);
     setTimeout(() => {
 
       this.infoService.getAnimeByPopularity().subscribe(
@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
       )
       this.isLoading=false
 
-    }, 2000);
+    }, 4500);
 
 
   }

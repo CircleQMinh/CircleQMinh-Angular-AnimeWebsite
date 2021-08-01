@@ -79,12 +79,13 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 
         </div>
     </div>
-    <div  style="margin:0 auto;
+    <div style="margin:0 auto;
     width: 50%;display: block;margin-top: 3%;text-align: center;">
-         <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+        <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
 
         </div>
         <p style="color: black;" *ngIf="isLoading"> Loading...</p>
+        <img *ngIf="isLoading" src="https://media.giphy.com/media/WtDLxQWQWLtw3oIXTy/giphy.gif" class="loading">
     </div>
 
 
@@ -92,11 +93,11 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 
 
 
-<div class="section row272" style="margin-top:5% ;" >
+<div class="section row272" style="margin-top:5% ;">
     <div class="section-content fluid" style="max-width: 100%;">
 
-        <div class="row " style="margin-left:0px;">
-            <div class=" col" *ngIf="!isLoading">
+        <div class="row " style="margin-left:0px;" *ngIf="!isLoading">
+            <div class=" col">
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 20px;  background-color: #bfd0df;"
                     id="info-tab">
                     <div class="title-bar group">
@@ -140,7 +141,7 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
              width: 70%;display: block;">
                                 <ngb-pagination [(page)]="pageNewest" [pageSize]="pageSizeNewest" size="sm"
                                     [collectionSize]="dataNewest.length" [maxSize]="3" [boundaryLinks]=true
-                                    (pageChange)="getNewest()" >
+                                    (pageChange)="getNewest()">
                                 </ngb-pagination>
                             </div>
 
