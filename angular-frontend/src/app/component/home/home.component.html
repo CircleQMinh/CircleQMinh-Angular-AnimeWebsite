@@ -1,7 +1,7 @@
 <app-nav></app-nav>
 <ngb-carousel #carousel [interval]="2400" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
     [showNavigationArrows]="true" [showNavigationIndicators]="true" [keyboard]="true" [pauseOnHover]="true"
-    [wrap]="true" (slide)="onSlide($event)">
+    [wrap]="true" (slide)="onSlide($event)" id="slide-show1">
     <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
             <img [src]="images[0]" alt="Random first slide" class="mh-100" style="width: 100%; height: 423px">
@@ -36,63 +36,80 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 width: 50%;display: block;margin-top: 3%;text-align: center;">
     <p class="search-header">... or browse by category.</p>
 </div>
-<div style="margin:0 auto;
-width: 50%;display: block;margin-top: 3%;">
-    
-    <button type="button" class="btn btn-primary" (click)="goToSearchGenre(1)">Action</button>
-    <button type="button" class="btn btn-secondary" (click)="goToSearchGenre(2)">Adventure</button>
-    <button type="button" class="btn btn-success" (click)="goToSearchGenre(4)">Comedy</button>
-    <button type="button" class="btn btn-danger" (click)="goToSearchGenre(7)">Mystery</button>
-    <button type="button" class="btn btn-warning" (click)="goToSearchGenre(8)">Drama</button>
-    <button type="button" class="btn btn-info" (click)="goToSearchGenre(10)">Fantasy</button>
-    <button type="button" class="btn btn-light" (click)="goToSearchGenre(14)">Horror</button>
-    <button type="button" class="btn btn-dark" (click)="goToSearchGenre(30)">Sports</button>
-    <button type="button" class="btn btn-secondary" (click)="goToSearchGenre(40)">Psychological</button>
-    <button type="button" class="btn btn-info" (click)="goToSearchGenre(24)">Sci Fi</button>
-    <button type="button" class="btn btn-success" (click)="goToSearchGenre(23)">School</button>
-    <button type="button" class="btn btn-primary" (click)="goToSearchGenre(19)">Music</button>
-    <button type="button" class="btn btn-dark" (click)="goToSearchGenre(37)">Supernatural</button>
-    <button type="button" class="btn btn-success" (click)="goToSearchGenre(36)">Slice Of Life</button>
-    <button type="button" class="btn btn-danger" (click)="goToSearchGenre(35)">Harem</button>
-    <button type="button" class="btn btn-warning" (click)="goToSearchGenre(32)">Vampire</button>
-    <button type="button" class="btn btn-primary" (click)="goToSearchGenre(27)">Shounen</button>
-    <button type="button" class="btn btn-dark" (click)="goToSearchGenre(25)">Shoujo</button>
-    <hr style="margin-top: 10px;">
-    <button type="button" class="btn btn-danger" style="margin:0 auto;
-    width: 50%;display: block;margin-top: 3%;text-align: center;"(click)="goToSearchGenre(null!)">View All Category</button>
-    <div style="margin:0 auto;
+<div style="margin-top: 3%;" id="quick-search" class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="category-quicknav">
+                <button type="button" class="btn btn-primary" (click)="goToSearchGenre(1)">Action</button>
+                <button type="button" class="btn btn-secondary" (click)="goToSearchGenre(2)">Adventure</button>
+                <button type="button" class="btn btn-success" (click)="goToSearchGenre(4)">Comedy</button>
+                <button type="button" class="btn btn-danger" (click)="goToSearchGenre(7)">Mystery</button>
+                <button type="button" class="btn btn-warning" (click)="goToSearchGenre(8)">Drama</button>
+                <button type="button" class="btn btn-info" (click)="goToSearchGenre(10)">Fantasy</button>
+                <button type="button" class="btn btn-light" (click)="goToSearchGenre(14)">Horror</button>
+                <button type="button" class="btn btn-dark" (click)="goToSearchGenre(30)">Sports</button>
+                <button type="button" class="btn btn-secondary" (click)="goToSearchGenre(40)">Psychological</button>
+                <button type="button" class="btn btn-info" (click)="goToSearchGenre(24)">Sci Fi</button>
+                <button type="button" class="btn btn-success" (click)="goToSearchGenre(23)">School</button>
+                <button type="button" class="btn btn-primary" (click)="goToSearchGenre(19)">Music</button>
+                <button type="button" class="btn btn-dark" (click)="goToSearchGenre(37)">Supernatural</button>
+                <button type="button" class="btn btn-success" (click)="goToSearchGenre(36)">Slice Of Life</button>
+                <button type="button" class="btn btn-danger" (click)="goToSearchGenre(35)">Harem</button>
+                <button type="button" class="btn btn-warning" (click)="goToSearchGenre(32)">Vampire</button>
+                <button type="button" class="btn btn-primary" (click)="goToSearchGenre(27)">Shounen</button>
+                <button type="button" class="btn btn-dark" (click)="goToSearchGenre(25)">Shoujo</button>
+                <button type="button" class="btn btn-warning" (click)="goToSearchGenre(31)">Super Power</button>
+                <hr style="margin-top: 10px;">
+            </div>
+
+            <button type="button" class="btn btn-danger" style="margin:0 auto;
+    width: 50%;display: block;margin-top: 3%;text-align: center;" (click)="goToSearchGenre(null!)">View All
+                Category</button>
+            <div style="margin:0 auto;
     width: 50%;display: block;margin-top: 3%;text-align: center;">
-        <p class="search-header">Other search option</p>
+                <p class="search-header">Other search option</p>
+            </div>
+            <div style="margin:0 auto;
+    width: 100%;display: block;margin-top: 3%;text-align: center;">
+                <button type="button" class="btn btn-warning" ngbTooltip="Anime of the specified season"
+                    style="margin-right: 10px;" (click)="goToSearchSeason()">Year/Season</button>
+                <button type="button" class="btn btn-primary" (click)="goToSearchLetter()"
+                    ngbTooltip="Search anime or manga by the letter/character it starts with">Starting Letter</button>
+            </div>
+
+        </div>
     </div>
     <div style="margin:0 auto;
     width: 50%;display: block;margin-top: 3%;text-align: center;">
-           <button type="button" class="btn btn-warning" ngbTooltip="Anime of the specified season"
-           style="margin-right: 10px;" (click)="goToSearchSeason()">Year/Season</button>
-           <button type="button" class="btn btn-primary" 
-           (click)="goToSearchLetter()"
-           ngbTooltip="Search anime or manga by the letter/character it starts with">Starting Letter</button>
+        <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+
+        </div>
+        <p style="color: black;" *ngIf="isLoading"> Loading...</p>
+        <img *ngIf="isLoading" src="https://media.giphy.com/media/WtDLxQWQWLtw3oIXTy/giphy.gif" class="loading">
     </div>
- 
+
+
 </div>
 
 
 
 <div class="section row272" style="margin-top:5% ;">
-    <div class="section-content fluid">
+    <div class="section-content fluid" style="max-width: 100%;">
 
-        <div class="row " style="margin-left:0px;">
-            <div class=" col-lg-8 ">
-                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 20px;  background-color: #bfd0df;" id="info-tab">
+        <div class="row " style="margin-left:0px;" *ngIf="!isLoading">
+            <div class=" col">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 20px;  background-color: #bfd0df;"
+                    id="info-tab">
                     <div class="title-bar group">
 
 
                         <h3 style="margin:0 auto;
-                    width: 50%;display: block;"><i class="far fa-clock"></i> New Update!</h3>
+                    width: 100%;padding: 1%;display: block;"><i class="far fa-clock"></i> New Update!</h3>
 
                     </div>
                     <div *ngFor="let o of newestItem,index as i">
                         <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
-                            [closeDelay]="100" placement="right" container="body" tooltipClass="tooltip-inner"
+                            [closeDelay]="100" placement="auto" container="body" tooltipClass="tooltip-inner"
                             routerLink="/anime/{{o.mal_id}}">
                             <div class="item">
                                 <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
@@ -116,12 +133,13 @@ width: 50%;display: block;margin-top: 3%;">
                         </div>
                         <!--END .subtray-->
                     </div>
-                    <div style="display: block;">
-                        <div style="margin:0 auto;
-            width: 50%;display: block;" id="pagi-newest">
+                    <div style="display: block; margin-top: 10px;">
+                        <div style="    width: 1px;
+                        float: none;
+                        display: block;" id="pagi-newest">
                             <div style="margin:0 auto;
              width: 70%;display: block;">
-                                <ngb-pagination [(page)]="pageNewest" [pageSize]="pageSizeNewest"
+                                <ngb-pagination [(page)]="pageNewest" [pageSize]="pageSizeNewest" size="sm"
                                     [collectionSize]="dataNewest.length" [maxSize]="3" [boundaryLinks]=true
                                     (pageChange)="getNewest()">
                                 </ngb-pagination>
@@ -131,30 +149,26 @@ width: 50%;display: block;margin-top: 3%;">
                     </div>
                 </div>
 
-                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 30px;margin-top: 2%;
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 20px;margin-top: 2%;
                 background-color: aliceblue;">
                     <div class="title-bar group">
 
 
                         <h3 style="margin:0 auto;
-                    width: 100%;display: block;"><i class="fas fa-bullhorn"></i> Anime & Manga News!</h3>
+                   width: 100%;padding: 1%;display: block;"><i class="fas fa-bullhorn"></i> Anime & Manga News!</h3>
 
                     </div>
-                    <div class="article-list listing-layout responsive unique">
+                    <div class="article-list listing-layout responsive unique" *ngIf="!isLoading">
                         <article class="article-item  type-text picked-trending" *ngFor="let o of newItems">
                             <p class="article-thumbnail">
-                                <a
-                                    >
+                                <a>
 
-                                    <img src={{o.image_url}}
-                                        alt=""
-                                        class="unveil">
+                                    <img src={{o.image_url}} alt="" class="unveil">
                                 </a>
                             </p>
                             <header>
                                 <p class="article-title">
-                                    <a
-                                        href="/">{{o.title}}</a>
+                                    <a href="/">{{o.title}}</a>
                                 </p>
                                 <p class="article-meta">
                                     <span class="article-publish">
@@ -166,15 +180,16 @@ width: 50%;display: block;margin-top: 3%;">
                                 <p class="article-summary">{{o.intro}}</p>
 
                             </header>
-                          
+
                         </article>
                     </div>
-                    <div style="display: block;">
-                        <div style="margin:0 auto;
-            width: 50%;display: block;" id="pagi-newest">
+                    <div style="display: block; margin-top: 10px;">
+                        <div style="    width: 1px;
+                        float: none;
+                        display: block;" id="pagi-newest">
                             <div style="margin:0 auto;
              width: 70%;display: block;">
-                                <ngb-pagination [(page)]="pageNewpaper" [pageSize]="pageNewPaperSize"
+                                <ngb-pagination [(page)]="pageNewpaper" [pageSize]="pageNewPaperSize" size="sm"
                                     [collectionSize]="pageNewpaperCount" [maxSize]="3" [boundaryLinks]=true
                                     (pageChange)="getAnimeNewPage()">
                                 </ngb-pagination>
@@ -192,10 +207,10 @@ width: 50%;display: block;margin-top: 3%;">
 
 
                     <h2 class="right-box-header star-icon"><span>
-                        <i class="fas fa-trophy"></i> Top Upcoming Anime</span>
+                            <i class="fas fa-trophy"></i> Top Upcoming Anime</span>
                     </h2>
 
-                    <div class="right-box-content">
+                    <div class="right-box-content" *ngIf="!isLoading">
                         <div class="content">
                             <ul class="list-top-movie">
                                 <li class="list-top-movie-item" id="list-top-movie-item" *ngFor="let o of upComingItem">
@@ -227,11 +242,11 @@ width: 50%;display: block;margin-top: 3%;">
                 </div>
 
                 <hr>
-                <div class="right-box top-film"  id="side-info-tab2">
+                <div class="right-box top-film" id="side-info-tab2" *ngIf="!isLoading">
 
 
                     <h2 class="right-box-header star-icon"><span>
-                        <i class="fas fa-trophy"></i> Top Rated Anime</span>
+                            <i class="fas fa-trophy"></i> Top Rated Anime</span>
                     </h2>
 
                     <div class="right-box-content">
@@ -259,8 +274,8 @@ width: 50%;display: block;margin-top: 3%;">
                             </ul>
                             <button type="button" class="btn btn-primary" (click)="prevBest()"><i
                                     class="fas fa-arrow-left"></i></button>
-                            <button type="button" class="btn btn-primary" (click)="nextBest()"
-                                style="float: right;"><i class="fas fa-arrow-right"></i></button>
+                            <button type="button" class="btn btn-primary" (click)="nextBest()" style="float: right;"><i
+                                    class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>

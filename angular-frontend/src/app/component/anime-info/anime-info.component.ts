@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
-
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 @Component({
   selector: 'app-anime-info',
   templateUrl: './anime-info.component.html',
@@ -12,24 +12,68 @@ export class AnimeInfoComponent implements OnInit {
 
   anime_id:any
   anime:any
+  trailer_url:any
+  op:any[]=[]
+  ed:any[]=[]
+  op_view:boolean=true
+  ed_view:boolean=true
+
+  adaptation:any[]=[]
+  sequel:any[]=[]
+  side_story:any[]=[]
+  other:any[]=[]
+  summary:any[]=[]
+
+  page = 1;
+  pageSize = 4;
+  collectionSize = 50;
+  related:any[]=[];
+
 
   isLoading:Boolean=false
   constructor(private searchService: SearchService, private route: ActivatedRoute, private router: Router,
-    private infoServeice: InfomationService) { }
+    private infoServeice: InfomationService,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.getAnime()
+    this.route.paramMap.subscribe(params => {
+      this.anime_id = Number(this.route.snapshot.paramMap.get("id"));
+      this.getAnime()
+    })
   }
   getAnime(){
     this.isLoading=true
-    this.anime_id=this.route.snapshot.paramMap.get("id");
+    this.op_view=true
+    this.ed_view=true
     this.infoServeice.getAnime(this.anime_id).subscribe(
       data=>{
         this.anime=data
         console.log(this.anime)
         this.isLoading=false
+        if(this.anime.trailer_url!=null){
+          this.trailer_url=this.sanitizer.bypassSecurityTrustResourceUrl(this.anime.trailer_url)
+        }
+        else{
+          this.trailer_url==null
+        }
+        this.op=this.anime.opening_themes
+        this.ed=this.anime.ending_themes
+
+        this.adaptation=this.anime.related.Adaptation      
+        this.sequel=this.anime.related.Sequel
+        this.side_story=this.anime.related["Side story"]
+        this.other=this.anime.related.Other
+        this.summary=this.anime.related.Summary
+
+        
       }
     )
+  }
+  checkRelatedLength():boolean{
+    if(this.adaptation==undefined&&this.sequel==undefined&&this.side_story==undefined&&this.other==undefined){
+      return false
+    }
+    return true
+
   }
 
 

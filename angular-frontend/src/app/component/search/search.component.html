@@ -27,7 +27,7 @@
                 <div class="list-movie-filter-main" *ngIf="searchMode==1">
                     <form id="form-filter" class="form-inline">
 
-                        <div class="list-movie-filter-item" style="margin-left: 6%;">
+                        <div class="list-movie-filter-item" style="margin-left: 2%;">
                             <label for="filter-eptype">Status :</label>
                             <select class="form-control" id="filter-eptype" name="status" [(ngModel)]="status"
                                 (change)="onStatusGenreTypeChange()">
@@ -179,43 +179,98 @@
                         <div class="col">
                             <app-searchbar *ngIf="searchMode==3"></app-searchbar>
                             <p style="margin:0 auto;
-                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;">Find by starting letter</p>
+                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;">Find by
+                                starting letter</p>
                             <div class="subColumns" style="margin-bottom: 10px;">
                                 <ul class="a2z" style="margin:0 auto;
                                 width: 55%;display: block;">
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('a')">A</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('b')">B</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('c')">C</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('d')">D</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('e')">E</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('f')">F</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('g')">G</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('h')">H</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('i')">I</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('j')">J</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('k')">K</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('l')">L</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('m')">M</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('n')">N</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('o')">O</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('p')">P</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('q')">Q</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('r')">R</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('s')">S</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('t')">T</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('u')">U</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('v')">V</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('w')">W</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('x')">X</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('y')">Y</p></li>
-                                    <li><p class="letter-button" (click)="onSearchLetterChange('z')">Z</p></li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('a')">A</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('b')">B</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('c')">C</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('d')">D</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('e')">E</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('f')">F</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('g')">G</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('h')">H</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('i')">I</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('j')">J</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('k')">K</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('l')">L</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('m')">M</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('n')">N</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('o')">O</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('p')">P</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('q')">Q</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('r')">R</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('s')">S</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('t')">T</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('u')">U</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('v')">V</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('w')">W</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('x')">X</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('y')">Y</p>
+                                    </li>
+                                    <li>
+                                        <p class="letter-button" (click)="onSearchLetterChange('z')">Z</p>
+                                    </li>
                                 </ul>
                             </div>
                             <p style="margin:0 auto;
-                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;" *ngIf="letter==''">
-                            Current letter : none</p>
+                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;"
+                                *ngIf="letter==''">
+                                Current letter : none</p>
                             <p style="margin:0 auto;
-                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;" *ngIf="letter!=''">Current letter : {{letter}}</p>
+                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;"
+                                *ngIf="letter!=''">Current letter : {{letter}}</p>
                         </div>
                     </div>
                 </div>
@@ -223,7 +278,7 @@
         </div>
 
     </div>
-    
+
 </div>
 <div class="section row272" style="margin-top:5px ;">
     <div class="section-content fluid">
@@ -232,19 +287,20 @@
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
                         height: 100%;" id="info-tab">
 
-                    <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
+                    <ol class="breadcrumb" style="margin-top: 15px;width: 98%;">
                         <li><a style="color: yellowgreen;"><span itemprop="name">Search Result :</span></a></li>
 
                     </ol>
                     <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
 
                     </div>
+                    
                     <p style="color: white;" *ngIf="isLoading"> Getting search results ...</p>
-                    <div>
+                    <div *ngIf="!isLoading">
                         <div *ngFor="let o of results,index as i">
                             <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
-                                [closeDelay]="100" placement="auto"  [autoClose]="'outside'" container="body" tooltipClass="tooltip-inner"
-                                routerLink="/anime/{{o.mal_id}}">
+                                [closeDelay]="100" placement="auto" [autoClose]="'outside'" container="body"
+                                tooltipClass="tooltip-inner" routerLink="/anime/{{o.mal_id}}">
                                 <div class="item">
                                     <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
                                         <img class="_slideimg" img_index="1" width="100%" height="100%"
@@ -272,48 +328,54 @@
                 </div>
             </div>
         </div>
-        <div class="col" *ngIf="searchMode==1">
-            <div style="display: block;" *ngIf="!isLoading">
-                <div style="margin:0 auto;
-    width: 50%;display: block;" id="pagi-newest">
-                    <div style="margin:0 auto;
-     width: 50%;display: block;">
-                        <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="collectionSize"
-                            [maxSize]="3" [boundaryLinks]=true (pageChange)="onStatusGenreTypePageChange();showUp()">
-                        </ngb-pagination>
-                    </div>
+        <div class="row">
+            <div class="col" *ngIf="searchMode==1">
+                <div style="display: block; margin-top: 10px;">
+                    <div style="    width: 100%;
+                    margin: 0 auto;" id="pagi-newest">
+                        <div style="margin:0 auto;
+         width: 100%;display: block;float: right;">
+                            <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                (pageChange)="onStatusGenreTypePageChange();showUp()" style="float: right;">
+                            </ngb-pagination>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="col" *ngIf="searchMode==2">
+                <div style="display: block;" *ngIf="!isLoading">
+                    <div style="margin:0 auto;
+        width: 50%;display: block;" id="pagi-newest">
+                        <div style="margin:0 auto;
+         width: 50%;display: block;">
+                            <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                (pageChange)="onSeasonYearPageChange();showUp()">
+                            </ngb-pagination>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col" *ngIf="searchMode==3">
+                <div style="display: block;" *ngIf="!isLoading">
+                    <div style="margin:0 auto;
+        width: 50%;display: block;" id="pagi-newest">
+                        <div style="margin:0 auto;
+         width: 50%;display: block;">
+                            <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                (pageChange)="onSearchLetterPageChange();showUp()">
+                            </ngb-pagination>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col" *ngIf="searchMode==2">
-            <div style="display: block;" *ngIf="!isLoading">
-                <div style="margin:0 auto;
-    width: 50%;display: block;" id="pagi-newest">
-                    <div style="margin:0 auto;
-     width: 50%;display: block;">
-                        <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="collectionSize"
-                            [maxSize]="3" [boundaryLinks]=true (pageChange)="onSeasonYearPageChange();showUp()">
-                        </ngb-pagination>
-                    </div>
 
-                </div>
-            </div>
-        </div>
-        <div class="col" *ngIf="searchMode==3">
-            <div style="display: block;" *ngIf="!isLoading">
-                <div style="margin:0 auto;
-    width: 50%;display: block;" id="pagi-newest">
-                    <div style="margin:0 auto;
-     width: 50%;display: block;">
-                        <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="collectionSize"
-                            [maxSize]="3" [boundaryLinks]=true (pageChange)="onSearchLetterPageChange();showUp()">
-                        </ngb-pagination>
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

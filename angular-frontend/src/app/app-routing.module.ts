@@ -6,8 +6,8 @@ import { SearchComponent } from './component/search/search.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/anime', pathMatch: 'full' },
+  { path: 'anime', component: HomeComponent },
   { path: 'anime/:id', component: AnimeInfoComponent },
   { path: 'search', component: SearchComponent },
   {path: '**', redirectTo: '/error', pathMatch: 'full'}
