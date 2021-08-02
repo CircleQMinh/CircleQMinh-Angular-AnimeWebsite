@@ -28,7 +28,7 @@ export class AnimeInfoComponent implements OnInit {
   pageSize = 4;
   collectionSize = 50;
   related:any[]=[];
-
+  prequel:any[]=[]
 
   isLoading:Boolean=false
   constructor(private searchService: SearchService, private route: ActivatedRoute, private router: Router,
@@ -47,8 +47,8 @@ export class AnimeInfoComponent implements OnInit {
     this.infoServeice.getAnime(this.anime_id).subscribe(
       data=>{
         this.anime=data
-        console.log(this.anime)
-        this.isLoading=false
+        //console.log(this.anime)
+        
         if(this.anime.trailer_url!=null){
           this.trailer_url=this.sanitizer.bypassSecurityTrustResourceUrl(this.anime.trailer_url)
         }
@@ -57,19 +57,19 @@ export class AnimeInfoComponent implements OnInit {
         }
         this.op=this.anime.opening_themes
         this.ed=this.anime.ending_themes
-
+        this.prequel=this.anime.related.Prequel
         this.adaptation=this.anime.related.Adaptation      
         this.sequel=this.anime.related.Sequel
         this.side_story=this.anime.related["Side story"]
         this.other=this.anime.related.Other
         this.summary=this.anime.related.Summary
 
-        
+        this.isLoading=false
       }
     )
   }
   checkRelatedLength():boolean{
-    if(this.adaptation==undefined&&this.sequel==undefined&&this.side_story==undefined&&this.other==undefined){
+    if(this.adaptation==undefined&&this.sequel==undefined&&this.side_story==undefined&&this.other==undefined&&this.prequel==undefined){
       return false
     }
     return true

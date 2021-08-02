@@ -1,97 +1,106 @@
 <app-nav></app-nav>
-<div class="container-fluid no-padding">
-    <div class="row" style="margin-top:1%">
+<div *ngIf="url=='anime'">
+    <div class="container-fluid no-padding">
+        <div class="row" style="margin-top:85px">
 
-        <div class="col">
+            <div class="col">
 
 
-            <ol class="breadcrumb">
-                <li><a href="/"><span itemprop="name">Search</span></a></li>
-                <li><a>
-                        <select style="background-color: transparent;color: yellowgreen;" name="searchMode"
-                            [(ngModel)]="searchMode" (change)="onSearchModeChange()">
-                            <option value="1">By Status/Genre/Type </option>
-                            <option value="2">By Season/Year</option>
-                            <option value="3">By Name/Letter</option>
-
+                <ol class="breadcrumb">
+                    <li><a href="/"><span itemprop="name">Search</span></a></li>
+                    <li><a>
+                        <select style="background-color: transparent;color: yellowgreen;"
+                            (change)="onChange($event)">
+                            <option value="anime" selected>Anime </option>
+                            <option value="manga" >Manga</option>
                         </select>
                     </a>
                 </li>
-            </ol>
+                    <li><a>
+                            <select style="background-color: transparent;color: yellowgreen;" name="searchMode"
+                                [(ngModel)]="searchMode" (change)="onSearchModeChange()">
+                                <option value="1">By Status/Genre/Type </option>
+                                <option value="2">By Season/Year</option>
+                                <option value="3">By Name/Letter</option>
+
+                            </select>
+                        </a>
+                    </li>
+                </ol>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col" #goUp>
-            <div class="list-movie-filter" style="margin-bottom: 5px;" id="list-movie-filter">
+        <div class="row">
+            <div class="col" #goUp>
+                <div class="list-movie-filter" style="margin-bottom: 5px;" id="list-movie-filter">
 
-                <div class="list-movie-filter-main" *ngIf="searchMode==1">
-                    <form id="form-filter" class="form-inline">
+                    <div class="list-movie-filter-main" *ngIf="searchMode==1">
+                        <form id="form-filter" class="form-inline">
 
-                        <div class="list-movie-filter-item" style="margin-left: 2%;">
-                            <label for="filter-eptype">Status :</label>
-                            <select class="form-control" id="filter-eptype" name="status" [(ngModel)]="status"
-                                (change)="onStatusGenreTypeChange()">
-                                <option value="">--All--</option>
-                                <option value="airing">Airing</option>
-                                <option value="completed">Completed</option>
-                                <option value="upcoming">Upcoming</option>
+                            <div class="list-movie-filter-item" style="margin-left: 2%;">
+                                <label for="filter-eptype">Status :</label>
+                                <select class="form-control" id="filter-eptype" name="status" [(ngModel)]="status"
+                                    (change)="onStatusGenreTypeChange()">
+                                    <option value="">--All--</option>
+                                    <option value="airing">Airing</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="upcoming">Upcoming</option>
 
-                            </select>
-                        </div>
+                                </select>
+                            </div>
 
-                        <div class="list-movie-filter-item">
-                            <label for="filter-genre">Genre :</label>
-                            <select class="form-control" id="filter-genre" name="genre" [(ngModel)]="genre"
-                                (change)="onStatusGenreTypeChange()">
-                                <option value="">--All--</option>
-                                <option value="1">Action</option>
-                                <option value="2">Adventure</option>
-                                <option value="3">Cars</option>
-                                <option value="4">Comedy </option>
-                                <option value="5">Dementia </option>
-                                <option value="6">Demons </option>
-                                <option value="7">Mystery</option>
-                                <option value="8">Drama </option>
-                                <option value="9">Ecchi </option>
-                                <option value="10">Fantasy </option>
-                                <option value="11">Game </option>
-                                <option value="12">Hentai </option>
-                                <option value="13">Historical </option>
-                                <option value="14">Horror </option>
-                                <option value="15">Kids </option>
-                                <option value="16">Magic </option>
-                                <option value="17">Martial Arts</option>
-                                <option value="18">Mecha</option>
-                                <option value="19">Music</option>
-                                <option value="20">Parody</option>
-                                <option value="21">Samurai</option>
-                                <option value="22">Romance</option>
-                                <option value="23">School</option>
-                                <option value="24">Sci Fi</option>
-                                <option value="25">Shoujo</option>
-                                <option value="26">Shoujo Ai</option>
-                                <option value="27">Shounen</option>
-                                <option value="28">Shounen Ai</option>
-                                <option value="29">Space</option>
-                                <option value="30">Sports</option>
-                                <option value="31">Super Power</option>
-                                <option value="32">Vampire</option>
-                                <option value="33">Yaoi</option>
-                                <option value="34">Yuri</option>
-                                <option value="35">Harem</option>
-                                <option value="36">Slice Of Life</option>
-                                <option value="37">Supernatural</option>
-                                <option value="38">Military</option>
-                                <option value="39">Police</option>
-                                <option value="40">Psychological</option>
-                                <option value="41">Thriller</option>
-                                <option value="42">Seinen</option>
-                                <option value="43">Josei</option>
-                            </select>
-                        </div>
+                            <div class="list-movie-filter-item">
+                                <label for="filter-genre">Genre :</label>
+                                <select class="form-control" id="filter-genre" name="genre" [(ngModel)]="genre"
+                                    (change)="onStatusGenreTypeChange()">
+                                    <option value="">--All--</option>
+                                    <option value="1">Action</option>
+                                    <option value="2">Adventure</option>
+                                    <option value="3">Cars</option>
+                                    <option value="4">Comedy </option>
+                                    <option value="5">Dementia </option>
+                                    <option value="6">Demons </option>
+                                    <option value="7">Mystery</option>
+                                    <option value="8">Drama </option>
+                                    <option value="9">Ecchi </option>
+                                    <option value="10">Fantasy </option>
+                                    <option value="11">Game </option>
+                                    <option value="12">Hentai </option>
+                                    <option value="13">Historical </option>
+                                    <option value="14">Horror </option>
+                                    <option value="15">Kids </option>
+                                    <option value="16">Magic </option>
+                                    <option value="17">Martial Arts</option>
+                                    <option value="18">Mecha</option>
+                                    <option value="19">Music</option>
+                                    <option value="20">Parody</option>
+                                    <option value="21">Samurai</option>
+                                    <option value="22">Romance</option>
+                                    <option value="23">School</option>
+                                    <option value="24">Sci Fi</option>
+                                    <option value="25">Shoujo</option>
+                                    <option value="26">Shoujo Ai</option>
+                                    <option value="27">Shounen</option>
+                                    <option value="28">Shounen Ai</option>
+                                    <option value="29">Space</option>
+                                    <option value="30">Sports</option>
+                                    <option value="31">Super Power</option>
+                                    <option value="32">Vampire</option>
+                                    <option value="33">Yaoi</option>
+                                    <option value="34">Yuri</option>
+                                    <option value="35">Harem</option>
+                                    <option value="36">Slice Of Life</option>
+                                    <option value="37">Supernatural</option>
+                                    <option value="38">Military</option>
+                                    <option value="39">Police</option>
+                                    <option value="40">Psychological</option>
+                                    <option value="41">Thriller</option>
+                                    <option value="42">Seinen</option>
+                                    <option value="43">Josei</option>
+                                </select>
+                            </div>
 
 
-                        <!-- <div class="list-movie-filter-item">
+                            <!-- <div class="list-movie-filter-item">
                             <label for="filter-year">Năm phát hành</label>
                             <select id="filter-year" name="year" class="form-control">
                                 <option value=""> </option>
@@ -109,275 +118,590 @@
                                 <option value="2010">2010</option>
                             </select>
                         </div> -->
-                        <div class="list-movie-filter-item">
-                            <label for="filter-sort">Type :</label>
-                            <select class="form-control" id="filter-sort" name="type" [(ngModel)]="type"
-                                (change)="onStatusGenreTypeChange()">
-                                <option value="">--All--</option>
-                                <option value="tv">TV</option>
-                                <option value="ova">OVA</option>
-                                <option value="movie">Movie</option>
-                                <option value="special">Special</option>
-                                <option value="music">Music</option>
-                            </select>
-                        </div>
-                        <div class="list-movie-filter-item">
-                            <label for="filter-sort2">Order By :</label>
-                            <select class="form-control" id="filter-sort2" name="order" [(ngModel)]="order_by"
-                                (change)="onStatusGenreTypeChange()">
-                                <option value="">--All--</option>
-                                <option value="title">Name</option>
-                                <option value="score">Rating</option>
-                                <option value="members">Most Viewed</option>
-
-                            </select>
-                        </div>
-
-                    </form>
-                </div>
-
-                <div class="list-movie-filter-main" *ngIf="searchMode==2">
-                    <form id="form-filter" class="form-inline">
-
-                        <div class="list-movie-filter-item" style="margin-left: 6%;">
-                            <label for="filter-eptype">Season :</label>
-                            <select class="form-control" id="filter-eptype" name="season" [(ngModel)]="season"
-                                (change)="onSeasonYearChange()">
-                                <option value="">--Current Season--</option>
-
-                                <option value="spring">Spring(April to June)</option>
-                                <option value="summer">Summer(July to September)</option>
-                                <option value="fall">Fall(October to December)</option>
-                                <option value="winter">Winter(January to March)</option>
-                            </select>
-                        </div>
-
-                        <div class="list-movie-filter-item" style="margin-left: 10%;">
-                            <label for="filter-year">Year : </label>
-                            <select id="filter-year" class="form-control" name="year" [(ngModel)]="year"
-                                (change)="onSeasonYearChange()">
-                                <option value="">2021(Current-Year)</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
-                                <option value="2014">2014</option>
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="list-movie-filter-main" *ngIf="searchMode==3">
-                    <div class="row">
-                        <div class="col">
-                            <app-searchbar *ngIf="searchMode==3"></app-searchbar>
-                            <p style="margin:0 auto;
-                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;">Find by
-                                starting letter</p>
-                            <div class="subColumns" style="margin-bottom: 10px;">
-                                <ul class="a2z" style="margin:0 auto;
-                                width: 55%;display: block;">
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('a')">A</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('b')">B</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('c')">C</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('d')">D</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('e')">E</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('f')">F</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('g')">G</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('h')">H</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('i')">I</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('j')">J</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('k')">K</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('l')">L</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('m')">M</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('n')">N</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('o')">O</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('p')">P</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('q')">Q</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('r')">R</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('s')">S</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('t')">T</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('u')">U</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('v')">V</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('w')">W</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('x')">X</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('y')">Y</p>
-                                    </li>
-                                    <li>
-                                        <p class="letter-button" (click)="onSearchLetterChange('z')">Z</p>
-                                    </li>
-                                </ul>
+                            <div class="list-movie-filter-item">
+                                <label for="filter-sort">Type :</label>
+                                <select class="form-control" id="filter-sort" name="type" [(ngModel)]="type"
+                                    (change)="onStatusGenreTypeChange()">
+                                    <option value="">--All--</option>
+                                    <option value="tv">TV</option>
+                                    <option value="ova">OVA</option>
+                                    <option value="movie">Movie</option>
+                                    <option value="special">Special</option>
+                                    <option value="music">Music</option>
+                                </select>
                             </div>
-                            <p style="margin:0 auto;
+                            <div class="list-movie-filter-item">
+                                <label for="filter-sort2">Order By :</label>
+                                <select class="form-control" id="filter-sort2" name="order" [(ngModel)]="order_by"
+                                    (change)="onStatusGenreTypeChange()">
+                                    <option value="">--All--</option>
+                                    <option value="title">Name</option>
+                                    <option value="score">Rating</option>
+                                    <option value="members">Most Viewed</option>
+
+                                </select>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="list-movie-filter-main" *ngIf="searchMode==2">
+                        <form id="form-filter" class="form-inline">
+
+                            <div class="list-movie-filter-item" style="margin-left: 6%;">
+                                <label for="filter-eptype">Season :</label>
+                                <select class="form-control" id="filter-eptype" name="season" [(ngModel)]="season"
+                                    (change)="onSeasonYearChange()">
+                                    <option value="">--Current Season--</option>
+
+                                    <option value="spring">Spring(April to June)</option>
+                                    <option value="summer">Summer(July to September)</option>
+                                    <option value="fall">Fall(October to December)</option>
+                                    <option value="winter">Winter(January to March)</option>
+                                </select>
+                            </div>
+
+                            <div class="list-movie-filter-item" style="margin-left: 10%;">
+                                <label for="filter-year">Year : </label>
+                                <select id="filter-year" class="form-control" name="year" [(ngModel)]="year"
+                                    (change)="onSeasonYearChange()">
+                                    <option value="">2021(Current-Year)</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-movie-filter-main" *ngIf="searchMode==3">
+                        <div class="row">
+                            <div class="col">
+                                <app-searchbar *ngIf="searchMode==3"></app-searchbar>
+                                <p style="margin:0 auto;
+                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;">Find by
+                                    starting letter</p>
+                                <div class="subColumns" style="margin-bottom: 10px;">
+                                    <ul class="a2z" style="margin:0 auto;
+                                width: 55%;display: block;">
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('a')">A</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('b')">B</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('c')">C</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('d')">D</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('e')">E</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('f')">F</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('g')">G</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('h')">H</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('i')">I</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('j')">J</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('k')">K</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('l')">L</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('m')">M</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('n')">N</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('o')">O</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('p')">P</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('q')">Q</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('r')">R</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('s')">S</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('t')">T</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('u')">U</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('v')">V</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('w')">W</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('x')">X</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('y')">Y</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('z')">Z</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p style="margin:0 auto;
                             width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;"
-                                *ngIf="letter==''">
-                                Current letter : none</p>
-                            <p style="margin:0 auto;
+                                    *ngIf="letter==''">
+                                    Current letter : none</p>
+                                <p style="margin:0 auto;
                             width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;"
-                                *ngIf="letter!=''">Current letter : {{letter}}</p>
+                                    *ngIf="letter!=''">Current letter : {{letter}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
     </div>
-
-</div>
-<div class="section row272" style="margin-top:5px ;">
-    <div class="section-content fluid">
-        <div class="row">
-            <div class=" col ">
-                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+    <div class="section row272" style="margin-top:5px ;">
+        <div class="section-content fluid">
+            <div class="row">
+                <div class=" col ">
+                    <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
                         height: 100%;" id="info-tab">
 
-                    <ol class="breadcrumb" style="margin-top: 15px;width: 98%;">
-                        <li><a style="color: yellowgreen;"><span itemprop="name">Search Result :</span></a></li>
+                        <ol class="breadcrumb" style="margin-top: 15px;width: 98%;">
+                            <li><a style="color: yellowgreen;"><span itemprop="name">Search Result :</span></a></li>
 
-                    </ol>
-                    <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+                        </ol>
+                        <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
 
-                    </div>
-                    
-                    <p style="color: white;" *ngIf="isLoading"> Getting search results ...</p>
-                    <div *ngIf="!isLoading">
-                        <div *ngFor="let o of results,index as i">
-                            <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
-                                [closeDelay]="100" placement="auto" [autoClose]="'outside'" container="body"
-                                tooltipClass="tooltip-inner" routerLink="/anime/{{o.mal_id}}">
-                                <div class="item">
-                                    <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
-                                        <img class="_slideimg" img_index="1" width="100%" height="100%"
-                                            src="{{o.image_url}}" alt="???"></a>
+                        </div>
 
-                                    <div class="description">
-                                        <h4 class="title">
-                                            <a class="_trackLink">
-                                                {{o.title}}
-                                            </a>
-                                        </h4>
-                                        <h5 class="subtitle">
-                                            <a class="_trackLink ellipsis">
-                                                {{o.score}}<i class="far fa-star"></i>
-                                            </a>
-                                        </h5>
-                                    </div><!-- END .description -->
+                        <p style="color: white;" *ngIf="isLoading"> Getting search results ...</p>
+                        <div *ngIf="!isLoading">
+                            <div *ngFor="let o of results,index as i">
+                                <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
+                                    [closeDelay]="100" placement="auto" [autoClose]="'outside'" container="body"
+                                    tooltipClass="tooltip-inner" routerLink="/anime/{{o.mal_id}}">
+                                    <div class="item">
+                                        <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                            <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                                src="{{o.image_url}}" alt="???"></a>
+
+                                        <div class="description">
+                                            <h4 class="title">
+                                                <a class="_trackLink">
+                                                    {{o.title}}
+                                                </a>
+                                            </h4>
+                                            <h5 class="subtitle">
+                                                <a class="_trackLink ellipsis">
+                                                    {{o.score}}<i class="far fa-star"></i>
+                                                </a>
+                                            </h5>
+                                        </div><!-- END .description -->
+                                    </div>
+                                    <!--END .item-->
                                 </div>
-                                <!--END .item-->
+                                <!--END .subtray-->
                             </div>
-                            <!--END .subtray-->
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col" *ngIf="searchMode==1">
-                <div style="display: block; margin-top: 10px;">
-                    <div style="    width: 100%;
+            <div class="row">
+                <div class="col" *ngIf="searchMode==1">
+                    <div style="display: block; margin-top: 10px;">
+                        <div style="    width: 100%;
                     margin: 0 auto;" id="pagi-newest">
-                        <div style="margin:0 auto;
+                            <div style="margin:0 auto;
          width: 100%;display: block;float: right;">
-                            <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
-                                [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                (pageChange)="onStatusGenreTypePageChange();showUp()" style="float: right;">
-                            </ngb-pagination>
-                        </div>
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="onStatusGenreTypePageChange();showUp()" style="float: right;">
+                                </ngb-pagination>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="col" *ngIf="searchMode==2">
+                    <div style="display: block; margin-top: 10px;">
+                        <div style="    width: 100%;
+                    margin: 0 auto;" id="pagi-newest">
+                            <div style="margin:0 auto;
+         width: 100%;display: block;float: right;">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="onSeasonYearPageChange();showUp()">
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col" *ngIf="searchMode==3">
+                    <div style="display: block; margin-top: 10px;">
+                        <div style="    width: 100%;
+                    margin: 0 auto;" id="pagi-newest">
+                            <div style="margin:0 auto;
+         width: 100%;display: block;float: right;">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="onSearchLetterPageChange();showUp()">
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col" *ngIf="searchMode==2">
-                <div style="display: block;" *ngIf="!isLoading">
-                    <div style="margin:0 auto;
-        width: 50%;display: block;" id="pagi-newest">
-                        <div style="margin:0 auto;
-         width: 50%;display: block;">
-                            <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
-                                [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                (pageChange)="onSeasonYearPageChange();showUp()">
-                            </ngb-pagination>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-            <div class="col" *ngIf="searchMode==3">
-                <div style="display: block;" *ngIf="!isLoading">
-                    <div style="margin:0 auto;
-        width: 50%;display: block;" id="pagi-newest">
-                        <div style="margin:0 auto;
-         width: 50%;display: block;">
-                            <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
-                                [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                (pageChange)="onSearchLetterPageChange();showUp()">
-                            </ngb-pagination>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
         </div>
-
     </div>
 </div>
 
+
+
+
+
+<div *ngIf="url=='manga'">
+    <div class="container-fluid no-padding">
+        <div class="row" style="margin-top:85px">
+
+            <div class="col">
+
+
+                <ol class="breadcrumb">
+                    <li><a href="/"><span itemprop="name">Search</span></a></li>
+
+                    <li><a>
+                            <select style="background-color: transparent;color: yellowgreen;"
+                                (change)="onChange($event)">
+                                <option value="anime">Anime </option>
+                                <option value="manga" selected>Manga</option>
+                            </select>
+                        </a>
+                    </li>
+                    <li><a>
+                            <select style="background-color: transparent;color: yellowgreen;" name="searchMode"
+                                [(ngModel)]="searchMode" (change)="onSearchModeChange()">
+                                <option value="1">By Genre </option>
+                                <option value="3">By Name/Letter</option>
+                            </select>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" #goUp>
+                <div class="list-movie-filter" style="margin-bottom: 5px;" id="list-movie-filter">
+
+                    <div class="list-movie-filter-main" *ngIf="searchMode==1">
+                        <form id="form-filter" class="form-inline">
+
+
+
+                            <div class="list-movie-filter-item">
+                                <label for="filter-genre">Genre :</label>
+                                <select class="form-control" id="filter-genre" name="genre" [(ngModel)]="genre"
+                                    (change)="onStatusGenreTypeChange()">
+                                    <option value="">--All--</option>
+                                    <option value="1">Action</option>
+                                    <option value="2">Adventure</option>
+                                    <option value="3">Cars</option>
+                                    <option value="4">Comedy </option>
+                                    <option value="5">Dementia </option>
+                                    <option value="6">Demons </option>
+                                    <option value="7">Mystery</option>
+                                    <option value="8">Drama </option>
+                                    <option value="9">Ecchi </option>
+                                    <option value="10">Fantasy </option>
+                                    <option value="11">Game </option>
+                                    <option value="12">Hentai </option>
+                                    <option value="13">Historical </option>
+                                    <option value="14">Horror </option>
+                                    <option value="15">Kids </option>
+                                    <option value="16">Magic </option>
+                                    <option value="17">Martial Arts</option>
+                                    <option value="18">Mecha</option>
+                                    <option value="19">Music</option>
+                                    <option value="20">Parody</option>
+                                    <option value="21">Samurai</option>
+                                    <option value="22">Romance</option>
+                                    <option value="23">School</option>
+                                    <option value="24">Sci Fi</option>
+                                    <option value="25">Shoujo</option>
+                                    <option value="26">Shoujo Ai</option>
+                                    <option value="27">Shounen</option>
+                                    <option value="28">Shounen Ai</option>
+                                    <option value="29">Space</option>
+                                    <option value="30">Sports</option>
+                                    <option value="31">Super Power</option>
+                                    <option value="32">Vampire</option>
+                                    <option value="33">Yaoi</option>
+                                    <option value="34">Yuri</option>
+                                    <option value="35">Harem</option>
+                                    <option value="36">Slice Of Life</option>
+                                    <option value="37">Supernatural</option>
+                                    <option value="38">Military</option>
+                                    <option value="39">Police</option>
+                                    <option value="40">Psychological</option>
+                                    <option value="41">Seinen</option>
+                                    <option value="42">Josei</option>
+                                    <option value="43">Doujinshi</option>
+                                </select>
+                            </div>
+
+                            <div class="list-movie-filter-item">
+                                <label for="filter-sort2">Order By :</label>
+                                <select class="form-control" id="filter-sort2" name="order" [(ngModel)]="order_by"
+                                    (change)="onStatusGenreTypeChange()">
+                                    <option value="">--All--</option>
+                                    <option value="title">Name</option>
+                                    <option value="score">Rating</option>
+                                    <option value="members">Most Viewed</option>
+
+                                </select>
+                            </div>
+
+                        </form>
+                    </div>
+
+
+                    <div class="list-movie-filter-main" *ngIf="searchMode==3">
+                        <div class="row">
+                            <div class="col">
+                                <app-searchbar *ngIf="searchMode==3"></app-searchbar>
+                                <p style="margin:0 auto;
+                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;">Find by
+                                    starting letter</p>
+                                <div class="subColumns" style="margin-bottom: 10px;">
+                                    <ul class="a2z" style="margin:0 auto;
+                                width: 55%;display: block;">
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('a')">A</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('b')">B</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('c')">C</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('d')">D</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('e')">E</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('f')">F</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('g')">G</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('h')">H</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('i')">I</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('j')">J</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('k')">K</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('l')">L</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('m')">M</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('n')">N</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('o')">O</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('p')">P</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('q')">Q</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('r')">R</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('s')">S</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('t')">T</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('u')">U</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('v')">V</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('w')">W</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('x')">X</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('y')">Y</p>
+                                        </li>
+                                        <li>
+                                            <p class="letter-button" (click)="onSearchLetterChange('z')">Z</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p style="margin:0 auto;
+                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;"
+                                    *ngIf="letter==''">
+                                    Current letter : none</p>
+                                <p style="margin:0 auto;
+                            width: 50%;display: block;text-align: center;font-family: cursive;font-size: 30px;"
+                                    *ngIf="letter!=''">Current letter : {{letter}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="section row272" style="margin-top:5px ;">
+        <div class="section-content fluid">
+            <div class="row">
+                <div class=" col ">
+                    <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+                        height: 100%;" id="info-tab">
+
+                        <ol class="breadcrumb" style="margin-top: 15px;width: 98%;">
+                            <li><a style="color: yellowgreen;"><span itemprop="name">Search Result :</span></a></li>
+
+                        </ol>
+                        <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+
+                        </div>
+
+                        <p style="color: white;" *ngIf="isLoading"> Getting search results ...</p>
+                        <div *ngIf="!isLoading">
+                            <div *ngFor="let o of results,index as i">
+                                <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
+                                    [closeDelay]="100" placement="auto" [autoClose]="'outside'" container="body"
+                                    tooltipClass="tooltip-inner" routerLink="/manga/{{o.mal_id}}">
+                                    <div class="item">
+                                        <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                            <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                                src="{{o.image_url}}" alt="???"></a>
+
+                                        <div class="description">
+                                            <h4 class="title">
+                                                <a class="_trackLink">
+                                                    {{o.title}}
+                                                </a>
+                                            </h4>
+                                            <h5 class="subtitle">
+                                                <a class="_trackLink ellipsis">
+                                                    {{o.score}}<i class="far fa-star"></i>
+                                                </a>
+                                            </h5>
+                                        </div><!-- END .description -->
+                                    </div>
+                                    <!--END .item-->
+                                </div>
+                                <!--END .subtray-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" *ngIf="searchMode==1">
+                    <div style="display: block; margin-top: 10px;">
+                        <div style="    width: 100%;
+                    margin: 0 auto;" id="pagi-newest">
+                            <div style="margin:0 auto;
+         width: 100%;display: block;float: right;">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="onStatusGenreTypePageChange();showUp()" style="float: right;">
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col" *ngIf="searchMode==2">
+                    <div style="display: block; margin-top: 10px;">
+                        <div style="    width: 100%;
+                    margin: 0 auto;" id="pagi-newest">
+                            <div style="margin:0 auto;
+         width: 100%;display: block;float: right;">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="onSeasonYearPageChange();showUp()">
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col" *ngIf="searchMode==3">
+                    <div style="display: block; margin-top: 10px;">
+                        <div style="    width: 100%;
+                    margin: 0 auto;" id="pagi-newest">
+                            <div style="margin:0 auto;
+         width: 100%;display: block;float: right;">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
+                                    (pageChange)="onSearchLetterPageChange();showUp()">
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <app-footer></app-footer>

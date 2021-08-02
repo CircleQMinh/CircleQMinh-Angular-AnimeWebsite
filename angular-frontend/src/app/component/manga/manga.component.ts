@@ -1,18 +1,15 @@
-import { WeekDay } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
-import { delay } from 'rxjs/operators';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-manga',
+  templateUrl: './manga.component.html',
+  styleUrls: ['./manga.component.css']
 })
-export class HomeComponent implements OnInit {
-
+export class MangaComponent implements OnInit {
   dataNewest: any[] = []
   pageSizeNewest = 12
   pageNewest: number = 0
@@ -46,7 +43,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    // this.infoService.getMangaChapterLong().subscribe(
+    //   data=>{
+    //     console.log(data)
+    //   }
+    // )
 
 
 
@@ -54,9 +55,9 @@ export class HomeComponent implements OnInit {
 
 
     setTimeout(() => {
-      this.infoService.getAnimeByYearAndSeason("2021", "summer").subscribe(
+      this.infoService.getMangaNewest().subscribe(
         data => {
-          this.dataNewest = data.anime
+          this.dataNewest = data.results
           this.getNewest()
         },
         error => {
@@ -67,10 +68,10 @@ export class HomeComponent implements OnInit {
 
     }, 1000);
     setTimeout(() => {
-      this.infoService.getTopUpCommingAnime().subscribe(
+      this.infoService.getMangaTopRating().subscribe(
         data => {
           //console.log(data.top)
-          this.dataUpComing = data.top
+          this.dataUpComing = data.results
           this.getUpComing()
         },
         error => {
@@ -98,9 +99,9 @@ export class HomeComponent implements OnInit {
     }, 3200);
     setTimeout(() => {
 
-      this.infoService.getAnimeByPopularity().subscribe(
+      this.infoService.getMangaChapterLong().subscribe(
         data => {
-          this.dataBest = data.top
+          this.dataBest = data.results
           this.getBest()
 
         },
@@ -124,17 +125,17 @@ export class HomeComponent implements OnInit {
       this.searchService.genre = String(genre)
     }
 
-    this.router.navigateByUrl("/search")
+    this.router.navigateByUrl("/search/manga")
   }
   goToSearchSeason() {
     this.searchService.searchMode = 2
     let today: Date = new Date()
     this.searchService.season = this.getCurrentSeason(today.getMonth())
-    this.router.navigateByUrl("/search")
+    this.router.navigateByUrl("/search/manga")
   }
   goToSearchLetter() {
     this.searchService.searchMode = 3
-    this.router.navigateByUrl("/search")
+    this.router.navigateByUrl("/search/manga")
   }
   getCurrentSeason(month: number): string {
     if (month < 3) {
@@ -278,9 +279,9 @@ export class HomeComponent implements OnInit {
 
 
 
-  images = ['https://pbs.twimg.com/media/EV4xVijWoAASlxY.jpg',
-    'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/93219448-4662-47cb-b585-be7672a62984/de7hrdt-7d75b97d-698d-47d1-879f-c4b8830bb1e4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzkzMjE5NDQ4LTQ2NjItNDdjYi1iNTg1LWJlNzY3MmE2Mjk4NFwvZGU3aHJkdC03ZDc1Yjk3ZC02OThkLTQ3ZDEtODc5Zi1jNGI4ODMwYmIxZTQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xa9_HW3ctkYwD1TZfxlHzSOwezeksLlHrLhH5OvK3Ag',
-    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6e5f72102808543.5fed3c28a58f1.png'];
+  images = ['https://pbs.twimg.com/media/Ez5-TflXEAMcL-f?format=jpg&name=4096x4096',
+    'https://pbs.twimg.com/media/EdESzeFWoAEPNPA.png',
+    'https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/169038941/original/bdceb666a2c7571a13b196c0169411fe6f40bafa/design-manga-style-banner-and-anime-icons-for-facebook-youtube-and-twitter.jpg'];
 
   paused = false;
   unpauseOnArrow = false;

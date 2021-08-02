@@ -1,8 +1,10 @@
 <!-- Navigation-->
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-warning" style="z-index: 999;height: 90px;margin-top: -25px;">
-    <a class="navbar-brand" routerLink="/anime"><i class="fas fa-store"></i> Circle's Random Anime Site</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-warning" style="z-index: 999;height: 90px;margin-top: -25px;position: fixed;
+top: 20;
+width: 100%;" *ngIf="url=='other'">
+    <a class="navbar-brand" routerLink="/anime"><i class="fas fa-store"></i> Circle's Random Site</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
@@ -22,10 +24,72 @@
             <!-- <img src="https://image.flaticon.com/icons/png/128/2965/2965851.png"
                      style="width: 16px;height: 16px;"> -->
             <li class="nav-item active">
-                <button class="btn btn-outline-primary" routerLink="/anime"><i class="fas fa-home"></i> Home</button>
+                <button class="btn btn-outline-primary" routerLink="/anime"><i class="fas fa-home"></i> Visit Anime Site</button>
             </li>
             <li class="nav-item">
-                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"><i class="fas fa-info"></i> Visit Manga Site</button>
+                <button class="btn btn-outline-primary" routerLink="/manga"><i class="fas fa-info"></i> Visit Manga Site</button>
+            </li>
+            <li class="nav-item active">
+                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"> <i class="far fa-newspaper"></i> News
+                </button>
+            </li>
+           
+
+         
+            <li class="nav-item">
+                <button class="btn btn-outline-primary"  ngbTooltip="Work in progress :v !"><i class="far fa-question-circle"></i>Help</button>
+            </li>
+
+        </ul>
+    </div>
+
+
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Navigation-->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-warning" style="z-index: 999;height: 90px;margin-top: -25px;position: fixed;
+top: 20;
+width: 100%;" *ngIf="url=='anime'">
+    <a class="navbar-brand" routerLink="/anime"><i class="fas fa-store"></i> Circle's Random Anime Site</a>
+
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="isCollapsed"
+        style="padding-top: 5px;background-color: #ffc107!important;height: 60px; ">
+        <ul class="navbar-nav ml-auto topnav" style="background-color: #ffc107;">
+            <li class="nav-item">
+
+
+
+
+            </li>
+
+            <!-- <img src="https://image.flaticon.com/icons/png/128/2965/2965851.png"
+                     style="width: 16px;height: 16px;"> -->
+            <li class="nav-item">
+                <button class="btn btn-outline-primary" routerLink="/manga"><i class="fas fa-info"></i> Visit Manga Site</button>
             </li>
             <li class="nav-item active">
                 <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"> <i class="far fa-newspaper"></i> News
@@ -102,6 +166,111 @@
 
 
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Navigation-->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-warning" style="z-index: 999;height: 90px;margin-top: -25px;position: fixed;
+top: 20;
+width: 100%;" *ngIf="url=='manga'">
+    <a class="navbar-brand" routerLink="/manga"><i class="fas fa-store"></i> Circle's Random Manga Site</a>
+
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="isCollapsed"
+        style="padding-top: 5px;background-color: #ffc107!important;height: 60px; ">
+        <ul class="navbar-nav ml-auto topnav" style="background-color: #ffc107;">
+            <li class="nav-item">
+
+
+
+
+            </li>
+
+            <!-- <img src="https://image.flaticon.com/icons/png/128/2965/2965851.png"
+                     style="width: 16px;height: 16px;"> -->
+            <li class="nav-item active">
+                <button class="btn btn-outline-primary" routerLink="/anime"><i class="fas fa-home"></i> Visit Anime Site</button>
+            </li>
+            <li class="nav-item active">
+                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"> <i class="far fa-newspaper"></i> News
+                </button>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <div class="btn-group mr-3">
+                    <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                        <button class="btn btn-outline-primary" ngbDropdownToggle><i class="fas fa-bars"></i>
+                            Genre</button>
+                        <div class="dropdown-menu" ngbDropdownMenu>
+                            <a ngbDropdownItem (click)=" goToSearchGenre(null!)"><i class="fas fa-clipboard-list"></i> All</a>
+                            <hr>
+                            <a ngbDropdownItem (click)="goToSearchGenre(1)">Action</a>
+                            <a ngbDropdownItem (click)="goToSearchGenre(2)">Adventure</a>
+                            <a ngbDropdownItem (click)="goToSearchGenre(7)">Mystery</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(4)">Comedy</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(10)">Fantasy</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(14)">Horror</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(30)">Sports</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(40)">Psychological</a>
+                            <a ngbDropdownItem  (click)="goToSearchGenre(36)">Slice Of Life</a>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+         
+            <li class="nav-item">
+                <button class="btn btn-outline-primary"  ngbTooltip="Work in progress :v !"><i class="far fa-question-circle"></i>Help</button>
+            </li>
+
+        </ul>
+    </div>
+
+
+</nav>
+
+
+
 
 
 

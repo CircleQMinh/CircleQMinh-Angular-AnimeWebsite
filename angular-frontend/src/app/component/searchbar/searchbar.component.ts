@@ -43,12 +43,26 @@ export class SearchbarComponent implements OnInit {
   }
   formatter = (x: { name: string }) => x.name;
   ngOnInit(): void {
+    if (this.router.url == "/anime") {
+      this.url = "anime"
+    }
+    else if (this.router.url == "/manga") {
+      this.url = "manga"
+    }
+    else {
+      this.url = "other"
+    }
   }
 
   selectedItem(item: any) {
     this.clickedItem = item.item;
-
-    this.router.navigateByUrl(`/anime/${this.clickedItem.id}`)
+    if (this.router.url == "/anime") {
+      this.router.navigateByUrl(`/anime/${this.clickedItem.id}`)
+    }
+    else{
+      this.router.navigateByUrl(`/manga/${this.clickedItem.id}`)
+    }
+   
     // let a : {name: string, flag: string} ={'name': 'Alabama', 'flag': '5/5c/Flag_of_Alabama.svg/45px-Flag_of_Alabama.svg.png'}
   }
   getInfo() {
@@ -56,23 +70,45 @@ export class SearchbarComponent implements OnInit {
 
     if (this.keyword.length > 2) {
       this.isLoading = true
-      this.infoService.getNavSearchResult(this.keyword).subscribe(
-        data => {
-          this.searchData = data.results
-          this.results = []
-
-          this.searchData.forEach(element => {
-            let item: { name: string, imgurl: string, id: string } = { 'name': element.title, 'imgurl': element.image_url, 'id': element.mal_id }
-            this.results.push(item)
-
-          });
-
-          this.isLoading = false
-        },
-        error => {
-
-        }
-      )
+      if (this.router.url == "/anime") {
+        this.infoService.getNavSearchResultAnime(this.keyword).subscribe(
+          data => {
+            this.searchData = data.results
+            this.results = []
+  
+            this.searchData.forEach(element => {
+              let item: { name: string, imgurl: string, id: string } = { 'name': element.title, 'imgurl': element.image_url, 'id': element.mal_id }
+              this.results.push(item)
+  
+            });
+  
+            this.isLoading = false
+          },
+          error => {
+  
+          }
+        )
+      }
+      else if (this.router.url == "/manga") {
+        this.infoService.getNavSearchResultManga(this.keyword).subscribe(
+          data => {
+            this.searchData = data.results
+            this.results = []
+  
+            this.searchData.forEach(element => {
+              let item: { name: string, imgurl: string, id: string } = { 'name': element.title, 'imgurl': element.image_url, 'id': element.mal_id }
+              this.results.push(item)
+  
+            });
+  
+            this.isLoading = false
+          },
+          error => {
+  
+          }
+        )
+      }
+      
     }
     else {
       this.keywordError = true;
