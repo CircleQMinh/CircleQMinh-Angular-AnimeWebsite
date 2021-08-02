@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchbarComponent } from './component/searchbar/searchbar.component';
 import { SearchComponent } from './component/search/search.component';
 import { AnimeInfoComponent } from './component/anime-info/anime-info.component';
+import { MangaComponent } from './component/manga/manga.component';
+import { MangaInfoComponent } from './component/manga-info/manga-info.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AnimeInfoComponent } from './component/anime-info/anime-info.component'
     FooterComponent,
     SearchbarComponent,
     SearchComponent,
-    AnimeInfoComponent
+    AnimeInfoComponent,
+    MangaComponent,
+    MangaInfoComponent
   ],
   imports: [
     BrowserModule,

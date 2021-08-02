@@ -146,16 +146,9 @@ input[type="checkbox"]:focus{outline:none;}
 .btn-group .dropdown-toggle:active{outline:none;}
 }
 /*! CSS Used from: https://zingtv-static.zdn.vn/skins/tv_v3/css/style-8.7.min.css */
-a{text-decoration:none;}
+
 .title-bar h3{text-transform:uppercase;}
-a,a:active,a:focus,a:hover{outline:0;}
-div,h3,h4,h5{margin:0;padding:0;}
-img{border:0;}
-h3,h4,h5{font-weight:400;font-size:100%;}
-img{max-width:100%;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;}
-.title-bar h3{font-family:cursive;}
-a{color:#0f820c;}
-a:hover{text-decoration:underline;}
+
 .group:after{display:block;visibility:hidden;clear:both;height:0;content:" ";font-size:0;}
 .group:after{content:"";}
 .group:after{display:table;clear:both;}
@@ -338,6 +331,21 @@ ul{list-style:none;}
 .loading{
     width: 20%;
 }
+.home-header{
+    margin: 0 auto;
+    width: 103.1%;
+    padding: 1%;
+    display: block;
+    background-color: cornflowerblue;
+    margin-left: -3.1%;
+}
+
+.body-anime{
+    background-color: #ffef73;
+}
+.body-manga{
+    background-color: #a5a3f0;
+}
 @media all and (min-width:1499px){
     #side-info-tab2{margin-top: 150%;}
  
@@ -444,6 +452,9 @@ ul{list-style:none;}
         margin-right: 5%;
         margin-bottom: 5%;
     }
+    .home-header{
+        font-size: 26px;
+    }
 }
 @media (max-width:300px){
     .navbar-brand{ font-size: 10px;}
@@ -451,7 +462,9 @@ ul{list-style:none;}
     #related{
         font-size: 10px;
     }
-   
+   .home-header{
+       font-size: 21px;
+   }
 }
 
   

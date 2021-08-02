@@ -14,9 +14,13 @@ export class InfomationService {
   getAnimeByYearAndSeason(year:string,season:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/season`);
   }
+
   // https://api.jikan.moe/v3/search/anime?q=Fate/Zero&page=1
-  getNavSearchResult(keyword:string):Observable<any>{
+  getNavSearchResultAnime(keyword:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/search/anime?q=${keyword}&page=1`);
+  }
+  getNavSearchResultManga(keyword:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/search/manga?q=${keyword}&page=1`);
   }
   getTopUpCommingAnime():Observable<any>{
     return this.http.get(`${this.apiUrl}/top/anime/1/upcoming`);
@@ -33,5 +37,30 @@ export class InfomationService {
   }
   getAnime(id:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/anime/${id}`);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getMangaNewest():Observable<any>{
+    return this.http.get(`${this.apiUrl}/search/manga?q=&order_by=members&sort=desc`);
+  }
+  getMangaChapterLong():Observable<any>{
+    return this.http.get(`${this.apiUrl}/search/manga?q=&order_by=chapters&sort=desc`);
+  }
+  getMangaTopRating():Observable<any>{
+    return this.http.get(`${this.apiUrl}/search/manga?q=&order_by=score&sort=desc`);
+  }
+  getManga(id:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/manga/${id}`);
   }
 }

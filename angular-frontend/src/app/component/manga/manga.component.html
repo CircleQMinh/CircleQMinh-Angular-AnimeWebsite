@@ -29,7 +29,7 @@
 </ngb-carousel>
 <div style="margin:0 auto;
 width: 50%;display: block;margin-top: 3%;text-align: center;">
-    <p class="search-header">Search for your favorite anime!</p>
+    <p class="search-header">Search for your favorite manga!</p>
 </div>
 <app-searchbar></app-searchbar>
 <div style="margin:0 auto;
@@ -71,8 +71,7 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
             </div>
             <div style="margin:0 auto;
     width: 100%;display: block;margin-top: 3%;text-align: center;">
-                <button type="button" class="btn btn-warning" ngbTooltip="Anime of the specified season"
-                    style="margin-right: 10px;" (click)="goToSearchSeason()">Year/Season</button>
+
                 <button type="button" class="btn btn-primary" (click)="goToSearchLetter()"
                     ngbTooltip="Search anime or manga by the letter/character it starts with">Starting Letter</button>
             </div>
@@ -101,13 +100,13 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
                 
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #bfd0df;"
                     id="info-tab">
-                    <h1 class="home-header"><i class="far fa-clock"></i> New Update!</h1>
+                    <h1 class="home-header"><i class="far fa-clock"></i> Recommended Manga!</h1>
                    
 
                     <div *ngFor="let o of newestItem,index as i">
                         <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
                             [closeDelay]="100" placement="auto" container="body" tooltipClass="tooltip-inner"
-                            routerLink="/anime/{{o.mal_id}}" *ngIf="o">
+                            routerLink="/manga/{{o.mal_id}}" *ngIf="o">
                             <div class="item">
                                 <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
                                     <img class="_slideimg" img_index="1" width="100%" height="100%"
@@ -198,15 +197,15 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 
 
                     <h2 class="right-box-header star-icon"><span>
-                            <i class="fas fa-trophy"></i> Top Upcoming Anime</span>
+                            <i class="fas fa-trophy"></i> Top Rated Manga</span>
                     </h2>
 
                     <div class="right-box-content" *ngIf="!isLoading">
                         <div class="content">
                             <ul class="list-top-movie">
                                 <li class="list-top-movie-item" id="list-top-movie-item" *ngFor="let o of upComingItem">
-                                    <a class="list-top-movie-link" title="{{o.title}}" routerLink="/anime/{{o.mal_id}}">
-                                        <span class="status">{{o.rank}}<img style="height: 10px;width: 10px;"
+                                    <a class="list-top-movie-link" title="{{o.title}}" routerLink="/manga/{{o.mal_id}}">
+                                        <span class="status">{{o.score}}<img style="height: 10px;width: 10px;"
                                                 src="https://image.flaticon.com/icons/png/128/889/889518.png">
                                         </span>
                                         <div class="list-top-movie-item-thumb"
@@ -216,8 +215,8 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
                                             <span class="list-top-movie-item-vn">{{o.title}}</span>
                                             <span class="list-top-movie-item-en">
                                                 {{o.type}}</span>
-                                            <span *ngIf="o.start_date"
-                                                class="list-top-movie-item-view">{{o.start_date}}</span>
+                                            <span *ngIf="o.chapters"
+                                                class="list-top-movie-item-view">Chapters : {{o.chapters }}</span>
                                             <span *ngIf="!o.start_date" class="list-top-movie-item-view">Coming
                                                 Soon!</span>
                                         </div>
@@ -237,15 +236,15 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 
 
                     <h2 class="right-box-header star-icon"><span>
-                            <i class="fas fa-trophy"></i> Top Rated Anime</span>
+                            <i class="fas fa-trophy"></i> Going for a long read?</span>
                     </h2>
 
                     <div class="right-box-content">
                         <div class="content">
                             <ul class="list-top-movie">
                                 <li class="list-top-movie-item" id="list-top-movie-item" *ngFor="let o of bestItems">
-                                    <a class="list-top-movie-link" title="{{o.title}}" routerLink="/anime/{{o.mal_id}}">
-                                        <span class="status">{{o.rank}}<img style="height: 10px;width: 10px;"
+                                    <a class="list-top-movie-link" title="{{o.title}}" routerLink="/manga/{{o.mal_id}}">
+                                        <span class="status">{{o.volumes}}<img style="height: 10px;width: 10px;"
                                                 src="https://image.flaticon.com/icons/png/128/889/889518.png">
                                         </span>
                                         <div class="list-top-movie-item-thumb"
@@ -255,8 +254,8 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
                                             <span class="list-top-movie-item-vn">{{o.title}}</span>
                                             <span class="list-top-movie-item-en">
                                                 Rating : {{o.score}} <i class="fas fa-star"></i></span>
-                                            <span *ngIf="o.start_date"
-                                                class="list-top-movie-item-view">{{o.start_date}}</span>
+                                            <span *ngIf="o.chapters"
+                                                class="list-top-movie-item-view">Chapters : {{o.chapters }}</span>
                                             <span *ngIf="!o.start_date" class="list-top-movie-item-view">Coming
                                                 Soon!</span>
                                         </div>

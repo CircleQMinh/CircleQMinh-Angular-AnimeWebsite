@@ -1,4 +1,6 @@
+import { Renderer2 } from '@angular/core';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
 
@@ -12,6 +14,7 @@ export class SearchComponent implements OnInit {
   @ViewChild('goUp', { static: true }) contentPage!: ElementRef;
 
   searchMode: number = 1
+  url: any
   isLoading: boolean = false
 
   type: string = ""
@@ -32,12 +35,33 @@ export class SearchComponent implements OnInit {
   seasonAnimeData: any[] = []
 
 
-  constructor(private searchService: SearchService,
+  constructor(private searchService: SearchService, private router: Router, private renderer: Renderer2,
+    private route: ActivatedRoute,
     private infoServeice: InfomationService) { }
 
   ngOnInit(): void {
-    this.setValue()
-    this.onSearchModeChange()
+
+    this.route.paramMap.subscribe(params => {
+      console.log(this.router.url)
+      if (this.router.url == "/search/anime") {
+        this.url = "anime"
+        this.renderer.addClass(document.body, 'body-anime');
+        this.renderer.removeClass(document.body, 'body-manga');
+      }
+      else if (this.router.url == "/search/manga") {
+        this.url = "manga"
+        this.renderer.addClass(document.body, 'body-manga');
+        this.renderer.removeClass(document.body, 'body-anime');
+      }
+      else {
+        this.url = "other"
+        this.renderer.addClass(document.body, 'body-anime');
+
+      }
+      this.url = this.route.snapshot.paramMap.get("url");
+      this.setValue()
+      this.onSearchModeChange()
+    })
 
   }
 
@@ -68,69 +92,158 @@ export class SearchComponent implements OnInit {
   onStatusGenreTypeChange() {
     this.pageNumber = 1
     this.isLoading = true
-    this.searchService.getSearchResultStatusTypeGenre(this.status, this.type, this.genre, this.pageNumber, this.order_by).subscribe(
-      data => {
-        this.results = data.results
-        this.collectionSize = Number(data.last_page) * this.pageSize
-        this.isLoading = false
-      }
-    )
+    if (this.url == "anime") {
+      this.searchService.getSearchResultStatusTypeGenreAnime(this.status, this.type, this.genre, this.pageNumber, this.order_by).subscribe(
+        data => {
+          this.results = data.results
+          this.collectionSize = Number(data.last_page) * this.pageSize
+          this.isLoading = false
+        }
+      )
+    }
+    else {
+      this.searchService.getSearchResultStatusTypeGenreManga(this.status, this.type, this.genre, this.pageNumber, this.order_by).subscribe(
+        data => {
+          this.results = data.results
+          this.collectionSize = Number(data.last_page) * this.pageSize
+          this.isLoading = false
+        }
+      )
+    }
+
   }
   onStatusGenreTypePageChange() {
     this.isLoading = true
-    this.searchService.getSearchResultStatusTypeGenre(this.status, this.type, this.genre, this.pageNumber, this.order_by).subscribe(
-      data => {
-        this.results = data.results
-        this.collectionSize = Number(data.last_page) * this.pageSize
-        this.isLoading = false
-      }
-    )
+    if (this.url == "anime") {
+      this.searchService.getSearchResultStatusTypeGenreAnime(this.status, this.type, this.genre, this.pageNumber, this.order_by).subscribe(
+        data => {
+          this.results = data.results
+          this.collectionSize = Number(data.last_page) * this.pageSize
+          this.isLoading = false
+        }
+      )
+    }
+    else {
+      this.searchService.getSearchResultStatusTypeGenreManga(this.status, this.type, this.genre, this.pageNumber, this.order_by).subscribe(
+        data => {
+          this.results = data.results
+          this.collectionSize = Number(data.last_page) * this.pageSize
+          this.isLoading = false
+        }
+      )
+    }
+
   }
   onSeasonYearChange() {
     this.pageNumber = 1
     this.isLoading = true
-    this.searchService.getSearchResultYearSeason(this.year, this.season).subscribe(
-      data => {
-        console.log(data.anime)
-        this.seasonAnimeData = data.anime
-        this.collectionSize = this.seasonAnimeData.length
-        this.onSeasonYearPageChange()
-        this.isLoading = false
-      }
-    )
+    if (this.url == "anime") {
+      this.searchService.getSearchResultYearSeasonAnime(this.year, this.season).subscribe(
+        data => {
+          console.log(data.anime)
+          this.seasonAnimeData = data.anime
+          this.collectionSize = this.seasonAnimeData.length
+          this.onSeasonYearPageChange()
+          this.isLoading = false
+        }
+      )
+    }
+    else {
+      this.searchService.getSearchResultYearSeasonManga(this.year, this.season).subscribe(
+        data => {
+          console.log(data.anime)
+          this.seasonAnimeData = data.anime
+          this.collectionSize = this.seasonAnimeData.length
+          this.onSeasonYearPageChange()
+          this.isLoading = false
+        }
+      )
+    }
+
   }
   onSeasonYearPageChange() {
     this.results = []
-    for (let i = 0; i < this.pageSize; i++) {
-      if(this.seasonAnimeData[i + this.pageSize * (this.pageNumber-1)]!=undefined){
-        this.results.push(this.seasonAnimeData[i + this.pageSize * (this.pageNumber-1)])
+    if (this.url == "anime") {
+      for (let i = 0; i < this.pageSize; i++) {
+        if (this.seasonAnimeData[i + this.pageSize * (this.pageNumber - 1)] != undefined) {
+          this.results.push(this.seasonAnimeData[i + this.pageSize * (this.pageNumber - 1)])
+        }
       }
     }
+    else {
+      for (let i = 0; i < this.pageSize; i++) {
+        if (this.seasonAnimeData[i + this.pageSize * (this.pageNumber - 1)] != undefined) {
+          this.results.push(this.seasonAnimeData[i + this.pageSize * (this.pageNumber - 1)])
+        }
+      }
+    }
+
   }
   onSearchLetterChange(lt: string) {
     this.letter = lt
     this.pageNumber = 1
     this.isLoading = true
-    this.searchService.getSearchResultLetter(this.letter, this.pageNumber).subscribe(
-      data => {
-        this.results = data.results
-        this.collectionSize = Number(data.last_page) * this.pageSize
-        this.isLoading = false
-      }
-    )
+    if (this.url == "anime") {
+      this.searchService.getSearchResultLetterAnime(this.letter, this.pageNumber).subscribe(
+        data => {
+          this.results = data.results
+          this.collectionSize = Number(data.last_page) * this.pageSize
+          this.isLoading = false
+        }
+      )
+    }
+    else {
+      this.searchService.getSearchResultLetterManga(this.letter, this.pageNumber).subscribe(
+        data => {
+          this.results = data.results
+          this.collectionSize = Number(data.last_page) * this.pageSize
+          this.isLoading = false
+        }
+      )
+    }
+
   }
   onSearchLetterPageChange() {
     this.isLoading = true
-    this.searchService.getSearchResultLetter(this.letter, this.pageNumber).subscribe(
-      data => {
-        this.results = data.results
-        this.collectionSize = Number(data.last_page) * this.pageSize
-        this.isLoading = false
-      }
-    )
+    if (this.url == "anime") {
+      this.searchService.getSearchResultLetterAnime(this.letter, this.pageNumber).subscribe(
+        data => {
+          this.results = data.results
+          this.collectionSize = Number(data.last_page) * this.pageSize
+          this.isLoading = false
+        }
+      )
+    }
+    else {
+      this.searchService.getSearchResultLetterManga(this.letter, this.pageNumber).subscribe(
+        data => {
+          this.results = data.results
+          this.collectionSize = Number(data.last_page) * this.pageSize
+          this.isLoading = false
+        }
+      )
+    }
+
   }
   showUp() {
     this.contentPage.nativeElement.scrollIntoView();
+  }
+  switchSite(u: string) {
+    console.log(u)
+    
+  }
+
+  onChange(value: any) {
+    let u = value.target.value;
+    if (u == "anime") {
+      this.router.navigateByUrl('/', { skipLocationChange: true })
+        .then(() => this.router.navigateByUrl("/search/anime"))
+
+    }
+    else {
+      this.router.navigateByUrl('/', { skipLocationChange: true })
+        .then(() => this.router.navigateByUrl("/search/manga"))
+    }
   }
 
 }
