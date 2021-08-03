@@ -94,9 +94,9 @@
 
 
                     </div>
-                    <ol class="breadcrumb" style="margin-top: 1%;width: 97%;" id="action-button-list1">
-                        <li><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i
-                                    class="fas fa-tv"></i> Watch</button></li>
+                    <ol *ngIf="!isLoading" class="breadcrumb" style="margin-top: 1%;width: 97%;" id="action-button-list1">
+                        <li routerLink="/read/{{manga.mal_id}}"><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i
+                                    class="fas fa-tv"></i> Read</button></li>
                         <li><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i
                                     class="fas fa-share"></i> Share</button></li>
                         <li><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i
@@ -110,64 +110,7 @@
             </div>
 
         </div>
-        <!-- <div class="row" *ngIf="!isLoading">
-            <div class=" col ">
-                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
-                        height: 100%;" id="info-tab">
-
-                    <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
-                        <li><a style="color: yellowgreen;"><span itemprop="name">Trailer
-                                </span></a></li>
-                        <li><a style="color: yellowgreen;"><span itemprop="name">Theme
-                                </span></a></li>
-                    </ol>
-                    <div class="section info-program" style="width: 97%;margin-bottom: 1%;display: flex;
-                        justify-content: flex-start;
-                    flex-wrap: wrap;" id="trailer-theme">
-
-                        <iframe [src]="trailer_url" frameborder="0" allowfullscreen *ngIf="trailer_url"
-                            class="trailer-player" height="360px"></iframe>
-                      
-                        <div class="theme-song">
-                            <div>
-                                <p *ngIf="!trailer_url">No trailer found...</p>
-                                <br>
-                                <p>Opening Themes : </p>
-                                <button type="button" class="btn btn-primary" (click)="op_list.toggle()"
-                                    [attr.aria-expanded]="!op_view">
-                                    Show/Hide
-                                </button>
-                                <div #op_list="ngbCollapse" [(ngbCollapse)]="op_view">
-                                    <ul *ngIf="op.length!=0">
-                                        <li *ngFor="let s of op">{{s}}</li>
-                                    </ul>
-                                    <ul *ngIf="op.length==0">
-                                        <li >No song available...</li>
-                                    </ul>
-                                </div>
-                                <br>
-                                <p>Ending Themes :</p>
-                                <button type="button" class="btn btn-primary" (click)="ed_list.toggle()"
-                                    [attr.aria-expanded]="!ed_view">
-                                    Show/Hide
-                                </button>
-                                <div #ed_list="ngbCollapse" [(ngbCollapse)]="ed_view">
-                                    <ul *ngIf="ed.length!=0">
-                                        <li *ngFor="let s of ed">{{s}}</li>
-                                    </ul>
-                                    <ul *ngIf="ed.length==0">
-                                        <li >No song available...</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
+       
         <div class="row" *ngIf="!isLoading">
             <div class=" col ">
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;

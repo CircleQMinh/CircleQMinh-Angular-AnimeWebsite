@@ -1,1 +1,99 @@
-<p>read works!</p>
+<app-nav></app-nav>
+<div class="container-fluid no-padding" style="margin-top: 80px;" #read>
+    <div class="row">
+
+        <div class="col">
+
+
+            <ol class="breadcrumb">
+                <li><a routerLink="/manga"><span itemprop="name">Read</span></a></li>
+                <li *ngIf="!isLoading" routerLink="/manga/{{manga.mal_id}}"><a style="background-color: transparent;color: yellowgreen;">
+                        {{manga.title_english}} - {{manga.title_japanese}}
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid no-padding">
+    <div class="row">
+        <div class="col">
+            <div class="list-movie-filter" style="margin-bottom: 5px;" id="list-movie-filter" *ngIf="!isLoading">
+                <div class="list-movie-filter-main">
+                    <form id="form-filter" class="form-inline">
+
+                        <div class="list-movie-filter-item" style="margin-left: 2%;">
+                            <label for="filter-eptype">Image Server :</label>
+                            <select class="form-control" id="filter-eptype" name="status" [(ngModel)]="current_server"
+                            (change)="onChapterChange()">
+                                <option value="1">1(USA)</option>
+                                <option value="2">2(Japan)</option>
+                                <option value="3">3(SEA)</option>
+                                <option value="4">4(India)</option>
+
+                            </select>
+                        </div>
+
+                        <div class="list-movie-filter-item">
+                            <label for="filter-genre">Chapter :</label>
+                            <select class="form-control" id="filter-genre" name="genre" [(ngModel)]="current_chap"
+                                (change)="onChapterChange()">
+
+                                <option *ngFor="let o of [].constructor(manga.chapters),index as i" [value]="i+1">Chap
+                                    {{i+1}}</option>
+                            </select>
+                        </div>
+
+                        <p style="color: red;">If image shows slow or error, you should choose another IMAGE SERVER</p>
+                    </form>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid no-padding" style="margin-top: 10px;" *ngIf="!isLoading">
+    <div class="row">
+
+        <div class="col">
+
+
+            <ol class="breadcrumb">
+                <li><a routerLink="/manga/{{manga.mal_id}}"><span itemprop="name"> {{manga.title_english}} -
+                            {{manga.title_japanese}}</span></a></li>
+                <li><a style="background-color: transparent;color: yellowgreen;">
+                        Chapter {{current_chap}}
+                    </a>
+                </li>
+
+                
+            </ol>
+
+          
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid no-padding" style="margin-top: 10px;" id="reader" >
+    <div class="row">
+
+        <div class="col">
+
+
+            <div class="manga-reader" *ngIf="isLoading">
+                <img src="https://media.giphy.com/media/W22b2eea2XxB6DiTWg/giphy.gif" class="img-manga" >  
+            </div>
+            <div *ngIf="!isLoading" class="manga-reader">
+                <img *ngFor="let o of chapter_page" src="{{o.large}}" class="img-manga"> 
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<app-footer></app-footer>

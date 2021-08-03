@@ -18,7 +18,8 @@ export class NavComponent implements OnInit {
   url!: string;
   isCollapsed: boolean = true
 
-
+  manga_url:string[]=["manga","read"]
+  anime_url:string[]=["anime","watch"]
 
 
   constructor(private infoService: InfomationService,private searchService:SearchService,private renderer: Renderer2,
@@ -26,12 +27,14 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.router.url=="/anime"){
+
+    let a = this.checkLink()
+    if(a==0){
       this.url="anime"
       this.renderer.addClass(document.body, 'body-anime');
       this.renderer.removeClass(document.body, 'body-manga');
     }
-    else if(this.router.url=="/manga"){
+    else if(a==1){
       this.url="manga"
       this.renderer.addClass(document.body, 'body-manga');
       this.renderer.removeClass(document.body, 'body-anime');
@@ -39,11 +42,26 @@ export class NavComponent implements OnInit {
     else{
       this.url="other"
       this.renderer.addClass(document.body, 'body-anime');
-      
+      this.renderer.removeClass(document.body, 'body-manga');
     }
 
   }
 
+  checkLink():number{
+    let s = this.router.url
+    for(let i=0;i<this.manga_url.length;i++){
+      if(s.includes(this.manga_url[i])){
+        return 1
+      }
+    }
+    for(let i=0;i<this.anime_url.length;i++){
+      if(s.includes(this.anime_url[i])){
+        return 0
+      }
+    }
+
+    return 69
+  }
 
 
   goToSearchGenre(genre:number){

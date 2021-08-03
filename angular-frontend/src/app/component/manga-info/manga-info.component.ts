@@ -58,7 +58,7 @@ export class MangaInfoComponent implements OnInit {
   getManga(){
     this.isLoading=true
     this.infoServeice.getManga(this.manga_id).subscribe(data=>{
-      //console.log(data)
+      console.log(data)
       this.manga=data
       this.adaptation=this.manga.related.Adaptation      
         this.sequel=this.manga.related.Sequel

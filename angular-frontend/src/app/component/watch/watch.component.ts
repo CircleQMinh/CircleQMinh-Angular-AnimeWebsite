@@ -69,11 +69,11 @@ export class WatchComponent implements OnInit {
     setTimeout(() => {
       this.infoService.getAnimeEp(this.anime_id, this.ep_page).subscribe(
         data => {
-          console.log(data)
+          // console.log(data)
           this.episodes = data.episodes
           this.episodes_last_page = data.episodes_last_page
-          console.log(this.episodes)
-          console.log(this.episodes_last_page)
+          // console.log(this.episodes)
+          // console.log(this.episodes_last_page)
           for (let i = 0; i < this.episodes_last_page; i++) {
             this.isCollapsed.push(true)
           }
