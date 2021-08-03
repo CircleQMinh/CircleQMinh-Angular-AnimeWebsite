@@ -1,0 +1,103 @@
+<app-nav></app-nav>
+<div class="container-fluid no-padding" style="margin-top: 80px;"  #watch>
+    <div class="row">
+
+        <div class="col">
+
+
+            <ol class="breadcrumb">
+                <li><a routerLink="/anime"><span itemprop="name">Watch</span></a></li>
+                <li *ngIf="!isLoading"><a style="background-color: transparent;color: yellowgreen;">
+                        {{anime.title}}
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+<div class="section row272" style="margin-top:5px ;" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col ">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+                        height: 100%;" id="info-tab">
+                    <div class="div-center-content" style="width: 80%;" *ngIf="video_url!=null">
+                        <iframe [src]="video_url" frameborder="0" allowfullscreen *ngIf="!isLoading" height="500px"
+                            width="100%" id="watch-video"></iframe>
+                    </div>
+
+
+                    <div *ngIf="isLoading||video_url==null" class="div-center-content" style="width: 80%;">
+                        <img src="https://media.giphy.com/media/W22b2eea2XxB6DiTWg/giphy.gif" class="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid no-padding" style="margin-top: 20px;">
+    <div class="row">
+
+        <div class="col">
+
+
+            <ol class="breadcrumb">
+                <li *ngIf="!isLoading"><a routerLink="/anime"><span itemprop="name"> {{anime.title}}</span></a></li>
+                <li *ngIf="!isLoading"><a style="background-color: transparent;color: yellowgreen;"><span
+                            itemprop="name"> EP {{current_ep}}</span></a></li>
+                <li *ngIf="!isLoading"><a style="background-color: transparent;color: yellowgreen;">
+                        {{current_ep_name }}
+                    </a>
+                </li>
+            </ol>
+            <ol class="breadcrumb" *ngIf="noUpdate">
+                <li ><a  style="background-color: transparent;color: yellowgreen;"><span itemprop="name"> This anime is being updated. Come back later :v !</span></a></li>
+
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="section row272" style="margin-top:5px ;" *ngIf="!noUpdate">
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col ">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+                        height: 100%;" id="info-tab">
+                    <ul class="nav nav-tabs" style="margin-bottom: 3px;" >
+                        <li class="active" id="tab-ep{{i}}"
+                            *ngFor="let o of [].constructor(episodes_last_page),index as i">
+                            <a (click)="switchEpTab(i)">{{i*100+1}}-{{i*100+100}}</a>
+                        </li>
+
+                    </ul>
+                    <div *ngIf="isLoading">
+                        <div class="spinner-border text-light" role="status">
+
+                        </div>
+                        <p style="color: yellowgreen;">Loading...</p>
+                    </div>
+                    <div [id]="'page'+i" *ngFor="let o of [].constructor(episodes_last_page),index as i"
+                        style="width: 97%;">
+                        <div *ngIf="isCollapsed[i]">
+                            <div class="card">                            
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-light" (click)="switchEp(ep.episode_id)"
+                                        *ngFor="let ep of episodes">{{ep.episode_id}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

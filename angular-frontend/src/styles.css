@@ -295,6 +295,19 @@ ul{list-style:none;}
 .fb_iframe_widget{display:inline-block;position:relative;}
 .fb_iframe_widget span{display:inline-block;position:relative;text-align:justify;}
 .fb_iframe_widget iframe{position:absolute;}
+.nav{padding-left:0;margin-bottom:0;list-style:none;}
+.nav:before,.nav:after{display:table;content:" ";}
+.nav:after{clear:both;}
+.nav:before,.nav:after{display:table;content:" ";}
+.nav:after{clear:both;}
+.nav > li{position:relative;display:block;}
+.nav > li > a{position:relative;display:block;padding:10px 15px;}
+.nav > li > a:hover,.nav > li > a:focus{text-decoration:none;background-color:#eeeeee;}
+.nav-tabs{border-bottom:1px solid #dddddd;}
+.nav-tabs > li{float:left;margin-bottom:-1px;}
+.nav-tabs > li > a{margin-right:2px;line-height:1.428571429;border:1px solid transparent;border-radius:4px 4px 0 0;}
+.nav-tabs > li > a:hover{border-color:#eeeeee;}
+.nav-tabs > li.active > a,.nav-tabs > li.active > a:hover,.nav-tabs > li.active > a:focus{color:#555555;cursor:default;background-color:#ffffff;border:1px solid #dddddd;border-bottom-color:transparent;}
 
 .category-quicknav{
     display: flex;
@@ -348,7 +361,9 @@ ul{list-style:none;}
 }
 @media all and (min-width:1499px){
     #side-info-tab2{margin-top: 150%;}
- 
+    #watch-video{
+        height: 600px;
+    }
     #anime-info{width:1200px;}
 }
 @media all and (min-width:1001px) and (max-width:1499px){
@@ -359,6 +374,9 @@ ul{list-style:none;}
 .fluid{width:1030px;}
 .title-bar{width: 96%;}
 #side-info-tab2{margin-top: 190%;}
+#watch-video{
+    height: 500px;
+}
 
 }
 @media all and (min-width:1000px) and (max-width:1280px){
@@ -366,6 +384,9 @@ ul{list-style:none;}
     .title-bar{width: 96%;}
     #side-info-tab2{margin-top: 190%;}
     .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 210px;width: 152px;}
+    #watch-video{
+        height: 465px;
+    }
 }
 @media all and (min-width:1500px){
 .fluid{width:1451px;}
@@ -379,6 +400,9 @@ ul{list-style:none;}
     }
     .fluid{width: 100%;}
     #slide-show1 .carousel-inner {height: 300px;}
+    #watch-video{
+        height: 435px;
+    }
 }
 @media all and (min-width:601px) and (max-width: 795px) {
     .info-program .box-description{    width: 55%;display: contents;
@@ -455,6 +479,9 @@ ul{list-style:none;}
     .home-header{
         font-size: 26px;
     }
+    #watch-video{
+        height: 170px;
+    }
 }
 @media (max-width:300px){
     .navbar-brand{ font-size: 10px;}
@@ -464,6 +491,9 @@ ul{list-style:none;}
     }
    .home-header{
        font-size: 21px;
+   }
+   #watch-video{
+       height: 170px;
    }
 }
 

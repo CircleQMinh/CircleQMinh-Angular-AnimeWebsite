@@ -38,7 +38,9 @@ export class InfomationService {
   getAnime(id:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/anime/${id}`);
   }
-
+  getAnimeEp(id:number,ep:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/anime/${id}/episodes/${ep}`);
+  }
 
 
 

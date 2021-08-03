@@ -16,6 +16,8 @@ import { SearchComponent } from './component/search/search.component';
 import { AnimeInfoComponent } from './component/anime-info/anime-info.component';
 import { MangaComponent } from './component/manga/manga.component';
 import { MangaInfoComponent } from './component/manga-info/manga-info.component';
+import { WatchComponent } from './component/watch/watch.component';
+import { ReadComponent } from './component/read/read.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { MangaInfoComponent } from './component/manga-info/manga-info.component'
     SearchComponent,
     AnimeInfoComponent,
     MangaComponent,
-    MangaInfoComponent
+    MangaInfoComponent,
+    WatchComponent,
+    ReadComponent
   ],
   imports: [
     BrowserModule,
