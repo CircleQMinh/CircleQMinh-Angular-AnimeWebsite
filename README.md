@@ -9,3 +9,4 @@ Visit site : https://circleqminh.github.io/random-anime-website/anime <br>
 31-07-2021 : chỉnh sửa css cho các trang.<br>
 01-08-2021 : thêm vài thông tin cho trang thông tin anime.<br>
 02-08-2021 : thêm trang dành cho manga.<br>
+03-08-2021 : thêm trang xem anime.<br>
