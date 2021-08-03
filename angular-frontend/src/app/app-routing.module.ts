@@ -4,6 +4,7 @@ import { AnimeInfoComponent } from './component/anime-info/anime-info.component'
 import { HomeComponent } from './component/home/home.component';
 import { MangaInfoComponent } from './component/manga-info/manga-info.component';
 import { MangaComponent } from './component/manga/manga.component';
+import { ReadComponent } from './component/read/read.component';
 import { SearchComponent } from './component/search/search.component';
 import { WatchComponent } from './component/watch/watch.component';
 
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'anime', component: HomeComponent },
   { path: 'manga', component: MangaComponent },
   { path: 'watch/:id', component: WatchComponent },
-  { path: 'watch/:id/', component: WatchComponent },
+  { path: 'read/:id', component: ReadComponent },
   { path: 'anime/:id', component: AnimeInfoComponent },
   { path: 'manga/:id', component: MangaInfoComponent },
   { path: 'search/:url', component: SearchComponent },

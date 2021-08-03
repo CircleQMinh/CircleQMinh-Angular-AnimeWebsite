@@ -65,4 +65,7 @@ export class InfomationService {
   getManga(id:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/manga/${id}`);
   }
+  getMangaInfo(id:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/manga/${id}/pictures`);
+  }
 }
