@@ -5,12 +5,15 @@ import { HomeComponent } from './component/home/home.component';
 import { MangaInfoComponent } from './component/manga-info/manga-info.component';
 import { MangaComponent } from './component/manga/manga.component';
 import { SearchComponent } from './component/search/search.component';
+import { WatchComponent } from './component/watch/watch.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/anime', pathMatch: 'full' },
   { path: 'anime', component: HomeComponent },
   { path: 'manga', component: MangaComponent },
+  { path: 'watch/:id', component: WatchComponent },
+  { path: 'watch/:id/', component: WatchComponent },
   { path: 'anime/:id', component: AnimeInfoComponent },
   { path: 'manga/:id', component: MangaInfoComponent },
   { path: 'search/:url', component: SearchComponent },
