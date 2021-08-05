@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class InfomationService {
 
   apiUrl:string="https://api.jikan.moe/v3";
+  firebaseUrl:string="https://random-website-7f4cf-default-rtdb.firebaseio.com/"
+
   constructor(private http: HttpClient,private route:Router) { }
 
   getAnimeByYearAndSeason(year:string,season:string):Observable<any>{
@@ -41,7 +43,9 @@ export class InfomationService {
   getAnimeEp(id:number,ep:number):Observable<any>{
     return this.http.get(`${this.apiUrl}/anime/${id}/episodes/${ep}`);
   }
-
+  getAnimeReviews(id:number,page:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/anime/${id}/reviews/${page}`);
+  }
 
 
 
@@ -68,4 +72,27 @@ export class InfomationService {
   getMangaInfo(id:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/manga/${id}/pictures`);
   }
+
+
+
+
+
+  postRandomInfo(postData:{username:string;password:string}):Observable<any>{
+    return this.http.post("https://random-website-7f4cf-default-rtdb.firebaseio.com/test.json",postData)
+  }
+  // getRandomInfo():Observable<any>{
+  //   return this.http.get("https://random-website-7f4cf-default-rtdb.firebaseio.com/test.json")
+  // }
+
+  saveRandomInfo(id:number,postData:{username:string;password:string}):Observable<any>{
+    return this.http.post(`${this.firebaseUrl}/comment/anime/${id}.json`,postData)
+  }
+
+  getRandomInfo(id:number):Observable<any>{
+    return this.http.get(`${this.firebaseUrl}/comment/${id}`)
+  }
+
+
+
+
 }
