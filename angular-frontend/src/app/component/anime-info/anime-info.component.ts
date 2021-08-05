@@ -30,7 +30,12 @@ export class AnimeInfoComponent implements OnInit {
   related:any[]=[];
   prequel:any[]=[]
 
+  current_review_page=1
+  mal_review:any[]=[]
+  fb_review:any[]=[]
+
   isLoading:Boolean=false
+  isLoadingComment:boolean=false
   constructor(private searchService: SearchService, private route: ActivatedRoute, private router: Router,
     private infoServeice: InfomationService,private sanitizer: DomSanitizer) { }
 
@@ -67,6 +72,12 @@ export class AnimeInfoComponent implements OnInit {
         this.isLoading=false
       }
     )
+    this.infoServeice.getAnimeReviews(this.anime_id,this.current_review_page).subscribe(
+      data=>{
+        console.log(data)
+        this.mal_review=data.reviews
+      }
+    )
   }
   checkRelatedLength():boolean{
     if(this.adaptation==undefined&&this.sequel==undefined&&this.side_story==undefined&&this.other==undefined&&this.prequel==undefined){
@@ -76,5 +87,17 @@ export class AnimeInfoComponent implements OnInit {
 
   }
 
+  readMore(){
+    this.current_review_page+=1
+    this.isLoadingComment=true
+    this.infoServeice.getAnimeReviews(this.anime_id,this.current_review_page).subscribe(
+      data=>{
+        data.reviews.forEach((element: any) => {
+          this.mal_review.push(element)
+        });
+        this.isLoadingComment=false
+      }
+    )
+  }
 
 }

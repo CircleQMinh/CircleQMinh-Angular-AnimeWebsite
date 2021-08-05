@@ -111,8 +111,17 @@ export class HomeComponent implements OnInit {
       this.isLoading=false
 
     }, 4500);
-
-
+    // let postData:{username:string;password:string}={username:"qwe",password:"123"}
+    // this.infoService.saveRandomInfo(918,postData).subscribe(
+    //   data=>{
+    //     console.log(data)
+    //   }
+    // )
+    // this.infoService.getRandomInfo().subscribe(
+    //   data=>{
+    //     console.log(data)
+    //   }
+    // )
   }
 
   goToSearchGenre(genre: number) {
