@@ -4,7 +4,7 @@
 <div class="container" style="margin-top: 100px;">
     <div class="div-center-content" style="margin-bottom: 20px;">
 
-        <img src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1628192627/logo_v5ukvv.png" style="width: 50%;">
+        <img  src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1628192627/logo_v5ukvv.png" style="width: 50%;">
         <strong style="display: block;font-size: 20px;">Login</strong>
         <strong style="display: block;font-size: 20px;" *ngIf="isLogin">You already login using {{emailLogin}}</strong>
     </div>
@@ -42,7 +42,12 @@
                 *ngIf="rf1.controls['password'].hasError('minlength')&&showFormError">
                 Password is must be atleast 8 characters!
             </div>
-            <div class="form-group row">
+            <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+
+            </div>
+
+            <p style="color: rgb(8, 8, 8);" *ngIf="isLoading"> Getting ready ...</p>
+            <div class="form-group row" *ngIf="!isLoading"> 
                 <div class="col " style="display: flex;
                 justify-content: center;">
                     <!-- <a routerLink="/register">Sign Up</a><br> -->

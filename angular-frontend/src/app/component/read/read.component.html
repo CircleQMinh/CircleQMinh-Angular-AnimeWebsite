@@ -102,22 +102,59 @@
                             </span></a></li>
 
                 </ol>
+                <p class="p-text-center" *ngIf="!isLogin">Login to add comment!</p>
+                <p class="p-text-center" *ngIf="isLogin">Add a comment!</p>
+                <div class="div-add-comment" *ngIf="isLogin">
+                    <p style="color: wheat;display: contents;">Posting as : {{username}}</p><br>
+                    <p style="color: wheat;display: contents;">Rating :</p>
+                    <ngb-rating [(rate)]=" comment_rating" style="color: wheat;"></ngb-rating>
+                    <div class="form-text small">
+                        <div *ngIf=" comment_rating" class="text-success">{{comment_rating}}/10</div>
+                        <div *ngIf=" comment_rating" class="text-success">Thanks!</div>
+                        <div *ngIf=" !comment_rating" class="text-danger">Please rate before posting!</div>
+                      </div>
+                    <textarea class="comment-box" placeholder="Your comment..." [(ngModel)]="comment_content">
+                        
+                    </textarea>
+                    <button type="button" (click)=" postComment()" class="btn btn-primary">Post</button>
+                </div>
+                <div class="spinner-border text-primary" role="status" *ngIf="isPosting">
+
+                </div>
+    
+                <p style="color: rgb(221, 210, 210);" *ngIf="isPosting"> Posting comment ...</p>
                 <div>
+                    <div class="panel-body" *ngFor="let o of fb_review">
+                        <header class="text-left">
+                            <div class="comment-user"><i class="fa fa-user"></i> {{o.username}}</div>
+                            <time class="comment-date"><i class="fa fa-clock-o"></i> {{o.date|date}} </time>
+                            <div class="comment-user"> Rating : {{o.rating}}<i
+                                    class="fa fa-star"></i></div>
+                        </header>
+                        <div class="comment-post">
+                            <p *ngIf="o.content.length>100   ">
+                                <app-read-more [content]="o.content" [limit]="300" [completeWords]="true">
+                                </app-read-more>
+                            </p>
+                            <p *ngIf="o.content.length<100   ">
+                               {{o.content}}
+                            </p>
+                        </div>
+                    </div>
                     <div class="panel-body" *ngFor="let o of mal_review">
                         <header class="text-left">
                             <div class="comment-user"><i class="fa fa-user"></i> {{o.reviewer.username}}</div>
-                            <time class="comment-date" ><i class="fa fa-clock-o"></i> {{o.date|date}}  </time>
-                            <div class="comment-user"> Rating : {{o.reviewer.scores.overall}}<i class="fa fa-star"></i></div>
+                            <time class="comment-date"><i class="fa fa-clock-o"></i> {{o.date|date}} </time>
+                            <div class="comment-user"> Rating : {{o.reviewer.scores.overall}}<i
+                                    class="fa fa-star"></i></div>
                         </header>
                         <div class="comment-post">
-                            <p>
-                                <app-read-more
-                              
-                                [content]="o.content"
-                                [limit]="300"
-                                [completeWords]="true"
-                              >
-                              </app-read-more>
+                            <p *ngIf="o.content.length>100   ">
+                                <app-read-more [content]="o.content" [limit]="300" [completeWords]="true">
+                                </app-read-more>
+                            </p>
+                            <p *ngIf="o.content.length<100   ">
+                               {{o.content}}
                             </p>
                         </div>
                     </div>
@@ -129,7 +166,8 @@
 
                 <p style="color: white;" *ngIf="isLoadingComment"> Getting more comments ...</p>
                 <div class="div-center-content" style="margin-bottom: 10px;">
-                    <button type="button" class="btn btn-danger" *ngIf="!isLoadingComment" (click)="readMore()">Show More </button>
+                    <button type="button" class="btn btn-danger" *ngIf="!isLoadingComment" (click)="readMore()">Show
+                        More </button>
                 </div>
 
             </div>
