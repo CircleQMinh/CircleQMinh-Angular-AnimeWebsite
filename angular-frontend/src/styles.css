@@ -512,6 +512,12 @@ ul{list-style:none;}
     #ep-name{
         font-size: 8px;
     }
+    .form-control{
+        font-size: 10px;
+    }
+    .form-group label{
+        font-size: 10px;
+    }
 }
 @media (max-width:300px){
     .navbar-brand{ font-size: 10px;}
@@ -529,6 +535,18 @@ ul{list-style:none;}
     font-size: 7px;
     }
     .panel-body{
+        font-size: 10px;
+    }
+    .form-control{
+        font-size: 8px;
+    }
+    .form-group label{
+        font-size: 8px;
+    }
+    .div-center-content{
+        font-size: 10px;
+    }
+    .div-center-content button{
         font-size: 10px;
     }
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subject, merge, OperatorFunction } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { AuthService } from 'src/app/service/auth.service';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
 @Component({
@@ -17,17 +18,19 @@ export class NavComponent implements OnInit {
   username!: string;
   url!: string;
   isCollapsed: boolean = true
-
+  isLogin:boolean = false
+  idLogin:string=""
   manga_url:string[]=["manga","read"]
   anime_url:string[]=["anime","watch"]
 
 
   constructor(private infoService: InfomationService,private searchService:SearchService,private renderer: Renderer2,
+    private authService:AuthService,
     private router: Router) { }
 
   ngOnInit(): void {
-
-
+    this.isLogin=this.authService.isLogin
+    this.idLogin=this.authService.idLogin
     let a = this.checkLink()
     if(a==0){
       this.url="anime"
@@ -45,6 +48,15 @@ export class NavComponent implements OnInit {
       this.renderer.removeClass(document.body, 'body-manga');
     }
 
+  }
+
+  signOut(){
+    this.authService.isLogin=false
+    this.isLogin=false
+    let a = this.router.url
+    console.log(a)
+    this.router.navigateByUrl('/', { skipLocationChange: true })
+    .then(() => this.router.navigateByUrl(a))
   }
 
   checkLink():number{

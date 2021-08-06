@@ -18,7 +18,10 @@ export class ReadComponent implements OnInit {
 
 
   isLoading: boolean = false
-
+  current_review_page=1
+  mal_review:any[]=[]
+  fb_review:any[]=[]
+  isLoadingComment:boolean=false
   constructor(private infoService: InfomationService, private route: ActivatedRoute, private router: Router,
   ) { }
 
@@ -46,7 +49,12 @@ export class ReadComponent implements OnInit {
         }
       )
     }, 2050);
-
+    this.infoService.getMangaReviews(this.manga_id,this.current_review_page).subscribe(
+      data=>{
+        //console.log(data)
+        this.mal_review=data.reviews
+      }
+    )
 
   }
 
@@ -56,5 +64,16 @@ export class ReadComponent implements OnInit {
       this.isLoading=false
     }, 3050);
   }
-
+  readMore(){
+    this.current_review_page+=1
+    this.isLoadingComment=true
+    this.infoService.getMangaReviews(this.manga_id,this.current_review_page).subscribe(
+      data=>{
+        data.reviews.forEach((element: any) => {
+          this.mal_review.push(element)
+        });
+        this.isLoadingComment=false
+      }
+    )
+  }
 }

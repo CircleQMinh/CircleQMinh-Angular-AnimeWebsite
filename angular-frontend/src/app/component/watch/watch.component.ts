@@ -21,6 +21,10 @@ export class WatchComponent implements OnInit {
   video_url: any
 
 
+  current_review_page=1
+  mal_review:any[]=[]
+  fb_review:any[]=[]
+
   random_url: string[] = [
     'https://www.youtube.com/embed/pHXDMe6QV-U?enablejsapi=1&wmode=opaque&autoplay=1&modestbranding=1&showinfo=0&rel=0',
     'https://www.youtube.com/embed/v1K4EAXe2oo?enablejsapi=1&wmode=opaque&autoplay=1&modestbranding=1&showinfo=0&rel=0',
@@ -39,6 +43,7 @@ export class WatchComponent implements OnInit {
 
 
   isLoading: boolean = false
+  isLoadingComment:boolean=false
   isCollapsed: boolean[] = []
   noUpdate: boolean = false
   noTrailer: boolean = true
@@ -91,6 +96,12 @@ export class WatchComponent implements OnInit {
       )
     }, 2050);
 
+    this.infoService.getAnimeReviews(this.anime_id,this.current_review_page).subscribe(
+      data=>{
+        //console.log(data)
+        this.mal_review=data.reviews
+      }
+    )
 
   }
   noUpdateFunction() {
@@ -144,5 +155,18 @@ export class WatchComponent implements OnInit {
   }
   randomInteger(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  readMore(){
+    this.current_review_page+=1
+    this.isLoadingComment=true
+    this.infoService.getAnimeReviews(this.anime_id,this.current_review_page).subscribe(
+      data=>{
+        data.reviews.forEach((element: any) => {
+          this.mal_review.push(element)
+        });
+        this.isLoadingComment=false
+      }
+    )
   }
 }

@@ -32,7 +32,7 @@
                     <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
 
                     </div>
-                    <p style="color: white;" *ngIf="isLoading"> Getting search results ...</p>
+                    <p style="color: white;" *ngIf="isLoading"> Getting  results ...</p>
                     <div class="section info-program" style="width: 97%;margin-bottom: 1%;padding-left: 15px;"
                         *ngIf="!isLoading">
                         <div class="section-content fluid" id="anime-info">
@@ -194,6 +194,51 @@
                     " id="related" *ngIf="!checkRelatedLength()"> 
                           <p style="margin: 3%;">No related info found...</p>
                     </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" *ngIf="!isLoading">
+            <div class=" col ">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+                        height: 100%;" id="info-tab">
+
+                    <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
+                        <li><a style="color: yellowgreen;"><span itemprop="name">Comments
+                                </span></a></li>
+
+                    </ol>
+                    <div>
+                        <div class="panel-body" *ngFor="let o of mal_review">
+                            <header class="text-left">
+                                <div class="comment-user"><i class="fa fa-user"></i> {{o.reviewer.username}}</div>
+                                <time class="comment-date" ><i class="fa fa-clock-o"></i> {{o.date|date}}  </time>
+                                <div class="comment-user"> Rating : {{o.reviewer.scores.overall}}<i class="fa fa-star"></i></div>
+                            </header>
+                            <div class="comment-post">
+                                <p>
+                                    <app-read-more
+                                  
+                                    [content]="o.content"
+                                    [limit]="300"
+                                    [completeWords]="true"
+                                  >
+                                  </app-read-more>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-border text-primary" role="status" *ngIf="isLoadingComment">
+
+                    </div>
+
+                    <p style="color: white;" *ngIf="isLoadingComment"> Getting more comments ...</p>
+                    <div class="div-center-content" style="margin-bottom: 10px;">
+                        <button type="button" class="btn btn-danger" *ngIf="!isLoadingComment" (click)="readMore()">Show More </button>
+                    </div>
+
                 </div>
             </div>
 
