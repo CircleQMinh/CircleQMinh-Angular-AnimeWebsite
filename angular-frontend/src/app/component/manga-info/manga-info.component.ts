@@ -35,7 +35,11 @@ export class MangaInfoComponent implements OnInit {
   manga:any
   manga_id:any
  
-
+  
+  current_review_page=1
+  mal_review:any[]=[]
+  fb_review:any[]=[]
+  isLoadingComment:boolean=false
   isLoading:Boolean=false
   constructor(private searchService: SearchService, private route: ActivatedRoute, private router: Router,
     private infoServeice: InfomationService,private sanitizer: DomSanitizer) { }
@@ -67,6 +71,24 @@ export class MangaInfoComponent implements OnInit {
         this.other=this.manga.related.Other
         this.isLoading=false
     })
+    this.infoServeice.getMangaReviews(this.manga_id,this.current_review_page).subscribe(
+      data=>{
+        //console.log(data)
+        this.mal_review=data.reviews
+      }
+    )
+  }
+  readMore(){
+    this.current_review_page+=1
+    this.isLoadingComment=true
+    this.infoServeice.getMangaReviews(this.manga_id,this.current_review_page).subscribe(
+      data=>{
+        data.reviews.forEach((element: any) => {
+          this.mal_review.push(element)
+        });
+        this.isLoadingComment=false
+      }
+    )
   }
 
 }

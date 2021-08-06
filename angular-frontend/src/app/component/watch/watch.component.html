@@ -1,5 +1,5 @@
 <app-nav></app-nav>
-<div class="container-fluid no-padding" style="margin-top: 80px;"  #watch>
+<div class="container-fluid no-padding" style="margin-top: 80px;" #watch>
     <div class="row">
 
         <div class="col">
@@ -17,7 +17,7 @@
 
 </div>
 
-<div class="section row272" style="margin-top:5px ;" >
+<div class="section row272" style="margin-top:5px ;">
     <div class="container-fluid">
         <div class="row">
             <div class=" col ">
@@ -54,7 +54,8 @@
                 </li>
             </ol>
             <ol class="breadcrumb" *ngIf="noUpdate">
-                <li ><a  style="background-color: transparent;color: yellowgreen;"><span itemprop="name"> This anime is being updated. Come back later :v !</span></a></li>
+                <li><a style="background-color: transparent;color: yellowgreen;"><span itemprop="name"> This anime is
+                            being updated. Come back later :v !</span></a></li>
 
             </ol>
         </div>
@@ -69,7 +70,7 @@
             <div class=" col ">
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
                         height: 100%;" id="info-tab">
-                    <ul class="nav nav-tabs" style="margin-bottom: 3px;" >
+                    <ul class="nav nav-tabs" style="margin-bottom: 3px;">
                         <li class="active" id="tab-ep{{i}}"
                             *ngFor="let o of [].constructor(episodes_last_page),index as i">
                             <a (click)="switchEpTab(i)">{{i*100+1}}-{{i*100+100}}</a>
@@ -85,7 +86,7 @@
                     <div [id]="'page'+i" *ngFor="let o of [].constructor(episodes_last_page),index as i"
                         style="width: 97%;">
                         <div *ngIf="isCollapsed[i]">
-                            <div class="card">                            
+                            <div class="card">
                                 <div class="card-body">
                                     <button type="button" class="btn btn-light" (click)="switchEp(ep.episode_id)"
                                         *ngFor="let ep of episodes">{{ep.episode_id}}</button>
@@ -96,6 +97,47 @@
 
                 </div>
             </div>
+        </div>
+        <div class="row" *ngIf="!isLoading" style="margin-top: 10px;">
+            <div class=" col ">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+                        height: 100%;" id="info-tab">
+
+                    <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
+                        <li><a style="color: yellowgreen;"><span itemprop="name">Comments
+                                </span></a></li>
+
+                    </ol>
+                    <div>
+                        <div class="panel-body" *ngFor="let o of mal_review">
+                            <header class="text-left">
+                                <div class="comment-user"><i class="fa fa-user"></i> {{o.reviewer.username}}</div>
+                                <time class="comment-date"><i class="fa fa-clock-o"></i> {{o.date|date}} </time>
+                                <div class="comment-user"> Rating : {{o.reviewer.scores.overall}}<i
+                                        class="fa fa-star"></i></div>
+                            </header>
+                            <div class="comment-post">
+                                <p>
+                                    <app-read-more [content]="o.content" [limit]="300" [completeWords]="true">
+                                    </app-read-more>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-border text-primary" role="status" *ngIf="isLoadingComment">
+
+                    </div>
+
+                    <p style="color: white;" *ngIf="isLoadingComment"> Getting more comments ...</p>
+                    <div class="div-center-content" style="margin-bottom: 10px;">
+                        <button type="button" class="btn btn-danger" *ngIf="!isLoadingComment" (click)="readMore()">Show
+                            More </button>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

@@ -52,7 +52,7 @@ export class AnimeInfoComponent implements OnInit {
     this.infoServeice.getAnime(this.anime_id).subscribe(
       data=>{
         this.anime=data
-        console.log(this.anime)
+       // console.log(this.anime)
         
         if(this.anime.trailer_url!=null){
           this.trailer_url=this.sanitizer.bypassSecurityTrustResourceUrl(this.anime.trailer_url)
@@ -74,7 +74,7 @@ export class AnimeInfoComponent implements OnInit {
     )
     this.infoServeice.getAnimeReviews(this.anime_id,this.current_review_page).subscribe(
       data=>{
-        console.log(data)
+        //console.log(data)
         this.mal_review=data.reviews
       }
     )

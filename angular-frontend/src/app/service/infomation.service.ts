@@ -72,25 +72,13 @@ export class InfomationService {
   getMangaInfo(id:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/manga/${id}/pictures`);
   }
-
-
-
-
-
-  postRandomInfo(postData:{username:string;password:string}):Observable<any>{
-    return this.http.post("https://random-website-7f4cf-default-rtdb.firebaseio.com/test.json",postData)
-  }
-  // getRandomInfo():Observable<any>{
-  //   return this.http.get("https://random-website-7f4cf-default-rtdb.firebaseio.com/test.json")
-  // }
-
-  saveRandomInfo(id:number,postData:{username:string;password:string}):Observable<any>{
-    return this.http.post(`${this.firebaseUrl}/comment/anime/${id}.json`,postData)
+  getMangaReviews(id:number,page:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/manga/${id}/reviews/${page}`);
   }
 
-  getRandomInfo(id:number):Observable<any>{
-    return this.http.get(`${this.firebaseUrl}/comment/${id}`)
-  }
+
+
+
 
 
 

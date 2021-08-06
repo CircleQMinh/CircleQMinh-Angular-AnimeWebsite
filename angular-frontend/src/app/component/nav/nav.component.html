@@ -4,7 +4,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-warning" style="z-index: 999;height: 90px;margin-top: -25px;position: fixed;
 top: 20;
 width: 100%;" *ngIf="url=='other'">
-    <a class="navbar-brand" routerLink="/anime"><i class="fas fa-store"></i> Circle's Random Site</a>
+     <a class="navbar-brand" routerLink="/anime"> 
+        <img src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1628192627/logo_v5ukvv.png" 
+        style="width: 40px;height: 40px;"
+       >Circle's Random Site</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
@@ -39,7 +42,25 @@ width: 100%;" *ngIf="url=='other'">
             <li class="nav-item">
                 <button class="btn btn-outline-primary"  ngbTooltip="Work in progress :v !"><i class="far fa-question-circle"></i>Help</button>
             </li>
+            <li class="nav-item" *ngIf="!isLogin">
+                <button class="btn btn-outline-primary"  routerLink="/login" ><i class="fas fa-sign-in-alt"></i>Login</button>
+            </li>
+            <li class="nav-item dropdown"  *ngIf="isLogin">
+                <div class="btn-group mr-3">
+                    <div class="btn-group" ngbDropdown role="group">
+                        <button class="btn btn-outline-primary"   aria-label="dropdownMenu1" id="dropdownMenu1" ngbDropdownToggle>
+                            <i class="far fa-user"></i>
+                            My Account</button>
+                        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu1">
+                            <a ngbDropdownItem routerLink="/profile/{{idLogin}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
+                            <hr>
+                            <a ngbDropdownItem (click)="signOut()"><i class="fas fa-sign-out-alt"></i>
+                                Logout</a>
 
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 
@@ -69,7 +90,10 @@ width: 100%;" *ngIf="url=='other'">
 <nav class="navbar navbar-expand-lg navbar-light bg-warning" style="z-index: 999;height: 90px;margin-top: -25px;position: fixed;
 top: 20;
 width: 100%;" *ngIf="url=='anime'">
-    <a class="navbar-brand" routerLink="/anime"><i class="fas fa-store"></i> Circle's Random Anime Site</a>
+     <a class="navbar-brand" routerLink="/anime"> 
+        <img src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1628192627/logo_v5ukvv.png" 
+        style="width: 40px;height: 40px;"
+       >Circle's Random Anime Site</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
@@ -160,7 +184,25 @@ width: 100%;" *ngIf="url=='anime'">
             <li class="nav-item">
                 <button class="btn btn-outline-primary"  ngbTooltip="Work in progress :v !"><i class="far fa-question-circle"></i>Help</button>
             </li>
+            <li class="nav-item" *ngIf="!isLogin">
+                <button class="btn btn-outline-primary"  routerLink="/login" ><i class="fas fa-sign-in-alt"></i>Login</button>
+            </li>
+            <li class="nav-item dropdown"  *ngIf="isLogin">
+                <div class="btn-group mr-3">
+                    <div class="btn-group" ngbDropdown role="group">
+                        <button class="btn btn-outline-primary"   aria-label="dropdownMenu1" id="dropdownMenu1" ngbDropdownToggle>
+                            <i class="far fa-user"></i>
+                            My Account</button>
+                        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu1">
+                            <a ngbDropdownItem routerLink="/profile/{{idLogin}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
+                            <hr>
+                            <a ngbDropdownItem (click)="signOut()"><i class="fas fa-sign-out-alt"></i>
+                                Logout</a>
 
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 
@@ -208,7 +250,10 @@ width: 100%;" *ngIf="url=='anime'">
 <nav class="navbar navbar-expand-lg navbar-light bg-warning" style="z-index: 999;height: 90px;margin-top: -25px;position: fixed;
 top: 20;
 width: 100%;" *ngIf="url=='manga'">
-    <a class="navbar-brand" routerLink="/manga"><i class="fas fa-store"></i> Circle's Random Manga Site</a>
+    <a class="navbar-brand" routerLink="/manga"> 
+         <img src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1628192627/logo_v5ukvv.png" 
+         style="width: 40px;height: 40px;"
+        >Circle's Random Manga Site</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
@@ -262,7 +307,26 @@ width: 100%;" *ngIf="url=='manga'">
             <li class="nav-item">
                 <button class="btn btn-outline-primary"  ngbTooltip="Work in progress :v !"><i class="far fa-question-circle"></i>Help</button>
             </li>
+            <li class="nav-item" *ngIf="!isLogin">
+                <button class="btn btn-outline-primary"  
+                routerLink="/login"><i class="fas fa-sign-in-alt"></i>Login</button>
+            </li>
+            <li class="nav-item dropdown"  *ngIf="isLogin">
+                <div class="btn-group mr-3">
+                    <div class="btn-group" ngbDropdown role="group">
+                        <button class="btn btn-outline-primary"   aria-label="dropdownMenu1" id="dropdownMenu1" ngbDropdownToggle>
+                            <i class="far fa-user"></i>
+                            My Account</button>
+                        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu1">
+                            <a ngbDropdownItem routerLink="/profile/{{idLogin}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
+                            <hr>
+                            <a ngbDropdownItem (click)="signOut()"><i class="fas fa-sign-out-alt"></i>
+                                Logout</a>
 
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 
