@@ -46,7 +46,9 @@ export class InfomationService {
   getAnimeReviews(id:number,page:number):Observable<any>{
     return this.http.get(`${this.apiUrl}/anime/${id}/reviews/${page}`);
   }
-
+  getAnimeFBReviews(id:number):Observable<any>{
+    return this.http.get(`${this.firebaseUrl}comment/anime/${id}.json`);
+  }
 
 
 
@@ -75,7 +77,9 @@ export class InfomationService {
   getMangaReviews(id:number,page:number):Observable<any>{
     return this.http.get(`${this.apiUrl}/manga/${id}/reviews/${page}`);
   }
-
+  getMangaFBReviews(id:number):Observable<any>{
+    return this.http.get(`${this.firebaseUrl}comment/manga/${id}.json`);
+  }
 
 
 
