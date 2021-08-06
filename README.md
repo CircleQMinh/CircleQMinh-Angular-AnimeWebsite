@@ -12,3 +12,4 @@ Visit site : https://circleqminh.github.io/random-anime-website/anime <br>
 03-08-2021 : thêm trang xem anime.<br>
 04-08-2021 : thêm trang đọc manga.<br>
 05-08-2021 : thêm bình luận.<br>
+06-08-2021 : thêm login-register-passwordrecover.<br>
