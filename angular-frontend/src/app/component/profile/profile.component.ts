@@ -120,7 +120,20 @@ export class ProfileComponent implements OnInit {
       this.animeItem.push(this.favorite_anime[i + this.pageSizeAnime * (this.pageAnime-1)])
     }
   }
-  
+  nextAnimePage() {
+    if(this.favorite_anime.length/this.pageSizeAnime>this.pageAnime){
+      this.pageAnime+=1
+      this.getFavAnimePage()
+    }
+    
+  }
+  prevAnimePage() {
+    if(1<this.pageAnime){
+      this.pageAnime-=1
+      this.getFavAnimePage()
+     
+    }
+  }
 
   getFavoriteManga(){
     this.authService.getUserFavManga(this.user_id).pipe(map(
@@ -150,7 +163,20 @@ export class ProfileComponent implements OnInit {
       this.mangaItem.push(this.favorite_manga[i + this.pageSizeManga * (this.pageManga-1)])
     }
   }
-
+  nextMangaPage() {
+    if(this.favorite_manga.length/this.pageSizeManga>this.pageManga){
+      this.pageManga+=1
+      this.getFavMangaPage()
+    }
+    
+  }
+  prevMangaPage() {
+    if(1<this.pageManga){
+      this.pageManga-=1
+      this.getFavMangaPage()
+     
+    }
+  }
   signOut(){
     this.authService.isLogin=false
     this.isLogin=false
