@@ -68,4 +68,27 @@ export class AuthService {
       rating:rating,
       date:date})
   }
+
+  addFavAnime(user_id:string,anime_id:number,url:string,name:string):Observable<any>{
+    return this.http.post(`${this.firebaseUrl}favorite/anime.json`,{
+      user_id:user_id,
+      anime_id:anime_id,
+      url:url,
+      anime:name})
+  }
+  getUserFavAnime(uid:string):Observable<any>{
+    return this.http.get(`${this.firebaseUrl}favorite/anime.json?orderBy="user_id"&equalTo="${uid}"&print=pretty`)
+  }
+
+  addFavManga(user_id:string,manga_id:number,url:string,name:string):Observable<any>{
+    return this.http.post(`${this.firebaseUrl}favorite/manga.json`,{
+      user_id:user_id,
+      manga_id:manga_id,
+      url:url,
+      manga:name})
+  }
+  getUserFavManga(uid:string):Observable<any>{
+    return this.http.get(`${this.firebaseUrl}favorite/manga.json?orderBy="user_id"&equalTo="${uid}"&print=pretty`)
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { HotToastService } from '@ngneat/hot-toast';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
 
@@ -38,7 +39,7 @@ export class MangaComponent implements OnInit {
 
   isLoading: boolean = true
 
-  constructor(private infoService: InfomationService, private searchService: SearchService,
+  constructor(private infoService: InfomationService, private searchService: SearchService,private toast: HotToastService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -62,11 +63,12 @@ export class MangaComponent implements OnInit {
         },
         error => {
           console.log(error)
+          this.toast.error("Failed to load data from API")
         }
       )
 
 
-    }, 1000);
+    }, 2000);
     setTimeout(() => {
       this.infoService.getMangaTopRating().subscribe(
         data => {
@@ -76,11 +78,12 @@ export class MangaComponent implements OnInit {
         },
         error => {
           console.log(error)
+          this.toast.error("Failed to load data from API")
         }
       )
 
 
-    }, 2050);
+    }, 3050);
     setTimeout(() => {
       this.newSoure.forEach(async element => {
         var response = await this.infoService.getAnimeNews(element).toPromise();
@@ -90,26 +93,30 @@ export class MangaComponent implements OnInit {
             this.dataNewpaper.push(a)
           });
         }
+        else{
+          this.toast.error("Failed to load data from API")
+        }
         this.pageNewpaperCount = this.dataNewpaper.length
         this.shuffleNew(this.dataNewpaper)
         this.getAnimeNewPage()
       });
 
 
-    }, 3200);
+    }, 4200);
     setTimeout(() => {
 
       this.infoService.getMangaChapterLong().subscribe(
         data => {
           this.dataBest = data.results
           this.getBest()
-
+          this.isLoading=false
         },
         error => {
           console.log(error)
+          this.toast.error("Failed to load data from API")
         }
       )
-      this.isLoading=false
+    
 
     }, 4500);
 

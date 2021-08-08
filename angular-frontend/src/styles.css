@@ -398,8 +398,25 @@ ul{list-style:none;}
     color: wheat;
     text-align: center;
 }
-
-
+.div-display{
+    border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+                        height: 100%;
+    color: wheat;
+}
+.img-ava{
+    width: 80px;
+    background-color: wheat;
+    border-radius: 50%;
+}
+.fav-anime{
+    width: 100%;
+    padding: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0;
+}
 @media all and (min-width:1499px){
     #side-info-tab2{margin-top: 150%;}
     #watch-video{
@@ -535,6 +552,9 @@ ul{list-style:none;}
     .form-group label{
         font-size: 10px;
     }
+    .div-center-content{
+        font-size: 8px;
+    }
 }
 @media (max-width:300px){
     .navbar-brand{ font-size: 10px;}
@@ -565,6 +585,15 @@ ul{list-style:none;}
     }
     .div-center-content button{
         font-size: 10px;
+    }
+    .fav-anime{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .div-center-content{
+        font-size: 8px;
+        width: 80%;
     }
 }
 

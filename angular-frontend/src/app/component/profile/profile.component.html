@@ -1,0 +1,135 @@
+<app-nav></app-nav>
+<div class="container-fluid no-padding" style="margin-top: 80px;">
+    <div class="row">
+
+        <div class="col">
+
+
+            <ol class="breadcrumb">
+                <li style="color: yellowgreen;"><a><span itemprop="name">Profile</span></a></li>
+
+            </ol>
+        </div>
+    </div>
+
+</div>
+<div class="container-fluid no-padding" *ngIf="isLoading">
+    <div class="row">
+
+        <div class="col">
+            <div class="div-center-content">
+                <div class="spinner-border text-primary" role="status">
+
+                </div>
+                <p style="color: black;"> Loading...</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container-fluid no-padding" *ngIf="!isLoading">
+    <div class="row">
+        <div class="col">
+            <div class="div-display">
+
+                <div class="div-center-content" style="margin-bottom: 10px;">
+                    <img class="img-ava"
+                        src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1628192627/logo_v5ukvv.png">
+                    <br>
+                    <strong>User:</strong>{{username}}<br>
+                    <strong>ID:</strong>{{user_id}}<br>
+                   
+                    <hr>
+                    <button type="button" class="btn btn-success" routerLink="/password-recover"><i class="fas fa-lock" ></i>New Password</button>
+                    <button (click)="signOut()" type="button" class="btn btn-danger" style="margin-left: 15px;"><i class="fas fa-sign-out-alt"></i>Logout</button>
+                    <hr>
+                </div>
+                <h1 class="home-header" ><i class="far fa-heart"></i> My Favorite Anime</h1>
+                <div *ngIf="favorite_anime.length==0">
+                    <p>
+                        No anime added to favorite list yet!
+                    </p>
+                </div>
+                <div *ngIf="favorite_anime.length!=0" class="fav-anime">
+                    <div *ngFor="let o of animeItem,index as i">
+                        <div class="subtray" ngbTooltip="{{o.anime }} " [openDelay]="100"
+                            [closeDelay]="100" placement="auto" container="body" tooltipClass="tooltip-inner"
+                            routerLink="/anime/{{o.anime_id}}" *ngIf="o">
+                            <div class="item" style="height: 245px;width: 175px;">
+                                <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                    <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                        src="{{o.url}}" alt="???"></a>
+
+                                <div class="description">
+                                    <h4 class="title">
+                                        <a class="_trackLink">
+                                            {{o.anime}}
+                                        </a>
+                                    </h4>
+                                </div><!-- END .description -->
+                            </div>
+                            <!--END .item-->
+                        </div>
+                        <!--END .subtray-->
+                    </div>
+                </div>
+                <div class="div-center-content">
+
+                            <ngb-pagination [(page)]="pageAnime" [pageSize]="pageSizeAnime" size="sm"
+                                [collectionSize]="favorite_anime.length" [maxSize]="3" [boundaryLinks]=true
+                                (pageChange)="getFavAnimePage()">
+                            </ngb-pagination>
+
+                </div>
+
+
+
+
+                <h1 class="home-header" ><i class="far fa-heart"></i> My Favorite Manga</h1>
+                <div *ngIf="favorite_manga.length==0">
+                    <p>
+                        No manga added to favorite list yet!
+                    </p>
+                </div>
+                <div *ngIf="favorite_manga.length!=0" class="fav-anime">
+                    <div *ngFor="let o of mangaItem,index as i">
+                        <div class="subtray" ngbTooltip="{{o.manga }} " [openDelay]="100"
+                            [closeDelay]="100" placement="auto" container="body" tooltipClass="tooltip-inner"
+                            routerLink="/anime/{{o.manga_id}}" *ngIf="o">
+                            <div class="item" style="height: 245px;width: 175px;">
+                                <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                    <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                        src="{{o.url}}" alt="???"></a>
+
+                                <div class="description">
+                                    <h4 class="title">
+                                        <a class="_trackLink">
+                                            {{o.manga}}
+                                        </a>
+                                    </h4>
+                                </div><!-- END .description -->
+                            </div>
+                            <!--END .item-->
+                        </div>
+                        <!--END .subtray-->
+                    </div>
+                </div>
+                <div class="div-center-content">
+
+                            <ngb-pagination [(page)]="pageManga" [pageSize]="pageSizeManga" size="sm"
+                                [collectionSize]="favorite_manga.length" [maxSize]="3" [boundaryLinks]=true
+                                (pageChange)="getFavMangaPage()">
+                            </ngb-pagination>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<app-footer></app-footer>

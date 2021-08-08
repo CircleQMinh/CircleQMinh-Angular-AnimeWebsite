@@ -6,6 +6,7 @@ import { LoginComponent } from './component/login/login.component';
 import { MangaInfoComponent } from './component/manga-info/manga-info.component';
 import { MangaComponent } from './component/manga/manga.component';
 import { PasswordRecoverComponent } from './component/password-recover/password-recover.component';
+import { ProfileComponent } from './component/profile/profile.component';
 import { ReadComponent } from './component/read/read.component';
 import { RegisterComponent } from './component/register/register.component';
 import { SearchComponent } from './component/search/search.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'search/:url', component: SearchComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'password-recover', component: PasswordRecoverComponent },
   {path: 'search', redirectTo: '/search/anime', pathMatch: 'full'},
   {path: '**', redirectTo: '/error', pathMatch: 'full'}
