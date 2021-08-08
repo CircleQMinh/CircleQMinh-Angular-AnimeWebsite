@@ -22,6 +22,8 @@ import { ReadMoreComponent } from './component/read-more/read-more.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { PasswordRecoverComponent } from './component/password-recover/password-recover.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { NewsComponent } from './component/news/news.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { PasswordRecoverComponent } from './component/password-recover/password-
     ReadMoreComponent,
     LoginComponent,
     RegisterComponent,
-    PasswordRecoverComponent
+    PasswordRecoverComponent,
+    ProfileComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

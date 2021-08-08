@@ -52,6 +52,7 @@ export class MangaInfoComponent implements OnInit {
   username:string=""
   isPosting:boolean=false
 
+  isFav:boolean=false
 
   constructor(private searchService: SearchService, private route: ActivatedRoute, private router: Router,private authService: AuthService,
     private infoServeice: InfomationService,private sanitizer: DomSanitizer, private toast: HotToastService) { }
@@ -84,6 +85,34 @@ export class MangaInfoComponent implements OnInit {
         this.other=this.manga.related.Other
         this.isLoading=false
     })
+    if(this.isLogin){
+      this.authService.getUserFavManga(this.authService.idLogin).pipe(map(
+        data => {
+          const postsArray = [];
+          for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+              postsArray.push({ ...data[key], id: key });
+            }
+          }
+          return postsArray;
+        }
+      )).subscribe(
+        data=>{
+          for(let i=0;i<data.length;i++){
+            // console.log(data[i])
+            if(data[i].manga_id==this.manga_id){
+              // console.log("yes")
+              this.isFav=true
+              break
+            }
+          }
+        },
+        error=>{
+          // console.log("no ")
+          console.log(error)
+        }
+      )
+    }
     this.infoServeice.getMangaReviews(this.manga_id,this.current_review_page).subscribe(
       data=>{
         //console.log(data)
@@ -153,4 +182,25 @@ export class MangaInfoComponent implements OnInit {
     )
   }
 
+  addToFav(){
+    if(this.isLogin){
+      // console.log(this.anime_id)
+      // console.log(this.anime.title)
+      // console.log(this.anime.image_url)
+      this.authService.addFavManga(this.authService.idLogin,this.manga_id,this.manga.image_url,this.manga.title).subscribe(
+        data=>{
+
+          this.toast.success("Manga added to favorite list!")
+          this.isFav=true
+        },
+        error=>{
+          this.toast.error("Something wrong!")
+        }
+      )
+    }
+    else{
+      this.toast.show("Login to add this manga to your favorite list!")
+    }
+
+  }
 }

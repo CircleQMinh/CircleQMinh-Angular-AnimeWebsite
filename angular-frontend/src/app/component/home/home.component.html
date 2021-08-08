@@ -98,11 +98,15 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 
         <div class="row " style="margin-left:0px;" *ngIf="!isLoading">
             <div class=" col">
-                
+
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #bfd0df;"
                     id="info-tab">
                     <h1 class="home-header"><i class="far fa-clock"></i> New Update!</h1>
-                   
+                    <!-- <div class="spinner-border text-primary" role="status" *ngIf="dataNewest.length==0">
+
+                    </div>
+        
+                    <p style="color: rgb(8, 8, 8);" *ngIf="dataNewest.length==0"> Getting ready ...</p> -->
 
                     <div *ngFor="let o of newestItem,index as i">
                         <div class="subtray" ngbTooltip="{{o.title +'--->'+ o.synopsis}} " [openDelay]="100"
@@ -148,7 +152,8 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;margin-top: 2%;
                 background-color: aliceblue;">
-                    <h1 class="home-header" style="background-color: chocolate;"><i class="far fa-clock"></i> Anime&Manga News</h1>
+                    <h1 class="home-header" style="background-color: chocolate;"><i class="far fa-clock"></i>
+                        Anime&Manga News</h1>
                     <div class="article-list listing-layout responsive unique" *ngIf="!isLoading">
                         <article class="article-item  type-text picked-trending" *ngFor="let o of newItems">
                             <p class="article-thumbnail">

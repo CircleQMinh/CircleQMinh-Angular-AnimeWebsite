@@ -46,6 +46,8 @@ export class AnimeInfoComponent implements OnInit {
   isLogin: boolean = false
   username:string=""
   isPosting:boolean=false
+  
+  isFav:boolean=false
 
   constructor(private searchService: SearchService, private route: ActivatedRoute, private router: Router, private authService: AuthService,
     private infoServeice: InfomationService, private sanitizer: DomSanitizer, private toast: HotToastService) { }
@@ -86,6 +88,35 @@ export class AnimeInfoComponent implements OnInit {
         this.isLoading = false
       }
     )
+    if(this.isLogin){
+      this.authService.getUserFavAnime(this.authService.idLogin).pipe(map(
+        data => {
+          const postsArray = [];
+          for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+              postsArray.push({ ...data[key], id: key });
+            }
+          }
+          return postsArray;
+        }
+      )).subscribe(
+        data=>{
+          for(let i=0;i<data.length;i++){
+            // console.log(data[i])
+            if(data[i].anime_id==this.anime_id){
+              // console.log("yes")
+              this.isFav=true
+              break
+            }
+          }
+        },
+        error=>{
+          // console.log("no ")
+          console.log(error)
+        }
+      )
+    }
+
     this.infoServeice.getAnimeReviews(this.anime_id, this.current_review_page).subscribe(
       data => {
         //console.log(data)
@@ -162,6 +193,28 @@ export class AnimeInfoComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  addToFav(){
+    if(this.isLogin){
+      // console.log(this.anime_id)
+      // console.log(this.anime.title)
+      // console.log(this.anime.image_url)
+      this.authService.addFavAnime(this.authService.idLogin,this.anime_id,this.anime.image_url,this.anime.title).subscribe(
+        data=>{
+
+          this.toast.success("Anime added to favorite list!")
+          this.isFav=true
+        },
+        error=>{
+          this.toast.error("Something wrong!")
+        }
+      )
+    }
+    else{
+      this.toast.show("Login to add this anime to your favorite list!")
+    }
+
   }
 
 }

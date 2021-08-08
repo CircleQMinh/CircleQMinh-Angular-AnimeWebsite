@@ -32,7 +32,7 @@
                     <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
 
                     </div>
-                    <p style="color: white;" *ngIf="isLoading"> Getting  results ...</p>
+                    <p style="color: white;" *ngIf="isLoading"> Getting results ...</p>
                     <div class="section info-program" style="width: 97%;margin-bottom: 1%;padding-left: 15px;"
                         *ngIf="!isLoading">
                         <div class="section-content fluid" id="anime-info">
@@ -83,7 +83,7 @@
                                     <li *ngIf="manga.rank==null"><strong>Rank: </strong>Unranked<i
                                             class="fas fa-trophy"></i></li>
                                     <li><strong>Type: </strong>{{manga.type}}</li>
-                                    
+
                                     <li><strong>Author: </strong>
                                         <p *ngFor="let au of manga.authors"> - {{au.name}} </p>
                                     </li>
@@ -94,13 +94,17 @@
 
 
                     </div>
-                    <ol *ngIf="!isLoading" class="breadcrumb" style="margin-top: 1%;width: 97%;" id="action-button-list1">
-                        <li routerLink="/read/{{manga.mal_id}}"><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i
-                                    class="fas fa-tv"></i> Read</button></li>
+                    <ol *ngIf="!isLoading" class="breadcrumb" style="margin-top: 1%;width: 97%;"
+                        id="action-button-list1">
+                        <li routerLink="/read/{{manga.mal_id}}"><button type="button" class="btn btn-primary"
+                                style="margin-left:3% ;"><i class="fas fa-tv"></i> Read</button></li>
                         <li><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i
                                     class="fas fa-share"></i> Share</button></li>
-                        <li><button type="button" class="btn btn-primary" style="margin-left:3% ;"><i
-                                    class="far fa-heart"></i> Add to Favorite</button></li>
+                        <li (click)="addToFav()" *ngIf="!isFav"><button type="button" class="btn btn-primary"
+                                style="margin-left:3% ;"><i class="far fa-heart"></i> Add to Favorite</button></li>
+                        <li *ngIf="isFav" ngbTooltip="This manga is already in your favorite list"><button type="button"
+                                class="btn btn-success" style="margin-left:3% ;"><i class="far fa-check-circle"></i> In
+                                Favorite </button></li>
                     </ol>
 
 
@@ -110,7 +114,7 @@
             </div>
 
         </div>
-       
+
         <div class="row" *ngIf="!isLoading">
             <div class=" col ">
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
@@ -132,58 +136,78 @@
                                         <th scope="col">Category</th>
                                     </tr>
                                 </thead>
-                                <tbody >
+                                <tbody>
                                     <tr *ngFor="let s of adaptation; index as i" style="color: white;">
 
-                                        <td> 
-                                            <button type="button" class="btn btn-success btn-sm" style="text-transform: capitalize;">
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm"
+                                                style="text-transform: capitalize;">
                                                 {{ s.type }}
-                                            </button ></td>
-                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a></td>
-                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a></td>
+                                            </button>
+                                        </td>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
                                         <td>Adaptation</td>
                                     </tr>
                                     <tr *ngFor="let s of prequel; index as i" style="color: white;">
 
-                                        <td> 
-                                            <button type="button" class="btn btn-success btn-sm" style="text-transform: capitalize;">
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm"
+                                                style="text-transform: capitalize;">
                                                 {{ s.type }}
-                                            </button ></td>
-                                            <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a></td>
-                                            <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a></td>
+                                            </button>
+                                        </td>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
                                         <td>Prequel</td>
                                     </tr>
                                     <tr *ngFor="let s of sequel; index as i" style="color: white;">
 
-                                        <td> 
-                                            <button type="button" class="btn btn-success btn-sm" style="text-transform: capitalize;">
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm"
+                                                style="text-transform: capitalize;">
                                                 {{ s.type }}
-                                            </button ></td>
-                                            <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a></td>
-                                            <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a></td>
+                                            </button>
+                                        </td>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
                                         <td>Sequel</td>
                                     </tr>
                                     <tr *ngFor="let s of side_story; index as i" style="color: white;">
 
-                                        <td> 
-                                            <button type="button" class="btn btn-success btn-sm" style="text-transform: capitalize;">
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm"
+                                                style="text-transform: capitalize;">
                                                 {{ s.type }}
-                                            </button ></td>
-                                            <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a></td>
-                                            <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a></td>
+                                            </button>
+                                        </td>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
                                         <td>Side Story</td>
                                     </tr>
                                     <tr *ngFor="let s of other; index as i" style="color: white;">
 
-                                        <td> 
-                                            <button type="button" class="btn btn-success btn-sm" style="text-transform: capitalize;">
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm"
+                                                style="text-transform: capitalize;">
                                                 {{ s.type }}
-                                            </button ></td>
-                                            <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a></td>
-                                            <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a></td>
+                                            </button>
+                                        </td>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        </td>
                                         <td>Other</td>
                                     </tr>
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -191,8 +215,8 @@
 
                     </div>
                     <div class="section info-program" style="width: 97%;margin-bottom: 1%;
-                    " id="related" *ngIf="!checkRelatedLength()"> 
-                          <p style="margin: 3%;">No related info found...</p>
+                    " id="related" *ngIf="!checkRelatedLength()">
+                        <p style="margin: 3%;">No related info found...</p>
                     </div>
                 </div>
             </div>
@@ -219,24 +243,23 @@
                             <div *ngIf=" comment_rating" class="text-success">{{comment_rating}}/10</div>
                             <div *ngIf=" comment_rating" class="text-success">Thanks!</div>
                             <div *ngIf=" !comment_rating" class="text-danger">Please rate before posting!</div>
-                          </div>
+                        </div>
                         <textarea class="comment-box" placeholder="Your comment..." [(ngModel)]="comment_content">
-                            
+
                         </textarea>
                         <button type="button" (click)=" postComment()" class="btn btn-primary">Post</button>
                     </div>
                     <div class="spinner-border text-primary" role="status" *ngIf="isPosting">
 
                     </div>
-        
+
                     <p style="color: rgb(221, 210, 210);" *ngIf="isPosting"> Posting comment ...</p>
                     <div>
                         <div class="panel-body" *ngFor="let o of fb_review">
                             <header class="text-left">
                                 <div class="comment-user"><i class="fa fa-user"></i> {{o.username}}</div>
                                 <time class="comment-date"><i class="fa fa-clock-o"></i> {{o.date|date}} </time>
-                                <div class="comment-user"> Rating : {{o.rating}}<i
-                                        class="fa fa-star"></i></div>
+                                <div class="comment-user"> Rating : {{o.rating}}<i class="fa fa-star"></i></div>
                             </header>
                             <div class="comment-post">
                                 <p *ngIf="o.content.length>100   ">
@@ -244,7 +267,7 @@
                                     </app-read-more>
                                 </p>
                                 <p *ngIf="o.content.length<100   ">
-                                   {{o.content}}
+                                    {{o.content}}
                                 </p>
                             </div>
                         </div>
@@ -261,7 +284,7 @@
                                     </app-read-more>
                                 </p>
                                 <p *ngIf="o.content.length<100   ">
-                                   {{o.content}}
+                                    {{o.content}}
                                 </p>
                             </div>
                         </div>

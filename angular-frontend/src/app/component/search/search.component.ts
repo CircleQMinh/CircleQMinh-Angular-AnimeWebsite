@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(params => {
-      console.log(this.router.url)
+     // console.log(this.router.url)
       if (this.router.url == "/search/anime") {
         this.url = "anime"
         this.renderer.addClass(document.body, 'body-anime');
