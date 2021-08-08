@@ -417,6 +417,20 @@ ul{list-style:none;}
     justify-content: center;
     padding-bottom: 0;
 }
+.navi-tron{
+    background-color: #583b3b;
+    width: 97%;
+    display: flex;
+    color: wheat;
+    border: solid;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.navi-tron div p{
+    padding-top: 15px;
+}
 @media all and (min-width:1499px){
     #side-info-tab2{margin-top: 150%;}
     #watch-video{

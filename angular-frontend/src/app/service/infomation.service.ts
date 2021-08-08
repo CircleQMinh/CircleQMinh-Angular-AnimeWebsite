@@ -10,6 +10,7 @@ export class InfomationService {
 
   apiUrl:string="https://api.jikan.moe/v3";
   firebaseUrl:string="https://random-website-7f4cf-default-rtdb.firebaseio.com/"
+  newApi:string="http://cdn.animenewsnetwork.com/encyclopedia/api.xml"
 
   constructor(private http: HttpClient,private route:Router) { }
 
@@ -51,6 +52,12 @@ export class InfomationService {
   }
 
 
+  getAnimeRecommendations(id:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/anime/${id}/recommendations`);
+  }
+  getAnimeVideos(id:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/anime/${id}/videos`);
+  }
 
 
 
@@ -80,7 +87,9 @@ export class InfomationService {
   getMangaFBReviews(id:number):Observable<any>{
     return this.http.get(`${this.firebaseUrl}comment/manga/${id}.json`);
   }
-
+  getMangaRecommendations(id:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/manga/${id}/recommendations`);
+  }
 
 
 

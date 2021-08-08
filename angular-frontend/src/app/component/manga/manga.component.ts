@@ -181,7 +181,7 @@ export class MangaComponent implements OnInit {
   }
 
   nextUpComing() {
-    if (this.pageUpComing < 6) {
+    if (this.pageUpComing < 5) {
       this.pageUpComing += 1
       this.getUpComing()
     }
@@ -200,7 +200,7 @@ export class MangaComponent implements OnInit {
   }
 
   nextBest() {
-    if (this.pageBest < 6) {
+    if (this.pageBest < 4) {
       this.pageBest += 1
       this.getBest()
     }

@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = true
 
 
-  constructor(private infoService: InfomationService, private searchService: SearchService,private toast: HotToastService,
+  constructor(private infoService: InfomationService, private searchService: SearchService, private toast: HotToastService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -87,13 +87,14 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.newSoure.forEach(async element => {
         var response = await this.infoService.getAnimeNews(element).toPromise();
+        delay(1050);
         if (response) {
           // console.log(response.articles);
           response.articles.forEach((a: any) => {
             this.dataNewpaper.push(a)
           });
         }
-        else{
+        else {
           this.toast.error("Failed to load data from API")
         }
         this.pageNewpaperCount = this.dataNewpaper.length
@@ -109,7 +110,7 @@ export class HomeComponent implements OnInit {
         data => {
           this.dataBest = data.top
           this.getBest()
-          this.isLoading=false
+          this.isLoading = false
         },
         error => {
           console.log(error)
@@ -161,7 +162,7 @@ export class HomeComponent implements OnInit {
   getNewest() {
     this.newestItem = []
     for (let i = 0; i < this.pageSizeNewest; i++) {
-      this.newestItem.push(this.dataNewest[i + this.pageSizeNewest * (this.pageNewest-1)])
+      this.newestItem.push(this.dataNewest[i + this.pageSizeNewest * (this.pageNewest - 1)])
     }
   }
   getUpComing() {
@@ -179,7 +180,7 @@ export class HomeComponent implements OnInit {
   }
 
   nextUpComing() {
-    if (this.pageUpComing < 6) {
+    if (this.pageUpComing < 5) {
       this.pageUpComing += 1
       this.getUpComing()
     }
@@ -198,7 +199,7 @@ export class HomeComponent implements OnInit {
   }
 
   nextBest() {
-    if (this.pageBest < 6) {
+    if (this.pageBest < 5) {
       this.pageBest += 1
       this.getBest()
     }
@@ -261,7 +262,9 @@ export class HomeComponent implements OnInit {
 
   }
 
-
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 
 

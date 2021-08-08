@@ -54,6 +54,11 @@ export class MangaInfoComponent implements OnInit {
 
   isFav:boolean=false
 
+  recom: any[] = []
+  pageSizeManga = 7
+  pageManga: number = 1
+  mangaItem: any[] = []
+
   constructor(private searchService: SearchService, private route: ActivatedRoute, private router: Router,private authService: AuthService,
     private infoServeice: InfomationService,private sanitizer: DomSanitizer, private toast: HotToastService) { }
 
@@ -85,6 +90,19 @@ export class MangaInfoComponent implements OnInit {
         this.other=this.manga.related.Other
         this.isLoading=false
     })
+    this.delay(1050)
+    this.infoServeice.getMangaRecommendations(this.manga_id).subscribe(
+      data => {
+        //console.log(data)
+        this.recom = data.recommendations
+        this.getRecomPage()
+      },
+      error => {
+        console.log(error)
+        this.toast.error("Failed to load data from API")
+      }
+    )
+    this.delay(1050)
     if(this.isLogin){
       this.authService.getUserFavManga(this.authService.idLogin).pipe(map(
         data => {
@@ -202,5 +220,33 @@ export class MangaInfoComponent implements OnInit {
       this.toast.show("Login to add this manga to your favorite list!")
     }
 
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  next() {
+    if(this.recom.length/this.pageSizeManga>this.pageManga){
+      this.pageManga+=1
+      this.getRecomPage()
+    }
+    
+  }
+  prev() {
+    if(1<this.pageManga){
+      this.pageManga-=1
+      this.getRecomPage()
+     
+    }
+  }
+
+  getRecomPage() {
+    //console.log(this.pageManga-1)
+    this.mangaItem = []
+   
+    for (let i = 0; i < this.pageSizeManga; i++) {
+      this.mangaItem.push(this.recom[i + this.pageSizeManga * (this.pageManga - 1)])
+    }
+   // console.log(this.mangaItem)
   }
 }
