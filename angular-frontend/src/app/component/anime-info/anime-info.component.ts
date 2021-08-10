@@ -44,7 +44,9 @@ export class AnimeInfoComponent implements OnInit {
   comment_rating!: number
   comment_content: string = ""
   isLogin: boolean = false
-  username: string = ""
+  email!: string
+  uid!: string
+  username!: string;
   isPosting: boolean = false
 
   isFav: boolean = false
@@ -60,15 +62,46 @@ export class AnimeInfoComponent implements OnInit {
     private infoServeice: InfomationService, private sanitizer: DomSanitizer, private toast: HotToastService) { }
 
   ngOnInit(): void {
-    this.isLogin = this.authService.isLogin
-    this.username = this.authService.userLogin
 
+    this.getLocalStorage()
     this.route.paramMap.subscribe(params => {
       this.trailer_url=""
       this.pageAnime=1
       this.anime_id = Number(this.route.snapshot.paramMap.get("id"));
       this.getAnime()
     })
+  }
+
+  getLocalStorage() {
+    if(localStorage.getItem("isLogin")){
+   
+      let timeOut= new Date(localStorage.getItem("timeOut")!)
+      let timeNow = new Date()
+  
+      if(timeOut.getTime()<timeNow.getTime()){
+        //console.log("time out remove key")
+        localStorage.removeItem("isLogin")
+        localStorage.removeItem("uid")
+        localStorage.removeItem("email")
+        localStorage.removeItem("timeOut")
+        localStorage.removeItem("username")
+      }
+      else{
+        this.isLogin = Boolean(localStorage.getItem('isLogin'))
+        this.uid = localStorage.getItem('uid')!
+        this.email = localStorage.getItem("email")!
+        this.username = localStorage.getItem("username")!
+        this.authService.isLogin=this.isLogin
+        this.authService.idLogin=this.uid
+        this.authService.emailLogin=this.email
+        this.authService.userLogin=this.username
+        //console.log("still login")
+      }
+    }
+    else{
+     // console.log("no login acc")
+    }
+
   }
   getAnime() {
     this.isLoading = true
@@ -264,6 +297,14 @@ export class AnimeInfoComponent implements OnInit {
     this.animeItem = []
     for (let i = 0; i < this.pageSizeAnime; i++) {
       this.animeItem.push(this.recom[i + this.pageSizeAnime * (this.pageAnime - 1)])
+    }
+  }
+  returnTotalPage():number{
+    if(this.recom.length<this.pageSizeAnime){
+      return 1
+    }
+    else{
+      return (this.recom.length/this.pageSizeAnime)
     }
   }
 }

@@ -49,7 +49,9 @@ export class MangaInfoComponent implements OnInit {
   comment_rating!: number
   comment_content: string = ""
   isLogin: boolean = false
-  username:string=""
+  email!: string
+  uid!: string
+  username!: string;
   isPosting:boolean=false
 
   isFav:boolean=false
@@ -63,14 +65,43 @@ export class MangaInfoComponent implements OnInit {
     private infoServeice: InfomationService,private sanitizer: DomSanitizer, private toast: HotToastService) { }
 
   ngOnInit(): void {
-    this.isLogin = this.authService.isLogin
-    this.username=this.authService.userLogin
+    this.getLocalStorage()
     this.route.paramMap.subscribe(params => {
       this.manga_id = Number(this.route.snapshot.paramMap.get("id"));
       this.getManga()
     })
   }
+  getLocalStorage() {
+    if(localStorage.getItem("isLogin")){
+   
+      let timeOut= new Date(localStorage.getItem("timeOut")!)
+      let timeNow = new Date()
   
+      if(timeOut.getTime()<timeNow.getTime()){
+        //console.log("time out remove key")
+        localStorage.removeItem("isLogin")
+        localStorage.removeItem("uid")
+        localStorage.removeItem("email")
+        localStorage.removeItem("timeOut")
+        localStorage.removeItem("username")
+      }
+      else{
+        this.isLogin = Boolean(localStorage.getItem('isLogin'))
+        this.uid = localStorage.getItem('uid')!
+        this.email = localStorage.getItem("email")!
+        this.username = localStorage.getItem("username")!
+        this.authService.isLogin=this.isLogin
+        this.authService.idLogin=this.uid
+        this.authService.emailLogin=this.email
+        this.authService.userLogin=this.username
+        //console.log("still login")
+      }
+    }
+    else{
+     // console.log("no login acc")
+    }
+
+  }
   checkRelatedLength():boolean{
     if(this.adaptation==undefined&&this.sequel==undefined&&this.side_story==undefined&&this.other==undefined&&this.prequel==undefined){
       return false
@@ -248,5 +279,13 @@ export class MangaInfoComponent implements OnInit {
       this.mangaItem.push(this.recom[i + this.pageSizeManga * (this.pageManga - 1)])
     }
    // console.log(this.mangaItem)
+  }
+  returnTotalPage():number{
+    if(this.recom.length<this.pageSizeManga){
+      return 1
+    }
+    else{
+      return (this.recom.length/this.pageSizeManga)
+    }
   }
 }

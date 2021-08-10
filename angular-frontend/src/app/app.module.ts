@@ -24,6 +24,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { PasswordRecoverComponent } from './component/password-recover/password-recover.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { NewsComponent } from './component/news/news.component';
+import { CharacterComponent } from './component/character/character.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NewsComponent } from './component/news/news.component';
     RegisterComponent,
     PasswordRecoverComponent,
     ProfileComponent,
-    NewsComponent
+    NewsComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,

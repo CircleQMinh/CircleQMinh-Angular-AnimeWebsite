@@ -49,7 +49,7 @@ width: 100%;" *ngIf="url=='other'">
                             <i class="far fa-user"></i>
                             My Account</button>
                         <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu1">
-                            <a ngbDropdownItem routerLink="/profile/{{idLogin}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
+                            <a ngbDropdownItem routerLink="/profile/{{uid}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
                             <hr>
                             <a ngbDropdownItem (click)="signOut()"><i class="fas fa-sign-out-alt"></i>
                                 Logout</a>
@@ -191,7 +191,7 @@ width: 100%;" *ngIf="url=='anime'">
                             <i class="far fa-user"></i>
                             My Account</button>
                         <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu1">
-                            <a ngbDropdownItem routerLink="/profile/{{idLogin}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
+                            <a ngbDropdownItem routerLink="/profile/{{uid}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
                             <hr>
                             <a ngbDropdownItem (click)="signOut()"><i class="fas fa-sign-out-alt"></i>
                                 Logout</a>
@@ -315,7 +315,7 @@ width: 100%;" *ngIf="url=='manga'">
                             <i class="far fa-user"></i>
                             My Account</button>
                         <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu1">
-                            <a ngbDropdownItem routerLink="/profile/{{idLogin}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
+                            <a ngbDropdownItem routerLink="/profile/{{uid}}"><i class="fas fa-clipboard-list"></i> My Profile</a>
                             <hr>
                             <a ngbDropdownItem (click)="signOut()"><i class="fas fa-sign-out-alt"></i>
                                 Logout</a>

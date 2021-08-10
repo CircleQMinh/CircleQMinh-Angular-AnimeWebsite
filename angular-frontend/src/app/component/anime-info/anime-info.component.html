@@ -290,7 +290,7 @@
 
                     </ol>
                     <div *ngIf="recom.length==0">
-                        <p>
+                        <p style="color: wheat;">
                             No anime recommendations!
                         </p>
                     </div>
@@ -322,7 +322,7 @@
                         <button type="button" class="btn btn-primary"  (click)="prev()"><i class="fas fa-arrow-left"
                                ></i></button>
                         <div>
-                            <p>Page {{pageAnime}} of {{recom.length/this.pageSizeAnime|number:'1.0-0'}}</p>
+                            <p>Page {{pageAnime}} of {{returnTotalPage()|number:'1.0-0'}}</p>
                         </div>
                         <button type="button" class="btn btn-primary" style="float: right;" (click)="next()"><i
                                 class="fas fa-arrow-right"></i></button>
