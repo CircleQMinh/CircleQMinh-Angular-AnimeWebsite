@@ -68,7 +68,7 @@ export class MangaComponent implements OnInit {
       )
 
 
-    }, 2000);
+    }, 1000);
     setTimeout(() => {
       this.infoService.getMangaTopRating().subscribe(
         data => {
@@ -86,7 +86,9 @@ export class MangaComponent implements OnInit {
     }, 3050);
     setTimeout(() => {
       this.newSoure.forEach(async element => {
+        
         var response = await this.infoService.getAnimeNews(element).toPromise();
+        this.delay(2050);
         if (response) {
           // console.log(response.articles);
           response.articles.forEach((a: any) => {
@@ -118,7 +120,7 @@ export class MangaComponent implements OnInit {
       )
     
 
-    }, 4500);
+    }, 6500);
 
 
   }
@@ -158,7 +160,9 @@ export class MangaComponent implements OnInit {
       return "fall"
     }
   }
-
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   getNewest() {
     this.newestItem = []

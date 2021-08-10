@@ -30,7 +30,9 @@ export class ReadComponent implements OnInit {
   comment_rating!: number
   comment_content: string = ""
   isLogin: boolean = false
-  username:string=""
+  email!: string
+  uid!: string
+  username!: string
   isPosting:boolean=false
 
 
@@ -39,8 +41,7 @@ export class ReadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isLogin = this.authService.isLogin
-    this.username=this.authService.userLogin
+   this.getLocalStorage()
     this.manga_id = this.route.snapshot.paramMap.get("id")
     //console.log(this.manga_id)
     this.getInfo()
@@ -71,7 +72,37 @@ export class ReadComponent implements OnInit {
     )
       this.getFBComment()
   }
+  getLocalStorage() {
+    if(localStorage.getItem("isLogin")){
+   
+      let timeOut= new Date(localStorage.getItem("timeOut")!)
+      let timeNow = new Date()
+  
+      if(timeOut.getTime()<timeNow.getTime()){
+        //console.log("time out remove key")
+        localStorage.removeItem("isLogin")
+        localStorage.removeItem("uid")
+        localStorage.removeItem("email")
+        localStorage.removeItem("timeOut")
+        localStorage.removeItem("username")
+      }
+      else{
+        this.isLogin = Boolean(localStorage.getItem('isLogin'))
+        this.uid = localStorage.getItem('uid')!
+        this.email = localStorage.getItem("email")!
+        this.username = localStorage.getItem("username")!
+        this.authService.isLogin=this.isLogin
+        this.authService.idLogin=this.uid
+        this.authService.emailLogin=this.email
+        this.authService.userLogin=this.username
+        //console.log("still login")
+      }
+    }
+    else{
+     // console.log("no login acc")
+    }
 
+  }
   onChapterChange(){
     this.isLoading=true
     setTimeout(() => {

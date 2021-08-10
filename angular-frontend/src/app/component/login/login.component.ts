@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,15 +16,16 @@ export class LoginComponent implements OnInit {
   showFormError: boolean = false
   login_error: boolean = false
   isLoading:boolean=false
-  isLogin: boolean = true
-  idLogin: string = ""
-  emailLogin: string = "???"
+  isLogin: boolean = false
+  email!: string
+  uid!: string
+  username!: string;
 
   constructor(private authService: AuthService,private router:Router) { }
 
   ngOnInit(): void {
-    this.getInfo()
-
+    //this.getInfo()
+    this.getLocalStorage()
     this.rf1 = new FormGroup({
       email: new FormControl('',
         [Validators.required, Validators.email]),
@@ -32,11 +34,42 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getInfo() {
-    this.isLogin = this.authService.isLogin
-    this.emailLogin = this.authService.emailLogin
-    this.idLogin = this.authService.idLogin
+
+
+  getLocalStorage() {
+    if(localStorage.getItem("isLogin")){
+   
+      let timeOut= new Date(localStorage.getItem("timeOut")!)
+      let timeNow = new Date()
+  
+      if(timeOut.getTime()<timeNow.getTime()){
+        //console.log("time out remove key")
+        localStorage.removeItem("isLogin")
+        localStorage.removeItem("uid")
+        localStorage.removeItem("email")
+        localStorage.removeItem("timeOut")
+        localStorage.removeItem("username")
+      }
+      else{
+        this.isLogin = Boolean(localStorage.getItem('isLogin'))
+        this.uid = localStorage.getItem('uid')!
+        this.email = localStorage.getItem("email")!
+        this.username = localStorage.getItem("username")!
+        this.authService.isLogin=this.isLogin
+        this.authService.idLogin=this.uid
+        this.authService.emailLogin=this.email
+        this.authService.userLogin=this.username
+        //console.log("still login")
+      }
+    }
+    else{
+     // console.log("no login acc")
+    }
+
   }
+
+
+
   trySignIn() {
     this.showFormError = true
     if (this.rf1.valid) {
@@ -45,12 +78,13 @@ export class LoginComponent implements OnInit {
       this.isLoading=true
       this.authService.signIn(this.rf1.controls['email'].value, this.rf1.controls['password'].value).subscribe(
         data => {
-          //console.log(data)
-          this.authService.isLogin = true
-          this.isLogin = true
-          this.authService.idLogin = data.localId
-          this.authService.emailLogin = data.email
-          this.getInfo()
+
+          localStorage.setItem('isLogin', "true")
+          localStorage.setItem("uid",data.localId)
+          localStorage.setItem("email",data.email)
+          let a = new Date()
+          a.setMinutes(a.getMinutes()+120)
+          localStorage.setItem("timeOut",formatDate(a, 'MMMM d, y, hh:mm:ss a z', 'en'))
           this.getUserInfo()
           this.router.navigateByUrl('/', {skipLocationChange: true})
       .then(() => this.router.navigate(['/login']));
@@ -77,7 +111,8 @@ export class LoginComponent implements OnInit {
     )).subscribe(
       data=>{
         let a=data.pop()
-        this.authService.userLogin=a.username
+        console.log(a)
+        localStorage.setItem("username",a.username)
       }
     )
   }

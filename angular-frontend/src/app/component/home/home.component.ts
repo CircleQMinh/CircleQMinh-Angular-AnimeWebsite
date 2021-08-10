@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.newSoure.forEach(async element => {
         var response = await this.infoService.getAnimeNews(element).toPromise();
-        delay(1050);
+        delay(2050);
         if (response) {
           // console.log(response.articles);
           response.articles.forEach((a: any) => {
@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit {
         }
       )
 
-    }, 4500);
+    }, 6500);
 
   }
 
@@ -199,7 +199,7 @@ export class HomeComponent implements OnInit {
   }
 
   nextBest() {
-    if (this.pageBest < 5) {
+    if (this.pageBest < 4) {
       this.pageBest += 1
       this.getBest()
     }

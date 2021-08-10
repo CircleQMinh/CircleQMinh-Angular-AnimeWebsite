@@ -92,6 +92,12 @@ export class InfomationService {
   }
 
 
+  getCharacter(id:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/character/${id}`);
+  }
+  getCharacterPic(id:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/character/${id}/pictures`);
+  }
 
 
 

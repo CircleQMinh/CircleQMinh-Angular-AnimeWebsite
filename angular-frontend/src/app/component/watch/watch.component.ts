@@ -25,9 +25,9 @@ export class WatchComponent implements OnInit {
   video_url: any
 
 
-  current_review_page=1
-  mal_review:any[]=[]
-  fb_review:any[]=[]
+  current_review_page = 1
+  mal_review: any[] = []
+  fb_review: any[] = []
 
   random_url: string[] = [
     'https://www.youtube.com/embed/pHXDMe6QV-U?enablejsapi=1&wmode=opaque&autoplay=1&modestbranding=1&showinfo=0&rel=0',
@@ -47,7 +47,7 @@ export class WatchComponent implements OnInit {
 
 
   isLoading: boolean = false
-  isLoadingComment:boolean=false
+  isLoadingComment: boolean = false
   isCollapsed: boolean[] = []
   noUpdate: boolean = false
   noTrailer: boolean = true
@@ -55,22 +55,54 @@ export class WatchComponent implements OnInit {
   comment_rating!: number
   comment_content: string = ""
   isLogin: boolean = false
-  username:string=""
-  isPosting:boolean=false
+  email!: string
+  uid!: string
+  username!: string;
+  isPosting: boolean = false
 
-  constructor(private infoService: InfomationService, private route: ActivatedRoute, private router: Router,private authService: AuthService,
-    private renderer: Renderer2, private sanitizer: DomSanitizer,private toast: HotToastService) { }
+  constructor(private infoService: InfomationService, private route: ActivatedRoute, private router: Router, private authService: AuthService,
+    private renderer: Renderer2, private sanitizer: DomSanitizer, private toast: HotToastService) { }
 
   ngOnInit(): void {
     // console.log(this.router.url)
     // console.log(this.route.snapshot.paramMap.get("id"))
     // console.log(this.route.snapshot.paramMap.get("ep"))
-    this.isLogin = this.authService.isLogin
-    this.username=this.authService.userLogin
+    this.getLocalStorage()
     this.anime_id = this.route.snapshot.paramMap.get("id")
     this.isLoading = true
     this.getInfo()
 
+
+  }
+  getLocalStorage() {
+    if (localStorage.getItem("isLogin")) {
+
+      let timeOut = new Date(localStorage.getItem("timeOut")!)
+      let timeNow = new Date()
+
+      if (timeOut.getTime() < timeNow.getTime()) {
+        //console.log("time out remove key")
+        localStorage.removeItem("isLogin")
+        localStorage.removeItem("uid")
+        localStorage.removeItem("email")
+        localStorage.removeItem("timeOut")
+        localStorage.removeItem("username")
+      }
+      else {
+        this.isLogin = Boolean(localStorage.getItem('isLogin'))
+        this.uid = localStorage.getItem('uid')!
+        this.email = localStorage.getItem("email")!
+        this.username = localStorage.getItem("username")!
+        this.authService.isLogin = this.isLogin
+        this.authService.idLogin = this.uid
+        this.authService.emailLogin = this.email
+        this.authService.userLogin = this.username
+        //console.log("still login")
+      }
+    }
+    else {
+      // console.log("no login acc")
+    }
 
   }
   getInfo() {
@@ -79,7 +111,7 @@ export class WatchComponent implements OnInit {
       this.infoService.getAnime(this.anime_id).subscribe(
         data => {
           this.anime = data
-         // console.log(this.anime)
+          // console.log(this.anime)
 
         }
       )
@@ -109,14 +141,31 @@ export class WatchComponent implements OnInit {
       )
     }, 2050);
 
-    this.infoService.getAnimeReviews(this.anime_id,this.current_review_page).subscribe(
-      data=>{
+    this.infoService.getAnimeReviews(this.anime_id, this.current_review_page).subscribe(
+      data => {
         //console.log(data)
-        this.mal_review=data.reviews
+        this.mal_review = data.reviews
       }
     )
     this.getFBComment()
+    setTimeout(() => {
+      this.infoService.getAnimeVideos(this.anime_id).subscribe(
+        data => {
+          console.log(data.promo)
+          let a: any[] = data.promo
+          if (a.length > 0) {
+            this.random_url = []
+            for (let i = 0; i < a.length; i++) {
+              this.random_url.push(a[i].video_url)
+            }
+          }
 
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }, 2050);
   }
   noUpdateFunction() {
 
@@ -171,22 +220,22 @@ export class WatchComponent implements OnInit {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  readMore(){
-    this.current_review_page+=1
-    this.isLoadingComment=true
-    this.infoService.getAnimeReviews(this.anime_id,this.current_review_page).subscribe(
-      data=>{
+  readMore() {
+    this.current_review_page += 1
+    this.isLoadingComment = true
+    this.infoService.getAnimeReviews(this.anime_id, this.current_review_page).subscribe(
+      data => {
         data.reviews.forEach((element: any) => {
           this.mal_review.push(element)
         });
-        this.isLoadingComment=false
+        this.isLoadingComment = false
       }
     )
   }
 
   postComment() {
     if (this.comment_rating && this.comment_content.trim().length != 0) {
-      this.isPosting=true
+      this.isPosting = true
       // console.log(this.comment_content)
       // console.log(this.comment_rating)
       // console.log(this.authService.userLogin)
@@ -194,10 +243,10 @@ export class WatchComponent implements OnInit {
       this.authService.postAnimeComment(this.anime_id, this.username, this.comment_content,
         this.comment_rating, formatDate(Date.now(), 'MMMM d, y, h:mm:ss a z', 'en')).subscribe(
           data => {
-           // console.log(data)
+            // console.log(data)
             this.getFBComment()
-            this.isPosting=false
-            this.comment_content=""
+            this.isPosting = false
+            this.comment_content = ""
           },
           error => {
             console.log(error)
@@ -217,13 +266,13 @@ export class WatchComponent implements OnInit {
             postsArray.push({ ...data[key], id: key });
           }
         }
-        
+
         return postsArray.reverse();
       }
     )).subscribe(
       data => {
         //console.log(data)
-        this.fb_review=data
+        this.fb_review = data
 
       },
       error => {
