@@ -25,6 +25,7 @@ import { PasswordRecoverComponent } from './component/password-recover/password-
 import { ProfileComponent } from './component/profile/profile.component';
 import { NewsComponent } from './component/news/news.component';
 import { CharacterComponent } from './component/character/character.component';
+import { CharacterInfoComponent } from './component/character-info/character-info.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CharacterComponent } from './component/character/character.component';
     PasswordRecoverComponent,
     ProfileComponent,
     NewsComponent,
-    CharacterComponent
+    CharacterComponent,
+    CharacterInfoComponent
   ],
   imports: [
     BrowserModule,

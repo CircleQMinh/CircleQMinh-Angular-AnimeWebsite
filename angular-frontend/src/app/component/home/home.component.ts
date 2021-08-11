@@ -37,6 +37,12 @@ export class HomeComponent implements OnInit {
   pageBest: number = 0
   pageSizeBest = 10
 
+  topChar: any[] = []
+  topCharItem: any[] = []
+  pageChar: number = 0
+  pagaSizeChar = 12
+
+
   weekday: string = ""
   scheduleData: any[] = []
 
@@ -47,12 +53,6 @@ export class HomeComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-
-
-
-
-
-
 
 
     setTimeout(() => {
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
       )
 
 
-    }, 2000);
+    }, 1000);
     setTimeout(() => {
       this.infoService.getTopUpCommingAnime().subscribe(
         data => {
@@ -106,6 +106,21 @@ export class HomeComponent implements OnInit {
     }, 4200);
     setTimeout(() => {
 
+      this.infoService.getTopCharacter().subscribe(
+        data => {
+          this.topChar = data.top
+         // console.log(this.topChar)
+          this.getCharPage()
+        },
+        error => {
+          console.log(error)
+          this.toast.error("Failed to load data from API")
+        }
+      )
+
+    }, 6500);
+    setTimeout(() => {
+
       this.infoService.getAnimeByPopularity().subscribe(
         data => {
           this.dataBest = data.top
@@ -118,7 +133,7 @@ export class HomeComponent implements OnInit {
         }
       )
 
-    }, 6500);
+    }, 7800);
 
   }
 
@@ -267,8 +282,24 @@ export class HomeComponent implements OnInit {
   }
 
 
-
-
+  getCharPage() {
+    this.topCharItem = []
+    for (let i = 0; i < this.pagaSizeChar; i++) {
+      this.topCharItem.push(this.topChar[i + this.pagaSizeChar * this.pageChar])
+    }
+  }
+  nextTopChar(){
+    if (this.pageChar < 4) {
+      this.pageChar += 1
+      this.getCharPage()
+    }
+  }
+  prevTopChar() {
+    if (this.pageChar > 0) {
+      this.pageChar -= 1
+      this.getCharPage()
+    }
+  }
 
 
 
@@ -289,7 +320,7 @@ export class HomeComponent implements OnInit {
 
   images = ['https://pbs.twimg.com/media/EV4xVijWoAASlxY.jpg',
     'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/93219448-4662-47cb-b585-be7672a62984/de7hrdt-7d75b97d-698d-47d1-879f-c4b8830bb1e4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzkzMjE5NDQ4LTQ2NjItNDdjYi1iNTg1LWJlNzY3MmE2Mjk4NFwvZGU3aHJkdC03ZDc1Yjk3ZC02OThkLTQ3ZDEtODc5Zi1jNGI4ODMwYmIxZTQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xa9_HW3ctkYwD1TZfxlHzSOwezeksLlHrLhH5OvK3Ag',
-    'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6e5f72102808543.5fed3c28a58f1.png'];
+    'https://mir-s3-cdn-cf.behance.net/project_modules/fs/251056102702857.601d68afa19fb.png'];
 
   paused = false;
   unpauseOnArrow = false;

@@ -86,8 +86,7 @@ export class LoginComponent implements OnInit {
           a.setMinutes(a.getMinutes()+120)
           localStorage.setItem("timeOut",formatDate(a, 'MMMM d, y, hh:mm:ss a z', 'en'))
           this.getUserInfo()
-          this.router.navigateByUrl('/', {skipLocationChange: true})
-      .then(() => this.router.navigate(['/login']));
+         
         },
         error => {
           console.log(error)
@@ -113,6 +112,8 @@ export class LoginComponent implements OnInit {
         let a=data.pop()
         console.log(a)
         localStorage.setItem("username",a.username)
+        this.router.navigateByUrl('/', {skipLocationChange: true})
+        .then(() => this.router.navigate(['/login']));
       }
     )
   }

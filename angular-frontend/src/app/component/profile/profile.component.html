@@ -84,7 +84,7 @@
                         <button type="button" class="btn btn-primary"  (click)="prevAnimePage()"><i class="fas fa-arrow-left"
                                ></i></button>
                         <div>
-                            <p>Page {{pageAnime}} of {{favorite_anime.length/this.pageSizeAnime|number:'1.0-0'}}</p>
+                            <p>Page {{pageAnime}} of {{returnTotalPageAnime()|number:'1.0-0'}}</p>
                         </div>
                         <button type="button" class="btn btn-primary" style="float: right;" (click)="nextAnimePage()"><i
                                 class="fas fa-arrow-right"></i></button>
@@ -128,7 +128,7 @@
                         <button type="button" class="btn btn-primary"  (click)="prevMangaPage()"><i class="fas fa-arrow-left"
                                ></i></button>
                         <div>
-                            <p>Page {{pageManga}} of {{favorite_manga.length/this.pageSizeManga|number:'1.0-0'}}</p>
+                            <p>Page {{pageManga}} of {{returnTotalPageManga()|number:'1.0-0'}}</p>
                         </div>
                         <button type="button" class="btn btn-primary" style="float: right;" (click)="nextMangaPage()"><i
                                 class="fas fa-arrow-right"></i></button>

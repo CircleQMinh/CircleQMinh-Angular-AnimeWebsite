@@ -61,12 +61,18 @@ export class MangaInfoComponent implements OnInit {
   pageManga: number = 1
   mangaItem: any[] = []
 
+  charList:any=[]
+  charListMain:any[]=[]
+
   constructor(private searchService: SearchService, private route: ActivatedRoute, private router: Router,private authService: AuthService,
     private infoServeice: InfomationService,private sanitizer: DomSanitizer, private toast: HotToastService) { }
 
   ngOnInit(): void {
     this.getLocalStorage()
     this.route.paramMap.subscribe(params => {
+      this.charListMain=[]
+      this.charList=[]
+      this.isFav=false
       this.manga_id = Number(this.route.snapshot.paramMap.get("id"));
       this.getManga()
     })
@@ -162,6 +168,22 @@ export class MangaInfoComponent implements OnInit {
         }
       )
     }
+    this.delay(1050)
+    this.infoServeice.getMangaChars(this.manga_id).subscribe(
+      data=>{
+        //console.log(data)
+        this.charList=data.characters
+        this.charList.forEach((element: any) => {
+          if(element.role=="Main"){
+            this.charListMain.push(element)
+          }
+        });
+      },
+      error=>{
+        console.log(error)
+      }
+    )
+    this.delay(1050)
     this.infoServeice.getMangaReviews(this.manga_id,this.current_review_page).subscribe(
       data=>{
         //console.log(data)

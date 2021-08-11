@@ -178,6 +178,43 @@
                         height: 100%;" id="info-tab">
 
                     <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
+                        <li><a style="color: yellowgreen;"><span itemprop="name">Characters
+                                </span></a></li>
+
+                    </ol>
+                    <div class="div-flex-center-content-row">
+                        <div *ngFor="let o of charListMain,index as i">
+                            <div class="subtray" ngbTooltip="{{o.name }} " [openDelay]="100" [closeDelay]="100"
+                                placement="auto" container="body" tooltipClass="tooltip-inner"
+                                routerLink="/character/{{o.mal_id}}" *ngIf="o">
+                                <div class="item">
+                                    <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                        <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                            src="{{o.image_url}}" alt="???"></a>
+
+                                    <div class="description">
+                                        <h4 class="title">
+                                            <a class="_trackLink">
+                                                {{o.name}}
+                                            </a>
+                                        </h4>
+                                    </div><!-- END .description -->
+                                </div>
+                                <!--END .item-->
+                            </div>
+                            <!--END .subtray-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="!isLoading">
+            <div class=" col ">
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;  background-color: #24282b;
+                        height: 100%;" id="info-tab">
+
+                    <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
                         <li><a style="color: yellowgreen;"><span itemprop="name">Related
                                 </span></a></li>
 
@@ -202,9 +239,11 @@
                                                 {{ s.type }}
                                             </button>
                                         </td>
-                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
-                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
                                         <td>Adaptation</td>
                                     </tr>
@@ -216,9 +255,11 @@
                                                 {{ s.type }}
                                             </button>
                                         </td>
-                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
-                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
                                         <td>Prequel</td>
                                     </tr>
@@ -230,9 +271,11 @@
                                                 {{ s.type }}
                                             </button>
                                         </td>
-                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
-                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
                                         <td>Sequel</td>
                                     </tr>
@@ -244,9 +287,11 @@
                                                 {{ s.type }}
                                             </button>
                                         </td>
-                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
-                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
                                         <td>Side Story</td>
                                     </tr>
@@ -258,9 +303,11 @@
                                                 {{ s.type }}
                                             </button>
                                         </td>
-                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='manga'"><a routerLink="/manga/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
-                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name }}</a>
+                                        <td *ngIf="s.type=='anime'"><a routerLink="/anime/{{s.mal_id}}">{{ s.name
+                                                }}</a>
                                         </td>
                                         <td>Other</td>
                                     </tr>
@@ -301,8 +348,8 @@
                                 routerLink="/anime/{{o.mal_id}}" *ngIf="o">
                                 <div class="item" style="height: 245px;width: 175px;">
                                     <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
-                                        <img class="_slideimg" img_index="1" width="100%" height="100%" src="{{o.image_url}}"
-                                            alt="???"></a>
+                                        <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                            src="{{o.image_url}}" alt="???"></a>
 
                                     <div class="description">
                                         <h4 class="title">
@@ -319,8 +366,8 @@
                     </div>
 
                     <div class="navi-tron" style="margin-bottom: 20px;">
-                        <button type="button" class="btn btn-primary"  (click)="prev()"><i class="fas fa-arrow-left"
-                               ></i></button>
+                        <button type="button" class="btn btn-primary" (click)="prev()"><i
+                                class="fas fa-arrow-left"></i></button>
                         <div>
                             <p>Page {{pageAnime}} of {{returnTotalPage()|number:'1.0-0'}}</p>
                         </div>

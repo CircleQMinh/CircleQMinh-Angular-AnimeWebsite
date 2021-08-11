@@ -1,0 +1,6 @@
+@media all and (min-width:1499px){
+    #slide-show3 .carousel-inner {height: 500px;}
+}
+@media all and (min-width:1001px) and (max-width:1499px){
+    #slide-show3 .carousel-inner {height: 500px;}
+}

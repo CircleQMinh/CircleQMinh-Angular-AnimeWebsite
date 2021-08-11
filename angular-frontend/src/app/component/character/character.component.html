@@ -1,189 +1,121 @@
 <app-nav></app-nav>
 
-<div class="container-fluid " style="margin-top: 100px;">
-    <div class="card-block">
-        <div class="row justify-content-between mt-2">
-            <div class="col">
-                <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+<ngb-carousel #carousel [interval]="2400" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+    [showNavigationArrows]="true" [showNavigationIndicators]="true" [keyboard]="true" [pauseOnHover]="true"
+    [wrap]="true" (slide)="onSlide($event)" id="slide-show1" style="    display: block;
+    margin-top: 40px;">
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="images[0]" alt="Random first slide" class="mh-100" class="img-slide-show-tron">
+        </div>
+        <!-- <div class="carousel-caption">
+                <button routerLink="/products/category/Fruit">Shop Now <i class="fas fa-arrow-right"></i></button>
+          </div> -->
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="images[1]" alt="Random second slide" class="mh-100" class="img-slide-show-tron">
+        </div>
+        <!-- <div class="carousel-caption">
+                <button routerLink="/products/category/Vegetable">Shop Now <i class="fas fa-arrow-right"></i></button>
+          </div> -->
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="images[2]" alt="Random second slide" class="mh-100" class="img-slide-show-tron">
+        </div>
+        <!-- <div class="carousel-caption">
+                <button routerLink="/products/category/Vegetable">Shop Now <i class="fas fa-arrow-right"></i></button>
+          </div> -->
+    </ng-template>
+</ngb-carousel>
+<div style="margin:0 auto;
+width: 50%;display: block;margin-top: 3%;text-align: center;">
+    <p class="search-header">Search for your favorite character!</p>
 
-                </div>
-                <p style="color: rgb(3, 3, 3);" *ngIf="isLoading"> Getting results ...</p>
-                <div class="tab-content" *ngIf="!isLoading">
-                    <div class="tab-pane fade in active show" id="ONE">
-                        <div class="row justify-content-between">
-                            <div class="col-md-9">
-                                <ol class="breadcrumb">
-                                    <li><a style="color: yellowgreen;"><span itemprop="name">Character
-                                            </span></a></li>
-                                    <li><a style="color: yellowgreen;"><span itemprop="name">{{char.mal_id}}
-                                            </span></a></li>
-                                    <li><a style="color: yellowgreen;"><span itemprop="name">{{char.name}}
-                                            </span></a></li>
+    <p class="search-header">.. or randomly find one!</p>
+</div>
+<div style="margin-top: 3%;" id="quick-search" class="container-fluid">
+    <div class="row">
+        <div class="col">
 
-                                </ol>
-                                <div class="card card-block rounded-0 mb-2"
-                                    style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);padding: 1%;">
-                                    <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;"><i
-                                            class="far fa-list"></i> Basic Infomation
-                                    </p>
-                                    <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
-                                    <ul class="list-unstyled display-4" style="color:#d9b3ff;font-size: 18px;">
-                                        <li class="mb-2">
-                                            <span class="mb-0">
-                                                ID :
-                                            </span>
-                                            <span class="pull-right mb-0">
-                                                {{char.mal_id}}
-                                            </span>
-                                            <hr class="mt-2" style="border:1px dashed;">
-                                        </li>
-                                        <li class="mb-2">
-                                            <span class="mb-0">
-                                                Name :
-                                            </span>
-                                            <span class="pull-right mb-0">
-                                                {{char.name}}
-                                            </span>
-                                            <hr class="mt-2" style="border:1px dashed;">
-                                        </li>
-                                        <li class="mb-2">
-                                            <span class="mb-0">
-                                                Name-Kanji :
-                                            </span>
-                                            <span class="pull-right mb-0">
-                                                {{char.name_kanji}}
-                                            </span>
-                                            <hr class="mt-2" style="border:1px dashed;">
-                                        </li>
-                                        <li class="mb-2">
-                                            <span class="mb-0">
-                                                Nick name :
-                                            </span>
-                                            <span class="pull-right mb-0" *ngIf="char.nicknames.length>0">
-                                                {{char.nicknames}}
-                                            </span>
-                                            <span class="pull-right mb-0" *ngIf="char.nicknames.length==0">
-                                                None
-                                            </span>
-                                            <hr class="mt-2" style="border:1px dashed;">
-                                        </li>
-                                        <li class="mb-2">
-                                            <span class="mb-0">
-                                                Fan :
-                                            </span>
-                                            <span class="pull-right mb-0">
-                                                {{char.member_favorites}}
-                                            </span>
-                                            <hr class="mt-2" style="border:1px dashed;">
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card rounded-0 mb-2" style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);    display: flex;
-                                    align-items: center;">
-                                    <img class="rounded" src="{{char.image_url}}" alt="9399502_UlM5O7wkzZdzzJF.png"
-                                        style="height: 350px;
-                                        width: 225px;
-                                    ">
-                                    <p class="text-center" style="color:#d9b3ff;"> <a style="color:#d9b3ff;"><i
-                                                class="fas fa-user"></i> {{char.name}}</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-block rounded-0 mb-2"
-                            style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);">
-                            <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;margin-left: 10px;"><i class="fas fa-microphone-alt"></i> Voice Actor
-                            </p>
-                            <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
-                            <div style="padding: 1%;">
-                                <p class="mb-1" style="text-align:justify;color:#d9b3ff;">
-                                    <span *ngFor="let a of char.voice_actors">{{a.language}} : {{a.name}}<br></span><br>
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="card card-block rounded-0 mb-2"
-                            style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);">
-                            <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;margin-left: 10px;"><i class="far fa-address-card"></i> About
-                            </p>
-                            <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
-                            <div style="padding: 1%;">
-                                <p class="mb-1" style="text-align:justify;color:#d9b3ff;">
-                                    <span *ngFor="let a of about">{{a}}<br></span><br>
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="card card-block rounded-0 mb-2"
-                            style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);">
-                            <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;margin-left: 10px;"><i class="fas fa-film"></i> Appear in
-                            </p>
-                            <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
-                            <div style="padding: 1%;    display: flex;
-                            flex-wrap: wrap;
-                            align-items: center;
-                            justify-content: center;">
-                                <div *ngFor="let o of char.animeography,index as i">
-                                    <div class="subtray" ngbTooltip="{{o.mal_id+'-'+o.name }} " [openDelay]="100" [closeDelay]="100"
-                                        placement="auto" container="body" tooltipClass="tooltip-inner"
-                                        routerLink="/anime/{{o.mal_id}}" *ngIf="o">
-                                        <div class="item" style="height: 265px;width: 185px;">
-                                            <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
-                                                <img class="_slideimg" img_index="1" width="100%" height="100%" src="{{o.image_url}}"
-                                                    alt="???"></a>
-        
-                                            <div class="description">
-                                                <h4 class="title">
-                                                    <a class="_trackLink">
-                                                        {{o.name}}
-                                                    </a>
-                                                </h4>
-                                            </div><!-- END .description -->
-                                        </div>
-                                        <!--END .item-->
-                                    </div>
-                                    <!--END .subtray-->
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="card card-block rounded-0 mb-2"
-                            style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);">
-                            <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;margin-left: 10px;"><i class="far fa-images"></i> Gallery
-                            </p>
-                            <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
-                            <div style="padding: 1%;    display: flex;
-                            flex-wrap: wrap;
-                            align-items: center;
-                            justify-content: center;">
-                                <div *ngFor="let o of char_pic,index as i">
-                                    <div class="subtray"   
-                                         *ngIf="o">
-                                        <div class="item" style="height: 265px;width: 185px;">
-                                            <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
-                                                <img class="_slideimg" img_index="1" width="100%" height="100%" src="{{o.large}}"
-                                                    alt="???"></a>
-        
-                                            
-                                        </div>
-                                        <!--END .item-->
-                                    </div>
-                                    <!--END .subtray-->
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div style="margin:0 auto;
+    width: 100%;display: block;margin-top: 3%;text-align: center;">
+                <button type="button" class="btn btn-warning" ngbTooltip="Search for a character"
+                    style="margin-right: 10px;" (click)="switchMode(1)">Search</button>
+                <button type="button" class="btn btn-success" ngbTooltip="Find one character randomly"
+                    (click)="switchMode(2)">Random Character</button>
             </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+<div class="card-body row no-gutters align-items-center" style="background-color: #ffef73;" *ngIf="mode==1">
+
+
+    <input class="form-control form-control-lg form-control-borderless" type="search"
+        placeholder="Type here to search..." value="" name="q" id="q" rel="on" autocomplete="off"
+        style="width: 100%;text-align: center;" id="typeahead-focus" type="text" [(ngModel)]="keyword">
+    <div style="margin:0 auto;
+        width: 100%;display: block;margin-top: 3%;text-align: center;">
+        <button type="button" class="btn btn-primary" style="width: 30%;" (click)="search()">Go</button>
+        <p>Press 'Go' button to search!</p>
+    </div>
+    <div class="div-display" id="info-tab" style="margin-top: 20px;" *ngIf="showSearchResult">
+
+        <ol class="breadcrumb" style="margin-top: 15px;width: 97%;">
+            <li><a style="color: yellowgreen;"><span itemprop="name">Characters Found :
+                    </span></a></li>
+
+        </ol>
+        
+        <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+
+        </div>
+        <p style="color: white;" *ngIf="isLoading"> Getting results ...</p>
+        <div class="div-flex-center-content-row" *ngIf="searchResult.length>0">
+            <div *ngFor="let o of searchResult,index as i">
+                <div class="subtray" ngbTooltip="{{o.name }} " [openDelay]="100" [closeDelay]="100" placement="auto"
+                    container="body" tooltipClass="tooltip-inner" routerLink="/character/{{o.mal_id}}" *ngIf="o">
+                    <div class="item">
+                        <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                            <img class="_slideimg" img_index="1" width="100%" height="100%" src="{{o.image_url}}"
+                                alt="???"></a>
+
+                        <div class="description">
+                            <h4 class="title">
+                                <a class="_trackLink">
+                                    {{o.name}}
+                                </a>
+                            </h4>
+                        </div><!-- END .description -->
+                    </div>
+                    <!--END .item-->
+                </div>
+                <!--END .subtray-->
+            </div>
+        </div>
+        <div class="div-flex-center-content-row" *ngIf="searchResult.length==0">
+        
+            <p *ngIf="noResult">Failed to load data or there is no data load... Please try again!</p>
+        </div>
+        <div class="navi-tron" style="margin-bottom: 20px;">
+            <button type="button" class="btn btn-primary" (click)="prevSearchPage()"><i
+                    class="fas fa-arrow-left"></i></button>
+            <div>
+                <p>Page {{current_page}} of {{last_page}}</p>
+            </div>
+            <button type="button" class="btn btn-primary" style="float: right;" (click)="nextSearchPage()"><i
+                    class="fas fa-arrow-right"></i></button>
         </div>
     </div>
 
-
-
-
-
-    <app-footer></app-footer>
+</div>
+<div class="div-center-content" *ngIf="mode==2">
+    Work in progress :v
+</div>
+<app-footer></app-footer>
