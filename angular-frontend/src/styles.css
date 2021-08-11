@@ -368,6 +368,10 @@ ul{list-style:none;}
 .body-manga{
     background-color: #a5a3f0;
 }
+.search-header{
+    font-family: monospace;
+    font-size: 30px;
+}
 
 .manga-reader{
     width: 100%;
@@ -430,6 +434,20 @@ ul{list-style:none;}
 
 .navi-tron div p{
     padding-top: 15px;
+}
+
+.div-flex-center-content-row{
+    padding: 1%;    
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+                            
+    align-items: center;
+                            
+    justify-content: center;
+}
+.img-slide-show-tron{
+    width: 100%; height: 70vh
 }
 @media all and (min-width:1499px){
     #side-info-tab2{margin-top: 150%;}
@@ -522,6 +540,9 @@ ul{list-style:none;}
     #slide-show1 .carousel-inner {display: none;}
     #slide-show1 a {display: none;}
     #slide-show1 ol {display: none;}
+    .img-slide-show-tron{
+        display: none;
+    }
      .outside-des{
         width: 100%;
         display: grid;

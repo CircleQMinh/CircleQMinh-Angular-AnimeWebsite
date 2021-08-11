@@ -1,7 +1,8 @@
 <app-nav></app-nav>
 <ngb-carousel #carousel [interval]="2400" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
     [showNavigationArrows]="true" [showNavigationIndicators]="true" [keyboard]="true" [pauseOnHover]="true"
-    [wrap]="true" (slide)="onSlide($event)" id="slide-show1">
+    [wrap]="true" (slide)="onSlide($event)" id="slide-show1"  style="    display: block;
+    margin-top: 40px;">
     <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
             <img [src]="images[0]" alt="Random first slide" class="mh-100" style="width: 100%; height: 423px">
@@ -84,7 +85,7 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
         <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
 
         </div>
-        <p style="color: black;" *ngIf="isLoading"> Loading...</p>
+        <p style="color: black;" *ngIf="isLoading" class="search-header"> Loading...</p>
         <img *ngIf="isLoading" src="https://media.giphy.com/media/WtDLxQWQWLtw3oIXTy/giphy.gif" class="loading">
     </div>
 
@@ -149,7 +150,50 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
                         </div>
                     </div>
                 </div>
+                <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;margin-top: 2%;
+                background-color: aliceblue;">
+                    <h1 class="home-header" style="background-color: gold;"><i class="fas fa-trophy"></i>
+                        Popular character</h1>
+                    <div *ngFor="let o of topCharItem,index as i">
+                        <div class="subtray" ngbTooltip="{{o.title+'-'+o.name_kanji+' from '+o.animeography[0].name  }} " [openDelay]="100" [closeDelay]="100"
+                            placement="auto" container="body" tooltipClass="tooltip-inner"
+                            routerLink="/character/{{o.mal_id}}" *ngIf="o">
+                            <div class="item">
+                                <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                    <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                        src="{{o.image_url}}" alt="???"></a>
 
+                                <div class="description">
+                                    <h4 class="title">
+                                        <a class="_trackLink">
+                                            {{o.title}}
+                                        </a>
+                                    </h4>
+                                    <h5 class="subtitle">
+                                        <a class="_trackLink ellipsis">
+                                            {{o.rank}}<i class="fas fa-trophy"></i>
+                                        </a>
+                                    </h5>
+                                </div><!-- END .description -->
+                            </div>
+                            <!--END .item-->
+                        </div>
+                        <!--END .subtray-->
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <div class="navi-tron" style="padding-top: 15px;">
+                            <button type="button" class="btn btn-primary" (click)="prevTopChar()"  ><i class="fas fa-arrow-left"
+                                   ></i></button>
+                            <div>
+                                <p style="color: black;padding-top: 0px;">Page {{pageChar+1}} of 5</p>
+                            </div>
+                            <button type="button" class="btn btn-primary" style="float: right;" (click)="nextTopChar()"  ><i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+ 
+
+                </div>
                 <div style="border: solid 4px #999679;border-radius: 1%;padding-left: 3%;margin-top: 2%;
                 background-color: aliceblue;">
                     <h1 class="home-header" style="background-color: chocolate;"><i class="far fa-clock"></i>

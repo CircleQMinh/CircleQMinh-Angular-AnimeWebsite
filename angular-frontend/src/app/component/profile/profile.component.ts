@@ -221,4 +221,22 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true })
       .then(() => this.router.navigateByUrl(a))
   }
+  returnTotalPageAnime():number{
+    if(this.favorite_anime.length<this.pageSizeAnime){
+      return 1
+    }
+    else{
+      //console.log(this.favorite_anime.length/this.pageSizeAnime)
+      return (this.favorite_anime.length/this.pageSizeAnime)+1
+    }
+  }
+  returnTotalPageManga():number{
+    if(this.favorite_manga.length<this.pageSizeManga){
+      return 1
+    }
+    else{
+      //console.log(this.favorite_manga.length/this.pageSizeManga)
+      return (this.favorite_manga.length/this.pageSizeManga)+1
+    }
+  }
 }

@@ -1,0 +1,192 @@
+<app-nav></app-nav>
+
+<div class="container-fluid " style="margin-top: 100px;">
+    <div class="card-block">
+        <div class="row justify-content-between mt-2">
+            <div class="col">
+                <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+
+                </div>
+                <p style="color: rgb(3, 3, 3);" *ngIf="isLoading"> Getting results ...</p>
+                <div class="tab-content" *ngIf="!isLoading">
+                    <div class="tab-pane fade in active show" id="ONE">
+                        <div class="row justify-content-between">
+                            <div class="col-md-9">
+                                <ol class="breadcrumb">
+                                    <li><a style="color: yellowgreen;"><span itemprop="name">Character
+                                            </span></a></li>
+                                    <li><a style="color: yellowgreen;"><span itemprop="name">{{char.mal_id}}
+                                            </span></a></li>
+                                    <li><a style="color: yellowgreen;"><span itemprop="name">{{char.name}}
+                                            </span></a></li>
+
+                                </ol>
+                                <div class="card card-block rounded-0 mb-2"
+                                    style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);padding: 1%;">
+                                    <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;"><i
+                                            class="far fa-list"></i> Basic Infomation
+                                    </p>
+                                    <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
+                                    <ul class="list-unstyled display-4" style="color:#d9b3ff;font-size: 18px;">
+                                        <li class="mb-2">
+                                            <span class="mb-0">
+                                                ID :
+                                            </span>
+                                            <span class="pull-right mb-0">
+                                                {{char.mal_id}}
+                                            </span>
+                                            <hr class="mt-2" style="border:1px dashed;">
+                                        </li>
+                                        <li class="mb-2">
+                                            <span class="mb-0">
+                                                Name :
+                                            </span>
+                                            <span class="pull-right mb-0">
+                                                {{char.name}}
+                                            </span>
+                                            <hr class="mt-2" style="border:1px dashed;">
+                                        </li>
+                                        <li class="mb-2">
+                                            <span class="mb-0">
+                                                Name-Kanji :
+                                            </span>
+                                            <span class="pull-right mb-0">
+                                                {{char.name_kanji}}
+                                            </span>
+                                            <hr class="mt-2" style="border:1px dashed;">
+                                        </li>
+                                        <li class="mb-2">
+                                            <span class="mb-0">
+                                                Nick name :
+                                            </span>
+                                            <span class="pull-right mb-0" *ngIf="char.nicknames.length>0">
+                                                {{char.nicknames}}
+                                            </span>
+                                            <span class="pull-right mb-0" *ngIf="char.nicknames.length==0">
+                                                None
+                                            </span>
+                                            <hr class="mt-2" style="border:1px dashed;">
+                                        </li>
+                                        <li class="mb-2">
+                                            <span class="mb-0">
+                                                Fan :
+                                            </span>
+                                            <span class="pull-right mb-0">
+                                                {{char.member_favorites}}
+                                            </span>
+                                            <hr class="mt-2" style="border:1px dashed;">
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card rounded-0 mb-2" style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);    display: flex;
+                                    align-items: center;">
+                                    <img class="rounded" src="{{char.image_url}}" alt="9399502_UlM5O7wkzZdzzJF.png"
+                                        style="height: 350px;
+                                        width: 225px;
+                                    ">
+                                    <p class="text-center" style="color:#d9b3ff;"> <a style="color:#d9b3ff;"><i
+                                                class="fas fa-user"></i> {{char.name}}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-block rounded-0 mb-2"
+                            style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);">
+                            <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;margin-left: 10px;"><i
+                                    class="fas fa-microphone-alt"></i> Voice Actor
+                            </p>
+                            <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
+                            <div style="padding: 1%;">
+                                <p class="mb-1" style="text-align:justify;color:#d9b3ff;">
+                                    <span *ngFor="let a of char.voice_actors">{{a.language}} : {{a.name}}<br></span><br>
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="card card-block rounded-0 mb-2"
+                            style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);">
+                            <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;margin-left: 10px;"><i
+                                    class="far fa-address-card"></i> About
+                            </p>
+                            <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
+                            <div style="padding: 1%;">
+                                <p class="mb-1" style="text-align:justify;color:#d9b3ff;">
+                                    <span *ngFor="let a of about">{{a}}<br></span><br>
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="card card-block rounded-0 mb-2"
+                            style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);">
+                            <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;margin-left: 10px;"><i
+                                    class="fas fa-film"></i> Appear in
+                            </p>
+                            <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
+                            <div style="padding: 1%;    display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;">
+                                <div *ngFor="let o of char.animeography,index as i">
+                                    <div class="subtray" ngbTooltip="{{o.mal_id+'-'+o.name }} " [openDelay]="100"
+                                        [closeDelay]="100" placement="auto" container="body"
+                                        tooltipClass="tooltip-inner" routerLink="/anime/{{o.mal_id}}" *ngIf="o">
+                                        <div class="item" style="height: 265px;width: 185px;">
+                                            <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                                <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                                    src="{{o.image_url}}" alt="???"></a>
+
+                                            <div class="description">
+                                                <h4 class="title">
+                                                    <a class="_trackLink">
+                                                        {{o.name}}
+                                                    </a>
+                                                </h4>
+                                            </div><!-- END .description -->
+                                        </div>
+                                        <!--END .item-->
+                                    </div>
+                                    <!--END .subtray-->
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card card-block rounded-0 mb-2"
+                            style="border-width:5px;background-color:rgba(54,63,99,0.75);border-color:rgba(45,53,82,0.75);">
+                            <p class="display-3 mb-2" style="color:#d9b3ff;font-size: 25px;margin-left: 10px;"><i
+                                    class="far fa-images"></i> Gallery
+                            </p>
+                            <div class="mb-2" style="height:2px;width:100%;background-color:#d9b3ff;"></div>
+                            <div style="padding: 1%;    display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;">
+                                <div *ngFor="let o of char_pic,index as i">
+                                    <div class="subtray" *ngIf="o">
+                                        <div class="item" style="height: 265px;width: 185px;">
+                                            <a class="_trackLink" trackingclick="" ztrackingclick="" tracking="">
+                                                <img class="_slideimg" img_index="1" width="100%" height="100%"
+                                                    src="{{o.large}}" alt="???"></a>
+
+
+                                        </div>
+                                        <!--END .item-->
+                                    </div>
+                                    <!--END .subtray-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <app-footer></app-footer>

@@ -39,6 +39,12 @@ export class MangaComponent implements OnInit {
 
   isLoading: boolean = true
 
+
+  topChar: any[] = []
+  topCharItem: any[] = []
+  pageChar: number = 0
+  pagaSizeChar = 12
+
   constructor(private infoService: InfomationService, private searchService: SearchService,private toast: HotToastService,
     private router: Router) { }
 
@@ -107,6 +113,21 @@ export class MangaComponent implements OnInit {
     }, 4200);
     setTimeout(() => {
 
+      this.infoService.getTopCharacter().subscribe(
+        data => {
+          this.topChar = data.top
+         // console.log(this.topChar)
+          this.getCharPage()
+        },
+        error => {
+          console.log(error)
+          this.toast.error("Failed to load data from API")
+        }
+      )
+
+    }, 6500);
+    setTimeout(() => {
+
       this.infoService.getMangaChapterLong().subscribe(
         data => {
           this.dataBest = data.results
@@ -120,7 +141,7 @@ export class MangaComponent implements OnInit {
       )
     
 
-    }, 6500);
+    }, 7800);
 
 
   }
@@ -267,7 +288,27 @@ export class MangaComponent implements OnInit {
 
   }
 
+  getCharPage() {
+    this.topCharItem = []
+    for (let i = 0; i < this.pagaSizeChar; i++) {
+      this.topCharItem.push(this.topChar[i + this.pagaSizeChar * this.pageChar])
+    }
+  }
+  nextTopChar(){
+    if (this.pageChar < 4) {
+      this.pageChar += 1
+      this.getCharPage()
+    }
+  }
+  prevTopChar() {
+    if (this.pageChar > 0) {
+      this.pageChar -= 1
+      this.getCharPage()
+    }
+  }
 
+
+  
 
 
 

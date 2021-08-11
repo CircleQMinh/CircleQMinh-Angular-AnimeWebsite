@@ -25,6 +25,11 @@ export class InfomationService {
   getNavSearchResultManga(keyword:string):Observable<any>{
     return this.http.get(`${this.apiUrl}/search/manga?q=${keyword}&page=1`);
   }
+  getNavSearchResultChar(keyword:string,page:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/search/character?q=${keyword}&page=${page}`);
+  }
+
+
   getTopUpCommingAnime():Observable<any>{
     return this.http.get(`${this.apiUrl}/top/anime/1/upcoming`);
   }
@@ -58,6 +63,9 @@ export class InfomationService {
   getAnimeVideos(id:number):Observable<any>{
     return this.http.get(`${this.apiUrl}/anime/${id}/videos`);
   }
+  getAnimeChars(id:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/anime/${id}/characters_staff`);
+  }
 
 
 
@@ -90,6 +98,18 @@ export class InfomationService {
   getMangaRecommendations(id:number):Observable<any>{
     return this.http.get(`${this.apiUrl}/manga/${id}/recommendations`);
   }
+  getMangaChars(id:number):Observable<any>{
+    return this.http.get(`${this.apiUrl}/manga/${id}/characters`);
+  }
+
+
+
+
+
+
+
+
+
 
 
   getCharacter(id:number):Observable<any>{
@@ -98,7 +118,9 @@ export class InfomationService {
   getCharacterPic(id:number):Observable<any>{
     return this.http.get(`${this.apiUrl}/character/${id}/pictures`);
   }
-
+  getTopCharacter():Observable<any>{
+    return this.http.get(`${this.apiUrl}/top/characters`);
+  }
 
 
 

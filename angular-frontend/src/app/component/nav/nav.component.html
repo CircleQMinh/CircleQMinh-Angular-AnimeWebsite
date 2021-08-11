@@ -37,7 +37,7 @@ width: 100%;" *ngIf="url=='other'">
 
          
             <li class="nav-item">
-                <button class="btn btn-outline-primary"  ngbTooltip="Work in progress :v !"><i class="far fa-question-circle"></i>Help</button>
+                <button class="btn btn-outline-primary" routerLink="/character"><i class="fas fa-info"></i> Visit Character Page</button>
             </li>
             <li class="nav-item" *ngIf="!isLogin">
                 <button class="btn btn-outline-primary"  routerLink="/login" ><i class="fas fa-sign-in-alt"></i>Login</button>
@@ -112,10 +112,10 @@ width: 100%;" *ngIf="url=='anime'">
             <li class="nav-item">
                 <button class="btn btn-outline-primary" routerLink="/manga"><i class="fas fa-info"></i> Visit Manga Site</button>
             </li>
-            <li class="nav-item active">
-                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"> <i class="far fa-newspaper"></i> News
-                </button>
+            <li class="nav-item">
+                <button class="btn btn-outline-primary"  routerLink="/character"><i class="fas fa-info"></i> Visit Character Page</button>
             </li>
+
             <li class="nav-item dropdown">
                 <div class="btn-group mr-3">
                     <div class="btn-group" ngbDropdown role="group">
@@ -272,9 +272,8 @@ width: 100%;" *ngIf="url=='manga'">
             <li class="nav-item active">
                 <button class="btn btn-outline-primary" routerLink="/anime"><i class="fas fa-home"></i> Visit Anime Site</button>
             </li>
-            <li class="nav-item active">
-                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"> <i class="far fa-newspaper"></i> News
-                </button>
+            <li class="nav-item">
+                <button class="btn btn-outline-primary"  routerLink="/character"><i class="fas fa-info"></i> Visit Character Page</button>
             </li>
 
 
