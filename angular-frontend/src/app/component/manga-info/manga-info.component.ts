@@ -310,4 +310,8 @@ export class MangaInfoComponent implements OnInit {
       return (this.recom.length/this.pageSizeManga)
     }
   }
+
+  saveName(name:string){
+    localStorage.setItem("manga_name",name);
+  }
 }
