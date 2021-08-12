@@ -205,7 +205,20 @@
                             <!--END .subtray-->
                         </div>
                     </div>
-
+                    <div style="margin-top: 10px;" id="quick-search" class="container-fluid" *ngIf="!isLoading">
+                        <div class="row">
+                            <div class="col">
+                
+                                <div style="margin:0 auto;
+                        width: 100%;display: block;text-align: center;margin-bottom: 2%;">
+                
+                                    <button type="button" class="btn btn-danger" ngbTooltip="View this anime list of characters"
+                                    routerLink="/anime/{{anime_id}}/characters" (click)="saveName(anime.title)"  >View All Character</button>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -26,6 +26,7 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { NewsComponent } from './component/news/news.component';
 import { CharacterComponent } from './component/character/character.component';
 import { CharacterInfoComponent } from './component/character-info/character-info.component';
+import { CharacterListComponent } from './component/character-list/character-list.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CharacterInfoComponent } from './component/character-info/character-inf
     ProfileComponent,
     NewsComponent,
     CharacterComponent,
-    CharacterInfoComponent
+    CharacterInfoComponent,
+    CharacterListComponent
   ],
   imports: [
     BrowserModule,

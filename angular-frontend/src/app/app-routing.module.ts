@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AnimeInfoComponent } from './component/anime-info/anime-info.component';
 import { CharacterInfoComponent } from './component/character-info/character-info.component';
+import { CharacterListComponent } from './component/character-list/character-list.component';
 import { CharacterComponent } from './component/character/character.component';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'character', component: CharacterComponent },
   { path: 'character/:id', component: CharacterInfoComponent },
+  { path: 'anime/:id/characters', component: CharacterListComponent },
+  { path: 'manga/:id/characters', component: CharacterListComponent },
   { path: 'password-recover', component: PasswordRecoverComponent },
   {path: 'search', redirectTo: '/search/anime', pathMatch: 'full'},
   {path: '**', redirectTo: '/error', pathMatch: 'full'}

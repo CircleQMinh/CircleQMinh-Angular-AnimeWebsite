@@ -528,6 +528,23 @@ ul{list-style:none;}
         margin-left: 5%;
         margin-right: 5%;
     }
+
+}
+@media all and (min-width:767.5px) and (max-width: 1085px) {
+
+
+    #char-ava{
+        width: 100%!important;
+        height: 100%!important;
+    }
+}
+@media all and (min-width:500px) and (max-width: 767.5px) {
+
+
+    #char-ava{
+        width: 225px!important;
+        height: 350px!important;
+    }
 }
 @media only screen and (max-width: 500px) {
     .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 150px;width: 115px;}

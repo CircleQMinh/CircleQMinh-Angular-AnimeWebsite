@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { timeout } from 'rxjs/operators';
 import { AuthService } from 'src/app/service/auth.service';
 import { InfomationService } from 'src/app/service/infomation.service';
 
@@ -21,26 +22,36 @@ export class CharacterInfoComponent implements OnInit {
   ngOnInit(): void {
     this.char_id = Number(this.route.snapshot.paramMap.get("id"));
     //console.log(this.char_id)
+    this.getChar()
+   
+  }
+  getChar(){
     this.isLoading=true
-    this.infoServeice.getCharacter(this.char_id).subscribe(
+    this.infoServeice.getCharacter(this.char_id).pipe(timeout(25000)).subscribe(
       data=>{
         this.char=data
+        //console.log(this.char)
         let s:string=this.char.about
         s.replace(/,/g, '\n')
         let a:any[]= s.split("\n")
         this.about=a
+        this.getPic()
+      },
+      error=>{
+        //console.log(error)
+        this.getChar()
+      }
+    )
+  }
+  getPic(){
+    this.infoServeice.getCharacterPic(this.char_id).pipe(timeout(25000)).subscribe(
+      data=>{
+        this.char_pic=data.pictures
         this.isLoading=false
       },
       error=>{
-        console.log(error)
-      }
-    )
-    this.infoServeice.getCharacterPic(this.char_id).subscribe(
-      data=>{
-        this.char_pic=data.pictures
-      },
-      error=>{
-        console.log(error)
+       // console.log(error)
+        this.isLoading=false
       }
 
     )

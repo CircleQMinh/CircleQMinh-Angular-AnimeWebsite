@@ -330,4 +330,7 @@ export class AnimeInfoComponent implements OnInit {
       return (this.recom.length/this.pageSizeAnime)
     }
   }
+  saveName(name:string){
+    localStorage.setItem("anime_name",name);
+  }
 }
