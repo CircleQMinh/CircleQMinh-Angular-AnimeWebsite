@@ -18,3 +18,4 @@ Visit site : https://circleqminh.github.io/random-anime-website/anime <br>
 09-08-2021 : thêm đề nghị cho anime/manga , update giao diện và api .<br>
 10-08-2021 : update login , thêm trang thông tin nhân vật và vài sửa đổi nhỏ.<br>
 11-08-2021 : thêm trang tìm kiếm nhân vật và vài sửa đổi nhỏ.<br>
+12-08-2021 : thêm chức năng random nhân vật, xem danh sách nhân vật của anime/manga.<br>
