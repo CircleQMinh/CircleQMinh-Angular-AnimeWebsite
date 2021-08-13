@@ -27,6 +27,7 @@ import { NewsComponent } from './component/news/news.component';
 import { CharacterComponent } from './component/character/character.component';
 import { CharacterInfoComponent } from './component/character-info/character-info.component';
 import { CharacterListComponent } from './component/character-list/character-list.component';
+import { EllipsisPipe } from './class/ellipsis-pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CharacterListComponent } from './component/character-list/character-lis
     NewsComponent,
     CharacterComponent,
     CharacterInfoComponent,
-    CharacterListComponent
+    CharacterListComponent,
+    EllipsisPipe
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   pageSizeUpComing = 7
 
   dataNewpaper: any[] = []
-  newSoure: any[] = [44511, 38000, 37999, 1, 918]
+  newSoure: any[] = [44511,80]
   newItems: any[] = []
   pageNewpaper = 0
   pageNewpaperCount = 0
@@ -42,7 +42,8 @@ export class HomeComponent implements OnInit {
   pageChar: number = 0
   pagaSizeChar = 12
 
-
+  season="summer"
+  year="2021"
   weekday: string = ""
   scheduleData: any[] = []
 
@@ -53,10 +54,13 @@ export class HomeComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-
+    let a = new Date()
+    this.weekday=this.getWeekday(a.getDay())
+    this.season=this.getCurrentSeason(a.getMonth())
+    this.year=String(a.getFullYear())
 
     setTimeout(() => {
-      this.infoService.getAnimeByYearAndSeason("2021", "summer").subscribe(
+      this.infoService.getAnimeByYearAndSeason(this.year,this.season ).subscribe(
         data => {
           this.dataNewest = data.anime
           this.getNewest()
@@ -84,32 +88,32 @@ export class HomeComponent implements OnInit {
 
 
     }, 3050);
-    setTimeout(() => {
-      this.newSoure.forEach(async element => {
-        var response = await this.infoService.getAnimeNews(element).toPromise();
-        delay(2050);
-        if (response) {
-          // console.log(response.articles);
-          response.articles.forEach((a: any) => {
-            this.dataNewpaper.push(a)
-          });
-        }
-        else {
-          this.toast.error("Failed to load data from API")
-        }
-        this.pageNewpaperCount = this.dataNewpaper.length
-        this.shuffleNew(this.dataNewpaper)
-        this.getAnimeNewPage()
-      });
+    // setTimeout(() => {
+    //   this.newSoure.forEach(async element => {
+    //     var response = await this.infoService.getAnimeNews(element).toPromise();
+    //     delay(2050);
+    //     if (response) {
+    //       // console.log(response.articles);
+    //       response.articles.forEach((a: any) => {
+    //         this.dataNewpaper.push(a)
+    //       });
+    //     }
+    //     else {
+    //       this.toast.error("Failed to load data from API")
+    //     }
+    //     this.pageNewpaperCount = this.dataNewpaper.length
+    //     this.shuffleNew(this.dataNewpaper)
+    //     this.getAnimeNewPage()
+    //   });
 
 
-    }, 4200);
+    // }, 4200);
     setTimeout(() => {
 
       this.infoService.getTopCharacter().subscribe(
         data => {
           this.topChar = data.top
-         // console.log(this.topChar)
+         //console.log(this.topChar)
           this.getCharPage()
         },
         error => {
@@ -134,7 +138,19 @@ export class HomeComponent implements OnInit {
       )
 
     }, 7800);
+    setTimeout(() => {
+      this.infoService.getAnimeSchedule(this.getWeekday(a.getDay())).subscribe(
+        data => {
+          this.scheduleData=data[`${this.weekday}`]
+        },
+        error => {
+          console.log(error)
+          this.toast.error("Failed to load data from API")
+        }
+      )
 
+
+    }, 1000);
   }
 
   goToSearchGenre(genre: number) {

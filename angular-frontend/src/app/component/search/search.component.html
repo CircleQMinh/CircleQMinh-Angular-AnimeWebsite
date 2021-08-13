@@ -1,9 +1,9 @@
 <app-nav></app-nav>
 <div *ngIf="url=='anime'">
     <div class="container-fluid no-padding">
-        <div class="row" style="margin-top:85px">
+        <div class="row" style="margin-top:85px" #goUp>
 
-            <div class="col">
+            <div class="col" >
 
 
                 <ol class="breadcrumb">
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col" #goUp>
+            <div class="col" >
                 <div class="list-movie-filter" style="margin-bottom: 5px;" id="list-movie-filter">
 
                     <div class="list-movie-filter-main" *ngIf="searchMode==1">
@@ -98,26 +98,6 @@
                                     <option value="43">Josei</option>
                                 </select>
                             </div>
-
-
-                            <!-- <div class="list-movie-filter-item">
-                            <label for="filter-year">Năm phát hành</label>
-                            <select id="filter-year" name="year" class="form-control">
-                                <option value=""> </option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
-                                <option value="2014">2014</option>
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                            </select>
-                        </div> -->
                             <div class="list-movie-filter-item">
                                 <label for="filter-sort">Type :</label>
                                 <select class="form-control" id="filter-sort" name="type" [(ngModel)]="type"
@@ -152,7 +132,7 @@
                                 <label for="filter-eptype">Season :</label>
                                 <select class="form-control" id="filter-eptype" name="season" [(ngModel)]="season"
                                     (change)="onSeasonYearChange()">
-                                    <option value="">--Current Season--</option>
+                                    <option value="">{{current_season |titlecase}}</option>
 
                                     <option value="spring">Spring(April to June)</option>
                                     <option value="summer">Summer(July to September)</option>
@@ -161,11 +141,11 @@
                                 </select>
                             </div>
 
-                            <div class="list-movie-filter-item" style="margin-left: 10%;">
+                            <div class="list-movie-filter-item" style="margin-left: 6%;">
                                 <label for="filter-year">Year : </label>
                                 <select id="filter-year" class="form-control" name="year" [(ngModel)]="year"
                                     (change)="onSeasonYearChange()">
-                                    <option value="">2021(Current-Year)</option>
+                                    <option value="">{{current_year}}</option>
                                     <option value="2021">2021</option>
                                     <option value="2020">2020</option>
                                     <option value="2019">2019</option>
@@ -346,7 +326,7 @@
          width: 100%;display: block;float: right;">
                                 <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
                                     [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                    (pageChange)="onStatusGenreTypePageChange();showUp()" >
+                                    (pageChange)="scroll(goUp);onStatusGenreTypePageChange();" >
                                 </ngb-pagination>
                             </div>
 
@@ -361,7 +341,7 @@
          width: 100%;display: block;float: right;">
                                 <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
                                     [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                    (pageChange)="onSeasonYearPageChange();showUp()">
+                                    (pageChange)="scroll(goUp);onSeasonYearPageChange();">
                                 </ngb-pagination>
                             </div>
 
@@ -376,7 +356,7 @@
          width: 100%;display: block;float: right;">
                                 <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
                                     [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                    (pageChange)="onSearchLetterPageChange();showUp()">
+                                    (pageChange)="scroll(goUp);onSearchLetterPageChange();">
                                 </ngb-pagination>
                             </div>
 
@@ -388,6 +368,52 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -661,7 +687,7 @@
          width: 100%;display: block;float: right;">
                                 <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
                                     [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                    (pageChange)="onStatusGenreTypePageChange();showUp()" >
+                                    (pageChange)="scroll(goUp);onStatusGenreTypePageChange();" >
                                 </ngb-pagination>
                             </div>
 
@@ -676,7 +702,7 @@
          width: 100%;display: block;float: right;">
                                 <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
                                     [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                    (pageChange)="onSeasonYearPageChange();showUp()">
+                                    (pageChange)="scroll(goUp);onSeasonYearPageChange();">
                                 </ngb-pagination>
                             </div>
 
@@ -691,7 +717,7 @@
          width: 100%;display: block;float: right;">
                                 <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
                                     [collectionSize]="collectionSize" [maxSize]="3" [boundaryLinks]=true
-                                    (pageChange)="onSearchLetterPageChange();showUp()">
+                                    (pageChange)="scroll(goUp);onSearchLetterPageChange();">
                                 </ngb-pagination>
                             </div>
 

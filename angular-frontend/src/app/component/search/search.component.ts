@@ -11,8 +11,6 @@ import { SearchService } from 'src/app/service/search.service';
 })
 export class SearchComponent implements OnInit {
 
-  @ViewChild('goUp', { static: true }) contentPage!: ElementRef;
-
   searchMode: number = 1
   url: any
   isLoading: boolean = false
@@ -34,15 +32,19 @@ export class SearchComponent implements OnInit {
 
   seasonAnimeData: any[] = []
 
+  current_year = 2021
+  current_season = "summer"
 
   constructor(private searchService: SearchService, private router: Router, private renderer: Renderer2,
     private route: ActivatedRoute,
     private infoServeice: InfomationService) { }
 
   ngOnInit(): void {
-
+    let a = new Date()
+    this.current_season = this.getCurrentSeason(a.getMonth())
+    this.current_year = a.getFullYear()
     this.route.paramMap.subscribe(params => {
-     // console.log(this.router.url)
+      // console.log(this.router.url)
       if (this.router.url == "/search/anime") {
         this.url = "anime"
         this.renderer.addClass(document.body, 'body-anime');
@@ -52,6 +54,7 @@ export class SearchComponent implements OnInit {
         this.url = "manga"
         this.renderer.addClass(document.body, 'body-manga');
         this.renderer.removeClass(document.body, 'body-anime');
+
       }
       else {
         this.url = "other"
@@ -65,7 +68,20 @@ export class SearchComponent implements OnInit {
 
   }
 
-
+  getCurrentSeason(month: number): string {
+    if (month < 3) {
+      return "winter"
+    }
+    else if (month >= 3 && month < 6) {
+      return "spring"
+    }
+    else if (month >= 6 && month < 9) {
+      return "summer"
+    }
+    else {
+      return "fall"
+    }
+  }
 
   setValue() {
     this.searchMode = this.searchService.searchMode
@@ -76,7 +92,12 @@ export class SearchComponent implements OnInit {
     this.year = this.searchService.year
     this.name = this.searchService.name
     this.letter = this.searchService.letter
+    if (this.searchMode == 2 && this.url == "manga") {
+      this.searchMode = 1
+    }
   }
+
+
   onSearchModeChange() {
 
     if (this.searchMode == 1) {
@@ -135,12 +156,13 @@ export class SearchComponent implements OnInit {
 
   }
   onSeasonYearChange() {
+
     this.pageNumber = 1
     this.isLoading = true
     if (this.url == "anime") {
       this.searchService.getSearchResultYearSeasonAnime(this.year, this.season).subscribe(
         data => {
-          console.log(data.anime)
+         // console.log(data.anime)
           this.seasonAnimeData = data.anime
           this.collectionSize = this.seasonAnimeData.length
           this.onSeasonYearPageChange()
@@ -151,7 +173,7 @@ export class SearchComponent implements OnInit {
     else {
       this.searchService.getSearchResultYearSeasonManga(this.year, this.season).subscribe(
         data => {
-          console.log(data.anime)
+         // console.log(data.anime)
           this.seasonAnimeData = data.anime
           this.collectionSize = this.seasonAnimeData.length
           this.onSeasonYearPageChange()
@@ -181,6 +203,7 @@ export class SearchComponent implements OnInit {
   }
   onSearchLetterChange(lt: string) {
     this.letter = lt
+
     this.pageNumber = 1
     this.isLoading = true
     if (this.url == "anime") {
@@ -225,16 +248,14 @@ export class SearchComponent implements OnInit {
     }
 
   }
-  showUp() {
-    this.contentPage.nativeElement.scrollIntoView();
-  }
   switchSite(u: string) {
     console.log(u)
-    
+
   }
 
   onChange(value: any) {
     let u = value.target.value;
+    this.setValue()
     if (u == "anime") {
       this.router.navigateByUrl('/', { skipLocationChange: true })
         .then(() => this.router.navigateByUrl("/search/anime"))
@@ -245,5 +266,7 @@ export class SearchComponent implements OnInit {
         .then(() => this.router.navigateByUrl("/search/manga"))
     }
   }
-
+  scroll(el: HTMLParagraphElement) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
 }

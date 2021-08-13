@@ -90,5 +90,14 @@ export class AuthService {
   getUserFavManga(uid:string):Observable<any>{
     return this.http.get(`${this.firebaseUrl}favorite/manga.json?orderBy="user_id"&equalTo="${uid}"&print=pretty`)
   }
-
+  addFavCharacter(user_id:string,char_id:number,url:string,name:string):Observable<any>{
+    return this.http.post(`${this.firebaseUrl}favorite/character.json`,{
+      user_id:user_id,
+      char_id:char_id,
+      url:url,
+      char:name})
+  }
+  getUserFavCharacter(uid:string):Observable<any>{
+    return this.http.get(`${this.firebaseUrl}favorite/character.json?orderBy="user_id"&equalTo="${uid}"&print=pretty`)
+  }
 }
