@@ -194,7 +194,10 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
                                 </span>
                                 <hr class="mt-2" style="border:1px dashed;">
                             </li>
-
+                            <li>
+                                <button type="button" class="btn btn-danger" (click)="addToFav()" *ngIf="!isFav"><i class="far fa-heart"></i> Add to favorite</button>
+                                <button type="button" class="btn btn-success" ngbTooltip="Already in favorited list" *ngIf="isFav"><i class="fas fa-check"></i> In Favorited</button>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -43,7 +43,7 @@ export class MangaComponent implements OnInit {
   topChar: any[] = []
   topCharItem: any[] = []
   pageChar: number = 0
-  pagaSizeChar = 12
+  pagaSizeChar = 30
 
   constructor(private infoService: InfomationService, private searchService: SearchService,private toast: HotToastService,
     private router: Router) { }
@@ -90,27 +90,27 @@ export class MangaComponent implements OnInit {
 
 
     }, 3050);
-    setTimeout(() => {
-      this.newSoure.forEach(async element => {
+    // setTimeout(() => {
+    //   this.newSoure.forEach(async element => {
         
-        var response = await this.infoService.getAnimeNews(element).toPromise();
-        this.delay(2050);
-        if (response) {
-          // console.log(response.articles);
-          response.articles.forEach((a: any) => {
-            this.dataNewpaper.push(a)
-          });
-        }
-        else{
-          this.toast.error("Failed to load data from API")
-        }
-        this.pageNewpaperCount = this.dataNewpaper.length
-        this.shuffleNew(this.dataNewpaper)
-        this.getAnimeNewPage()
-      });
+    //     var response = await this.infoService.getAnimeNews(element).toPromise();
+    //     this.delay(2050);
+    //     if (response) {
+    //       // console.log(response.articles);
+    //       response.articles.forEach((a: any) => {
+    //         this.dataNewpaper.push(a)
+    //       });
+    //     }
+    //     else{
+    //       this.toast.error("Failed to load data from API")
+    //     }
+    //     this.pageNewpaperCount = this.dataNewpaper.length
+    //     this.shuffleNew(this.dataNewpaper)
+    //     this.getAnimeNewPage()
+    //   });
 
 
-    }, 4200);
+    // }, 4200);
     setTimeout(() => {
 
       this.infoService.getTopCharacter().subscribe(
@@ -295,7 +295,7 @@ export class MangaComponent implements OnInit {
     }
   }
   nextTopChar(){
-    if (this.pageChar < 4) {
+    if (this.pageChar < 1) {
       this.pageChar += 1
       this.getCharPage()
     }

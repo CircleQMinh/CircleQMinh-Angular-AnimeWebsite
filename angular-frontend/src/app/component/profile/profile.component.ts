@@ -28,6 +28,13 @@ export class ProfileComponent implements OnInit {
   pageManga: number = 1
   mangaItem: any[] = []
 
+  favorite_char:any[]=[]
+  pageSizeChar = 7
+  pageChar: number = 1
+  charItem: any[] = []
+
+  mode=1
+
   test:any[]=[{id:44511,anime:"Chainsaw Man",url:"https://cdn.myanimelist.net/images/anime/1632/110707.jpg"},
   {anime_id:44511,anime:"Chainsaw Man",url:"https://cdn.myanimelist.net/images/anime/1632/110707.jpg"},
   {anime_id:44511,anime:"Chainsaw Man",url:"https://cdn.myanimelist.net/images/anime/1632/110707.jpg"},
@@ -59,6 +66,7 @@ export class ProfileComponent implements OnInit {
      // this.getUserInfo()
       this.getFavoriteAnime()
       this.getFavoriteManga()
+      this.getFavoriteChar()
       this.isLoading=false
     }
     else{
@@ -205,6 +213,48 @@ export class ProfileComponent implements OnInit {
      
     }
   }
+  getFavoriteChar(){
+    this.authService.getUserFavCharacter(this.uid).pipe(map(
+      data => {
+        const postsArray = [];
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
+            postsArray.push({ ...data[key], id: key });
+          }
+        }
+        return postsArray;
+      }
+    )).subscribe(
+      data=>{
+        this.favorite_char=data
+        this.getFavCharPage()
+      },
+      error=>{
+        console.log(error)
+      }
+    )
+    
+  }
+  getFavCharPage() {
+    this.charItem = []
+    for (let i = 0; i < this.pageSizeChar; i++) {
+      this.charItem.push(this.favorite_char[i + this.pageSizeChar * (this.pageChar-1)])
+    }
+  }
+  nextCharPage() {
+    if(this.favorite_char.length/this.pageSizeChar>this.pageChar){
+      this.pageChar+=1
+      this.getFavCharPage()
+    }
+    
+  }
+  prevCharPage() {
+    if(1<this.pageChar){
+      this.pageChar-=1
+      this.getFavCharPage()
+     
+    }
+  }
   signOut() {
     this.authService.isLogin = false
     this.isLogin = false
@@ -238,5 +288,18 @@ export class ProfileComponent implements OnInit {
       //console.log(this.favorite_manga.length/this.pageSizeManga)
       return (this.favorite_manga.length/this.pageSizeManga)+1
     }
+  }
+  returnTotalPageChar():number{
+    if(this.favorite_char.length<this.pageSizeChar){
+      return 1
+    }
+    else{
+      //console.log(this.favorite_manga.length/this.pageSizeManga)
+      return (this.favorite_char.length/this.pageSizeChar)+1
+    }
+  }
+
+  switchMode(i:number){
+    this.mode=i
   }
 }

@@ -117,16 +117,23 @@ export class NavComponent implements OnInit {
 
   goToSearchGenre(genre: number) {
     this.searchService.searchMode = 1
+    
     if (genre == null) {
       this.searchService.genre = String("")
     }
     else {
       this.searchService.genre = String(genre)
     }
+    if(this.url=="anime"){
+      this.router.navigateByUrl('/', { skipLocationChange: true })
+      .then(() => this.router.navigate(['/search/anime']));
+    }
+    else{
+      this.router.navigateByUrl('/', { skipLocationChange: true })
+      .then(() => this.router.navigate(['/search/manga']));
+    }
 
-
-    this.router.navigateByUrl('/', { skipLocationChange: true })
-      .then(() => this.router.navigate(['/search']));
+  
   }
   goToSearchStatus(ss: string) {
     this.searchService.searchMode = 1

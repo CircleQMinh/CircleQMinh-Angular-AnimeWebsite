@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { HotToastService } from '@ngneat/hot-toast';
-import { timeout } from 'rxjs/operators';
+import { map, timeout } from 'rxjs/operators';
 import { AuthService } from 'src/app/service/auth.service';
 import { InfomationService } from 'src/app/service/infomation.service';
 
@@ -15,7 +15,7 @@ import { InfomationService } from 'src/app/service/infomation.service';
 export class CharacterComponent implements OnInit {
   @ViewChild('goUp', { static: true }) contentPage!: ElementRef;
   isLoading: boolean = false
-  isLoadingTopChar:boolean=false
+  isLoadingTopChar: boolean = false
   showSearchResult: boolean = false
   mode = 1
   noResult: boolean = false
@@ -28,63 +28,103 @@ export class CharacterComponent implements OnInit {
   pageChar: number = 1
   pagaSizeChar = 50
 
-
+  fav_char_id_test:any[]=[73227,80,672,673,674]
   char_id: any = "73227"
   char: any
-  about :any
-  char_pic:any
+  about: any
+  char_pic: any
 
+  isLogin: boolean = false
+  isFav: boolean = false
+  email!: string
+  uid!: string
+  username!: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService,
     private infoService: InfomationService, private toast: HotToastService) { }
 
   ngOnInit(): void {
-
+    this.getLocalStorage()
     this.getTopCharPage()
+
     //this.getRandomChar()
   }
 
-  getRandomChar(){
-    this.isLoading=true
-    this.char_id=this.randomInteger(1,180000)
+  getRandomChar() {
+    this.isLoading = true
+    
+    //this.char_id = this.fav_char_id_test[this.randomInteger(1, 5)-1]
+    this.char_id = this.randomInteger(1,180000)
+    this.isFav=false
     //console.log(this.char_id)
-    setTimeout(()=>{
+    setTimeout(() => {
       this.infoService.getCharacter(this.char_id).pipe(timeout(8000)).subscribe(
-        data=>{
-          this.char=data
-          let s:string=this.char.about
+        data => {
+          this.char = data
+          let s: string = this.char.about
           s.replace(/,/g, '\n')
-          let a:any[]= s.split("\n")
-          this.about=a
+          let a: any[] = s.split("\n")
+          this.about = a
+          this.ifFavChar()
           this.getRandomCharPic()
-          
+
         },
-        error=>{
-         // console.log(error)
+        error => {
+          // console.log(error)
           this.getRandomChar()
         }
       )
-    },1000)
-    
+    }, 1000)
+
   }
-  getRandomCharPic(){
-    this.char_pic=[]
+  ifFavChar() {
+    if (this.isLogin) {
+      this.authService.getUserFavCharacter(this.authService.idLogin).pipe(map(
+        data => {
+          const postsArray = [];
+          for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+              postsArray.push({ ...data[key], id: key });
+            }
+          }
+          return postsArray;
+        }
+      )).subscribe(
+        data => {
+          for (let i = 0; i < data.length; i++) {
+            // console.log(data[i])
+            if (data[i].char_id == this.char_id) {
+              // console.log("yes")
+              this.isFav = true
+              break
+            }
+          }
+        },
+        error => {
+          // console.log("no ")
+          console.log(error)
+        }
+      )
+    }
+  }
+  getRandomCharPic() {
+    this.char_pic = []
     this.infoService.getCharacterPic(this.char_id).pipe(timeout(15000)).subscribe(
-      data=>{
-        this.char_pic=data.pictures
-        this.isLoading=false
+      data => {
+        this.char_pic = data.pictures
+        this.isLoading = false
       },
-      error=>{
-        this.isLoading=false
+      error => {
+        this.isLoading = false
         this.getRandomCharPic()
-       // console.log(error)
+        // console.log(error)
       }
 
     )
   }
   switchMode(m: number) {
     this.mode = m
-    if(this.mode==2){
+    if (this.mode == 2) {
       this.getRandomChar()
     }
   }
@@ -121,16 +161,16 @@ export class CharacterComponent implements OnInit {
   randomInteger(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  prevSearchPage(){
-    if(this.current_page>1){
-      this.current_page-=1
+  prevSearchPage() {
+    if (this.current_page > 1) {
+      this.current_page -= 1
       this.search()
     }
 
   }
-  nextSearchPage(){
-    if(this.current_page+1<=this.last_page){
-      this.current_page+=1
+  nextSearchPage() {
+    if (this.current_page + 1 <= this.last_page) {
+      this.current_page += 1
       this.search()
     }
   }
@@ -138,12 +178,12 @@ export class CharacterComponent implements OnInit {
   getTopCharPage() {
     this.isLoadingTopChar = true
     this.showSearchResult = false
-    this.mode=1
+    this.mode = 1
     setTimeout(() => {
 
       this.infoService.getTopCharacterPage(this.pageChar).subscribe(
         data => {
-          this.topChar=[]
+          this.topChar = []
           this.topChar = data.top
           this.isLoadingTopChar = false
         },
@@ -167,19 +207,69 @@ export class CharacterComponent implements OnInit {
       this.getTopCharPage()
     }
   }
-  returnTopCharDes(o:any):string{
-    if(o.animeography.length>0){
-      return o.title+'-'+o.name_kanji+' from '+o.animeography[0].name  
+  returnTopCharDes(o: any): string {
+    if (o.animeography.length > 0) {
+      return o.title + '-' + o.name_kanji + ' from ' + o.animeography[0].name
     }
-    else if(o.mangaography.length>0){
-      return o.title+'-'+o.name_kanji+' from '+o.mangaography[0].name  
+    else if (o.mangaography.length > 0) {
+      return o.title + '-' + o.name_kanji + ' from ' + o.mangaography[0].name
     }
-    else{
-      return o.title+'-'+o.name_kanji
+    else {
+      return o.title + '-' + o.name_kanji
     }
 
   }
+  addToFav(){
+    if (this.isLogin) {
+      // console.log(this.anime_id)
+      // console.log(this.anime.title)
+      // console.log(this.anime.image_url)
+      this.authService.addFavCharacter(this.authService.idLogin, this.char_id, this.char.image_url, this.char.name).subscribe(
+        data => {
 
+          this.toast.success("Character added to favorite list!")
+          this.isFav = true
+        },
+        error => {
+          this.toast.error("Something wrong!")
+        }
+      )
+    }
+    else {
+      this.toast.show("Login to add this character to your favorite list!")
+    }
+  }
+  getLocalStorage() {
+    if (localStorage.getItem("isLogin")) {
+
+      let timeOut = new Date(localStorage.getItem("timeOut")!)
+      let timeNow = new Date()
+
+      if (timeOut.getTime() < timeNow.getTime()) {
+        //console.log("time out remove key")
+        localStorage.removeItem("isLogin")
+        localStorage.removeItem("uid")
+        localStorage.removeItem("email")
+        localStorage.removeItem("timeOut")
+        localStorage.removeItem("username")
+      }
+      else {
+        this.isLogin = Boolean(localStorage.getItem('isLogin'))
+        this.uid = localStorage.getItem('uid')!
+        this.email = localStorage.getItem("email")!
+        this.username = localStorage.getItem("username")!
+        this.authService.isLogin = this.isLogin
+        this.authService.idLogin = this.uid
+        this.authService.emailLogin = this.email
+        this.authService.userLogin = this.username
+        //console.log("still login")
+      }
+    }
+    else {
+      // console.log("no login acc")
+    }
+
+  }
 
 
 

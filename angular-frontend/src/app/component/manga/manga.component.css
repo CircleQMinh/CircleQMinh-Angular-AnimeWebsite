@@ -74,27 +74,27 @@ img{max-width:100%;}
 .right-box .right-box-content a{color:#f2f2f2;}
 .right-box .right-box-content .list-top-movie{list-style-type:none;margin:0px;padding:0px;position:relative;}
 .right-box .right-box-content .list-top-movie .list-top-movie-item{clear:both;padding:9px 5px;border-bottom:1px solid #1F1F1F;overflow:hidden;}
-.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child{padding:0;height:120px;}
+
 .right-box .right-box-content .list-top-movie .list-top-movie-item:nth-child(2n){background:#131313;}
 .right-box .right-box-content .list-top-movie .list-top-movie-item:last-child{border-bottom:0px;}
 .right-box .right-box-content .list-top-movie .list-top-movie-item-thumb{float:left;}
 .right-box .right-box-content .list-top-movie .list-top-movie-item-info{float:left;margin-left:10px;z-index:1;position:relative;width:79%;}
-.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child .list-top-movie-item-info{bottom:-38px;width:100%;padding:0;margin:0 10px;}
+
 .right-box .right-box-content .list-top-movie .list-top-movie-item-info .list-top-movie-item-vn,.right-box .right-box-content .list-top-movie .list-top-movie-item-info .list-top-movie-item-en,.right-box .right-box-content .list-top-movie .list-top-movie-item-info .list-top-movie-item-view{display:block;}
 .right-box .right-box-content .list-top-movie .list-top-movie-item .list-top-movie-item-info .list-top-movie-item-vn{font-size:12px;color:#FFF;font-weight:bold;margin-bottom:5px;margin-right:5px;}
-.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child .list-top-movie-item-info .list-top-movie-item-vn{font-size:14px;text-transform:uppercase;bottom:-17px;position:relative;text-shadow:-1px 0 20px #482c6d, 0 1px 20px #482c6d, 1px 0 20px #482c6d, 0 -1px 20px #482c6d;}
+
 .right-box .right-box-content .list-top-movie .list-top-movie-item .list-top-movie-item-info .list-top-movie-item-en{font-size:12px;color:#696969;}
-.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child .list-top-movie-item-info .list-top-movie-item-en{color:#fff;bottom:-15px;position:relative;}
+
 .right-box .right-box-content .list-top-movie .list-top-movie-item-info .list-top-movie-item-vn:hover{color:#dacb46;text-decoration:none;}
 .right-box .right-box-content a{line-height:18px;}
 .right-box .right-box-content .list-top-movie .list-top-movie-item a .status{background:#811204;color:#fff;padding:2px 4px;font-size:10px;font-weight:bold;position:absolute;right:5px;z-index:2;}
-.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child a .status{top:5px;}
+
 /*! CSS Used from: https://anime47.com/skin/24032017/css/vtlai.css?v=1.3 */
-.right-box .right-box-content .list-top-movie .list-top-movie-item .list-top-movie-item-thumb{background-repeat:no-repeat;background-size:cover;width:17%;height:60px;}
-.right-box .right-box-content .list-top-movie .list-top-movie-item:first-child .list-top-movie-item-thumb{width:100%;height:120px;position:absolute;z-index:1;}
+.right-box .right-box-content .list-top-movie .list-top-movie-item .list-top-movie-item-thumb{background-repeat:no-repeat;background-size:cover;width:17%;height:80px;}
+
 .list-top-movie-link:hover .list-top-movie-item-vn{color:#DACB46!important;text-decoration:none;}
 .list-top-movie-link .list-top-movie-item-view{color:#696969;text-decoration:none;}
-.list-top-movie .list-top-movie-item:first-child .list-top-movie-link .list-top-movie-item-view{position:absolute;right:25px;bottom:-18px;color:#fff;}
+
 .list-top-movie-link:hover .list-top-movie-item-thumb{opacity:0.7;}
 .ad-container{height:auto!important;}
 @media screen and (max-width: 800px){
@@ -235,10 +235,6 @@ ul{margin-top:0;margin-bottom:10px;}
     @-moz-keyframes fadeInImages{0%{opacity:0;}to{opacity:1;}}
     @keyframes fadeInImages{0%{opacity:0;}to{opacity:1;}}
 
-.search-header{
-    font-family: monospace;
-    font-size: 30px;
-}
 
 
 @media all and (min-width:1499px){
@@ -287,7 +283,7 @@ ul{margin-top:0;margin-bottom:10px;}
 @media all and (min-width:300px) and (max-width:500px){
 
     .title-bar{width: 98%;}
-    .subtray{width: 50%;height: 145px;}
+    .subtray{width: 50%;height: 250px;}
     .subtray .item{position:relative;display:block;overflow:hidden;margin:0 2px px 0;height: 100%;width: 100%;}
 }
 @media all and (min-width:1500px){
@@ -297,4 +293,5 @@ ul{margin-top:0;margin-bottom:10px;}
     #side-info{display: none;}
     .title-bar{width: 98%;}
 }
+
 
