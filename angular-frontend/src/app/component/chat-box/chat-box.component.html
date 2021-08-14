@@ -1,0 +1,56 @@
+<div class="chat-box" *ngIf="showChatBox">
+    <p>Chat Message</p>
+    <div class="chat-scroll" id="chat_content">
+
+        <div class="chat-line" *ngFor="let o of chatMess">
+            <p><strong>{{o.user}} : </strong>{{o.content}}</p>
+                    <span class="chat-time">{{o.time| date:'medium'}} </span>
+
+            <hr>
+        </div>
+
+        <!-- <div class="chat-line">
+            <p><strong>Username : </strong>erviews & make your upcoming placement season efficient and
+                successful. Also, a </p>
+            <hr>
+        </div>
+        <div class="chat-line">
+            <p><strong>Username : </strong>erviews & make your upcoming placement season efficient and
+                successful. Also, a </p>
+            <hr>
+        </div>
+        <div class="chat-line">
+            <p><strong>Username : </strong>erviews & make your upcoming placement season efficient and
+                successful. Also, a </p>
+            <hr>
+        </div>
+        <div class="chat-line">
+            <p><strong>Username : </strong>erviews & make your upcoming placement season efficient and
+                successful. Also, a </p>
+            <hr>
+        </div>
+        <div class="chat-line">
+            <p><strong>Username : </strong>erviews & make your upcoming placement season efficient and
+                successful. Also, a </p>
+            <hr>
+        </div>
+        <div class="chat-line">
+            <p><strong>Username : </strong>erviews & make your upcoming placement season efficient and
+                successful. Also, a </p>
+            <hr>
+        </div> -->
+    </div>
+    <div class="chat-enter" *ngIf="!isLogin">
+        <p>Login to chat!</p>
+    </div>
+    <div class="chat-enter" *ngIf="isLogin">
+        <textarea placeholder="Come and say hello.Press 'enter' to send message!" style="    width: 75%;height: 75%;
+        resize: none;" (keyup.enter)="postChat()" [(ngModel)]="message"></textarea>
+        <button type="button" class="btn btn-info" style="width: 15%;;height: 75%;"><i
+                class="far fa-paper-plane" (click)="postChat()"></i></button>
+    </div>
+</div>
+<a class="float-btn" style="    bottom: 40px;
+left: 30px;" (click)="showHideChat()">
+    <i class="far fa-comment-alt float-btn-icon"></i>
+</a>

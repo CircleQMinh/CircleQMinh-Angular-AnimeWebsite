@@ -6,8 +6,8 @@
 
         <img  src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1628192627/logo_v5ukvv.png" style="width: 50%;">
         <strong style="display: block;font-size: 20px;">Login</strong>
-        <strong style="display: block;font-size: 20px;" *ngIf="isLogin">You already login as '{{username}}' using {{email}}</strong>
-        <strong style="display: block;font-size: 20px;" *ngIf="login_error">Wrong password or email!</strong>
+        <p style="display: block;font-size: 20px;    word-break: break-word;" *ngIf="isLogin">You already login as '{{username}}' using {{email}}</p>
+        <p style="display: block;font-size: 20px;    word-break: break-word;" *ngIf="login_error">Wrong password or email!</p>
     </div>
 
     <form novalidate (ngSubmit)="trySignIn()" class="row justify-content-md-center" [formGroup]="rf1" *ngIf="!isLogin">

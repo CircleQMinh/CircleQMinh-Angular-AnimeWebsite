@@ -100,4 +100,14 @@ export class AuthService {
   getUserFavCharacter(uid:string):Observable<any>{
     return this.http.get(`${this.firebaseUrl}favorite/character.json?orderBy="user_id"&equalTo="${uid}"&print=pretty`)
   }
+
+  addChatMess(user:string,time:string,content:string):Observable<any>{
+    return this.http.post(`${this.firebaseUrl}chat.json`,{
+      user:user,
+      time:time,
+      content:content})
+  }
+  getChatMess():Observable<any>{
+    return this.http.get(`${this.firebaseUrl}chat.json`)
+  }
 }
