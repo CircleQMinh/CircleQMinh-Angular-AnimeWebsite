@@ -112,8 +112,11 @@ export class LoginComponent implements OnInit {
         let a=data.pop()
        // console.log(a)
         localStorage.setItem("username",a.username)
-        this.router.navigateByUrl('/', {skipLocationChange: true})
-        .then(() => this.router.navigate(['/login']));
+        setTimeout(()=>{
+          this.router.navigateByUrl('/', {skipLocationChange: true})
+          .then(() => this.router.navigate(['/login']));
+        },2000)
+
       }
     )
   }

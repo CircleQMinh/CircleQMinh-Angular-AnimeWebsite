@@ -1,0 +1,66 @@
+<app-nav></app-nav>
+
+
+<div class="div-center-content" style="margin-top: 100px;">
+    <p class="search-header">Anime Schedule</p>
+    <hr>
+</div>
+<div style="display: flex;flex-wrap: wrap;justify-content: center;">
+    <ul ngbNav #nav="ngbNav" class="nav-tabs" [(activeId)]="dayOfChoice">
+        <li ngbNavItem *ngFor="let o of weekday,index as i" [ngbNavItem]="i">
+            <a ngbNavLink (click)="navChange(i)">{{o}}</a>
+            <ng-template ngbNavContent>
+                <div style="margin:0 auto;
+            width: 50%;display: block;margin-top: 3%;text-align: center;">
+                    <p style="color: black;" *ngIf="isLoading" class="search-header"> Loading...</p>
+                    <img *ngIf="isLoading" src="https://media.giphy.com/media/WtDLxQWQWLtw3oIXTy/giphy.gif"
+                        class="loading">
+                </div>
+                <div class="article-list listing-layout responsive unique" *ngIf="!isLoading">
+                    <article class="article-item  type-text picked-trending" *ngFor="let o of scheduleData"
+                        style="margin-bottom: 20px;">
+                        <p class="article-thumbnail">
+                            <a>
+
+                                <img routerLink="/anime/{{o.mal_id}}" src={{o.image_url}} alt="" class="unveil">
+                            </a>
+                        </p>
+                        <header>
+                            <p class="article-title">
+                                <a routerLink="/anime/{{o.mal_id}}">{{o.title}}</a>
+                            </p>
+                            <p class="article-meta">
+                                <span class="article-publish">
+                                    <span class="time">Airing Start : </span>
+                                    <span class="date">{{o.airing_start| date}} </span>
+                                </span>
+
+                            </p>
+                            <p class="article-summary"><strong>Summary</strong> : {{o.synopsis| ellipsis:650}}<a
+                                    routerLink="/anime/{{o.mal_id}}" style="    text-decoration: underline;
+                            text-decoration-color: cornflowerblue;
+                            color: cornflowerblue;">Read more</a></p>
+
+                        </header>
+
+                    </article>
+                </div>
+            </ng-template>
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col" style="    background-color: white;
+        border: solid #333;
+        padding-bottom: 20px;">
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<app-footer></app-footer>

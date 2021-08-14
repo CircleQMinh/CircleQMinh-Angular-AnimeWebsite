@@ -12,6 +12,7 @@ import { PasswordRecoverComponent } from './component/password-recover/password-
 import { ProfileComponent } from './component/profile/profile.component';
 import { ReadComponent } from './component/read/read.component';
 import { RegisterComponent } from './component/register/register.component';
+import { ScheduleComponent } from './component/schedule/schedule.component';
 import { SearchComponent } from './component/search/search.component';
 import { WatchComponent } from './component/watch/watch.component';
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'character', component: CharacterComponent },
+  { path: 'schedule', component: ScheduleComponent },
   { path: 'character/:id', component: CharacterInfoComponent },
   { path: 'anime/:id/characters', component: CharacterListComponent },
   { path: 'manga/:id/characters', component: CharacterListComponent },
