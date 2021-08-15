@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { timeout } from 'rxjs/operators';
 import { AuthService } from 'src/app/service/auth.service';
 import { InfomationService } from 'src/app/service/infomation.service';
 
@@ -44,7 +45,7 @@ export class CharacterListComponent implements OnInit {
   }
   getAnimeCharList() {
     this.name=localStorage.getItem("anime_name")
-    this.infoService.getAnimeChars(this.id).subscribe(
+    this.infoService.getAnimeChars(this.id).pipe(timeout(10000)).subscribe(
       data=>{
         this.charList=data.characters
         for(let i=0;i<this.charList.length;i++){
@@ -58,12 +59,13 @@ export class CharacterListComponent implements OnInit {
       },
       error=>{
         console.log(error)
+        this.toast.error("Failed to load data from API")
       }
     )
   }
   getMangaCharList() {
     this.name=localStorage.getItem("manga_name")
-    this.infoService.getMangaChars(this.id).subscribe(
+    this.infoService.getMangaChars(this.id).pipe(timeout(10000)).subscribe(
       data=>{
         this.charList=data.characters
         for(let i=0;i<this.charList.length;i++){
@@ -77,6 +79,7 @@ export class CharacterListComponent implements OnInit {
       },
       error=>{
         console.log(error)
+        this.toast.error("Failed to load data from API")
       }
     )
   }

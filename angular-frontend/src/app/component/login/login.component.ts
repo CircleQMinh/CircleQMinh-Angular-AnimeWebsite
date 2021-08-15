@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
     }
   }
   getUserInfo(){
-    this.authService.getUserInfo(this.authService.idLogin).pipe(map(
+    this.authService.getUserInfo(localStorage.getItem("uid")!).pipe(map(
       data => {
         const postsArray = [];
         for (const key in data) {

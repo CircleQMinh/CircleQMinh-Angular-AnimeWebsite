@@ -58,8 +58,8 @@
                                     <div class="tag">
                                         <strong>Genre: </strong>
 
-                                        <h3 *ngFor="let g of anime.genres"><a href="/search"
-                                                title="{{g.name}}">{{g.name}} </a></h3>
+                                        <h3 *ngFor="let g of anime.genres"><a (click)="goToSearchGenre(g.mal_id)" style="text-decoration: underline;color: yellowgreen;cursor: pointer;"
+                                                title="{{g.name}}"> {{g.name}}</a></h3>
 
 
 

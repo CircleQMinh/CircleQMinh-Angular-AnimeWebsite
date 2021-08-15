@@ -31,6 +31,7 @@ import { EllipsisPipe } from './class/ellipsis-pipe';
 import { ScheduleComponent } from './component/schedule/schedule.component';
 import { ScrollComponent } from './component/scroll/scroll.component';
 import { ChatBoxComponent } from './component/chat-box/chat-box.component';
+import { InfoComponent } from './component/info/info.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ChatBoxComponent } from './component/chat-box/chat-box.component';
     EllipsisPipe,
     ScheduleComponent,
     ScrollComponent,
-    ChatBoxComponent
+    ChatBoxComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

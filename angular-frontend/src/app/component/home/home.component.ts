@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { HotToastService } from '@ngneat/hot-toast';
-import { delay } from 'rxjs/operators';
+import { delay, timeout } from 'rxjs/operators';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
 
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   pageSizeUpComing = 7
 
   dataNewpaper: any[] = []
-  newSoure: any[] = [44511,80]
+  newSoure: any[] = [44511, 80]
   newItems: any[] = []
   pageNewpaper = 0
   pageNewpaperCount = 0
@@ -42,12 +42,15 @@ export class HomeComponent implements OnInit {
   pageChar: number = 0
   pagaSizeChar = 12
 
-  season="summer"
-  year="2021"
+  season = "summer"
+  year = "2021"
   weekday: string = ""
   scheduleData: any[] = []
 
   isLoading: boolean = true
+
+  isRandom:boolean=false
+  random_anime: any
 
 
   constructor(private infoService: InfomationService, private searchService: SearchService, private toast: HotToastService,
@@ -55,12 +58,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     let a = new Date()
-    this.weekday=this.getWeekday(a.getDay())
-    this.season=this.getCurrentSeason(a.getMonth())
-    this.year=String(a.getFullYear())
+    this.weekday = this.getWeekday(a.getDay())
+    this.season = this.getCurrentSeason(a.getMonth())
+    this.year = String(a.getFullYear())
+
+
+
 
     setTimeout(() => {
-      this.infoService.getAnimeByYearAndSeason(this.year,this.season ).subscribe(
+      this.infoService.getAnimeByYearAndSeason(this.year, this.season).subscribe(
         data => {
           this.dataNewest = data.anime
           this.getNewest()
@@ -113,7 +119,7 @@ export class HomeComponent implements OnInit {
       this.infoService.getTopCharacter().subscribe(
         data => {
           this.topChar = data.top
-         //console.log(this.topChar)
+          //console.log(this.topChar)
           this.getCharPage()
         },
         error => {
@@ -141,7 +147,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.infoService.getAnimeSchedule(this.getWeekday(a.getDay())).subscribe(
         data => {
-          this.scheduleData=data[`${this.weekday}`]
+          this.scheduleData = data[`${this.weekday}`]
         },
         error => {
           console.log(error)
@@ -153,6 +159,26 @@ export class HomeComponent implements OnInit {
     }, 1000);
   }
 
+  getRandomAnime() {
+    this.isRandom=true
+    this.random_anime=undefined
+    let random = this.randomInteger(1,49597)
+   // console.log(random)
+    setTimeout(() => {
+      this.infoService.getAnime(String(random)).pipe(timeout(5000)).subscribe(
+        data => {
+          this.random_anime = data
+          this.isRandom=false
+        },
+        error => {
+          this.getRandomAnime()
+        }
+      )
+    }, 2000)
+  }
+  randomInteger(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
   goToSearchGenre(genre: number) {
     this.searchService.searchMode = 1
     if (genre == null) {
@@ -304,7 +330,7 @@ export class HomeComponent implements OnInit {
       this.topCharItem.push(this.topChar[i + this.pagaSizeChar * this.pageChar])
     }
   }
-  nextTopChar(){
+  nextTopChar() {
     if (this.pageChar < 4) {
       this.pageChar += 1
       this.getCharPage()

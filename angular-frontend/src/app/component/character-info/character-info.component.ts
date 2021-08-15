@@ -108,7 +108,7 @@ export class CharacterInfoComponent implements OnInit {
     )
   }
   getPic(){
-    this.infoServeice.getCharacterPic(this.char_id).pipe(timeout(25000)).subscribe(
+    this.infoServeice.getCharacterPic(this.char_id).pipe(timeout(5000)).subscribe(
       data=>{
         this.char_pic=data.pictures
         this.isLoading=false

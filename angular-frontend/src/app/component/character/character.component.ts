@@ -136,7 +136,7 @@ export class CharacterComponent implements OnInit {
       this.searchResult = []
       setTimeout(() => {
 
-        this.infoService.getNavSearchResultChar(this.keyword, this.current_page).pipe(timeout(10000)).subscribe(
+        this.infoService.getNavSearchResultChar(this.keyword, this.current_page).pipe(timeout(7000)).subscribe(
           data => {
             this.searchResult = data.results
             this.last_page = data.last_page
