@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { HotToastService } from '@ngneat/hot-toast';
+import { timeout } from 'rxjs/operators';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
 
@@ -44,6 +45,9 @@ export class MangaComponent implements OnInit {
   topCharItem: any[] = []
   pageChar: number = 0
   pagaSizeChar = 30
+
+  isRandom:boolean=false
+  random_manga: any
 
   constructor(private infoService: InfomationService, private searchService: SearchService,private toast: HotToastService,
     private router: Router) { }
@@ -287,7 +291,26 @@ export class MangaComponent implements OnInit {
     }
 
   }
-
+  getRandomManga() {
+    this.isRandom=true
+    this.random_manga=undefined
+    let random = this.randomInteger(1,139533)
+   // console.log(random)
+    setTimeout(() => {
+      this.infoService.getManga(String(random)).pipe(timeout(5000)).subscribe(
+        data => {
+          this.random_manga = data
+          this.isRandom=false
+        },
+        error => {
+          this.getRandomManga()
+        }
+      )
+    }, 2000)
+  }
+  randomInteger(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
   getCharPage() {
     this.topCharItem = []
     for (let i = 0; i < this.pagaSizeChar; i++) {

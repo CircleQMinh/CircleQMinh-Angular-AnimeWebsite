@@ -42,15 +42,15 @@ width: 100%;" *ngIf="url=='other'">
             </li>
             <li class="nav-item">
                 <button class="btn btn-outline-primary" routerLink="/schedule"><i
-                        class="far fa-clock"></i>Schedule</button>
+                        class="far fa-clock"></i> Schedule</button>
             </li>
             <li class="nav-item">
-                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"><i
-                        class="far fa-question-circle"></i>Help</button>
+                <button class="btn btn-outline-primary" routerLink="/info"><i
+                        class="far fa-question-circle"></i> Info</button>
             </li>
             <li class="nav-item" *ngIf="!isLogin">
                 <button class="btn btn-outline-primary" routerLink="/login"><i
-                        class="fas fa-sign-in-alt"></i>Login</button>
+                        class="fas fa-sign-in-alt"></i> Login</button>
             </li>
             <li class="nav-item dropdown" *ngIf="isLogin">
                 <div class="btn-group mr-3">
@@ -125,12 +125,10 @@ width: 100%;" *ngIf="url=='anime'">
                     Site</button>
             </li>
             <li class="nav-item">
-                <button class="btn btn-outline-primary" routerLink="/character"><i class="fas fa-users"></i>
-                    Character</button>
+                <button class="btn btn-outline-primary" routerLink="/character"><i class="fas fa-users"></i> Character</button>
             </li>
             <li class="nav-item">
-                <button class="btn btn-outline-primary" routerLink="/schedule"><i class="far fa-clock"></i>
-                    Schedule</button>
+                <button class="btn btn-outline-primary" routerLink="/schedule"><i class="far fa-clock"></i> Schedule</button>
             </li>
             <!-- <li class="nav-item dropdown">
                 <div class="btn-group mr-3">
@@ -204,12 +202,12 @@ width: 100%;" *ngIf="url=='anime'">
             </li>
 
             <li class="nav-item">
-                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"><i
-                        class="far fa-question-circle"></i>Help</button>
+                <button class="btn btn-outline-primary" routerLink="/info"><i
+                        class="far fa-question-circle"></i> Info</button>
             </li>
             <li class="nav-item" *ngIf="!isLogin">
                 <button class="btn btn-outline-primary" routerLink="/login"><i
-                        class="fas fa-sign-in-alt"></i>Login</button>
+                        class="fas fa-sign-in-alt"></i> Login</button>
             </li>
             <li class="nav-item dropdown" *ngIf="isLogin">
                 <div class="btn-group mr-3">
@@ -335,8 +333,8 @@ width: 100%;" *ngIf="url=='manga'">
             </li>
 
             <li class="nav-item">
-                <button class="btn btn-outline-primary" ngbTooltip="Work in progress :v !"><i
-                        class="far fa-question-circle"></i>Help</button>
+                <button class="btn btn-outline-primary" routerLink="/info"><i
+                        class="far fa-question-circle"></i>Info</button>
             </li>
             <li class="nav-item" *ngIf="!isLogin">
                 <button class="btn btn-outline-primary" routerLink="/login"><i

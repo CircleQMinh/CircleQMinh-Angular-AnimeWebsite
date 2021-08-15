@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { map } from 'rxjs/operators';
+import { map, timeout } from 'rxjs/operators';
 import { AuthService } from 'src/app/service/auth.service';
 import { InfomationService } from 'src/app/service/infomation.service';
 import { SearchService } from 'src/app/service/search.service';
@@ -128,7 +128,7 @@ export class MangaInfoComponent implements OnInit {
         this.isLoading=false
     })
     this.delay(1050)
-    this.infoServeice.getMangaRecommendations(this.manga_id).subscribe(
+    this.infoServeice.getMangaRecommendations(this.manga_id).pipe(timeout(10000)).subscribe(
       data => {
         //console.log(data)
         this.recom = data.recommendations
@@ -169,7 +169,7 @@ export class MangaInfoComponent implements OnInit {
       )
     }
     this.delay(1050)
-    this.infoServeice.getMangaChars(this.manga_id).subscribe(
+    this.infoServeice.getMangaChars(this.manga_id).pipe(timeout(10000)).subscribe(
       data=>{
         //console.log(data)
         this.charList=data.characters
@@ -184,7 +184,7 @@ export class MangaInfoComponent implements OnInit {
       }
     )
     this.delay(1050)
-    this.infoServeice.getMangaReviews(this.manga_id,this.current_review_page).subscribe(
+    this.infoServeice.getMangaReviews(this.manga_id,this.current_review_page).pipe(timeout(10000)).subscribe(
       data=>{
         //console.log(data)
         this.mal_review=data.reviews
@@ -252,7 +252,17 @@ export class MangaInfoComponent implements OnInit {
       }
     )
   }
+  goToSearchGenre(genre: number) {
+    this.searchService.searchMode = 1
+    if (genre == null) {
+      this.searchService.genre = String("")
+    }
+    else {
+      this.searchService.genre = String(genre)
+    }
 
+    this.router.navigateByUrl("/search/manga")
+  }
   addToFav(){
     if(this.isLogin){
       // console.log(this.anime_id)

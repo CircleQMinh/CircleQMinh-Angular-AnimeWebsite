@@ -29,7 +29,7 @@
     </ng-template>
 </ngb-carousel>
 <div style="margin:0 auto;
-width: 50%;display: block;margin-top: 3%;text-align: center;">
+width: 50%;display: block;margin-top: 100px;text-align: center;">
     <p class="search-header">Search for your favorite anime!</p>
 </div>
 <app-searchbar></app-searchbar>
@@ -81,6 +81,14 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
         </div>
     </div>
     <div style="margin:0 auto;
+width: 50%;display: block;margin-top: 3%;text-align: center;" *ngIf="!isLoading">
+        <p class="search-header">Feeling lucky ?</p>
+
+        <p class="search-header">...find a random anime!</p>
+        <button type="button" class="btn btn-danger" ngbTooltip="Find one anime randomly" style="margin-top: 15px;"
+            (click)="getRandomAnime()">Find Random Anime</button>
+    </div>
+    <div style="margin:0 auto;
     width: 50%;display: block;margin-top: 3%;text-align: center;">
         <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
 
@@ -92,7 +100,82 @@ width: 50%;display: block;margin-top: 3%;text-align: center;">
 
 </div>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="div-center-content" style="width: 100%;" *ngIf="isRandom">
+                <p style="color: black;"> Getting random anime ...</p>
+                <img src="https://media.giphy.com/media/WtDLxQWQWLtw3oIXTy/giphy.gif" class="loading"  style="height: 40px;width: 40px;">
+            </div>
+            <div class="section info-program"
+                style="width: 100%;margin-bottom: 1%;padding-left: 15px;background-color: #333;" *ngIf="random_anime">
+                <div class="section-content" id="anime-info">
+                    <div class="outside-des">
+                        <img src="{{random_anime.image_url}}" alt="{{random_anime.title}}">
+                        <div class="box-description">
+                            <h1 itemprop="name" id="anime-name"><strong>{{random_anime.title}} -
+                                    {{random_anime.title_japanese}}</strong></h1>
 
+
+
+
+
+                            <div class="tag">
+                                <strong>Genre: </strong>
+
+                                <h3 *ngFor="let g of random_anime.genres"><a (click)="goToSearchGenre(g.mal_id)"
+                                        style="text-decoration: underline;color: yellowgreen;cursor: pointer;"
+                                        title="{{g.name}}">
+                                        {{g.name}}</a></h3>
+
+
+
+                            </div><!-- END .tag -->
+
+                            <h3 id="_description" class="rows2" expand="rows2"><b>Description :
+                                </b>{{random_anime.synopsis}}</h3>
+                            <br>
+
+                        </div><!-- END .box-description -->
+                    </div><!-- END .outside-des -->
+                    <div class="box-statistics" style="margin-left: 50px;">
+
+                        <ul>
+                            <li><strong>Status: </strong>{{random_anime.status}}</li>
+                            <li><strong>Season/Year: </strong>{{random_anime.premiered}}</li>
+                            <li><strong>Interested: </strong>{{random_anime.members}}</li>
+                            <li><strong>Episodes: </strong>{{random_anime.episodes}}</li>
+                            <li><strong>Score: </strong>{{random_anime.score}}<i class="far fa-star"></i></li>
+                            <li *ngIf="random_anime.rank!=null"><strong>Rank: </strong>{{random_anime.rank}}<i
+                                    class="far fa-trophy"></i></li>
+                            <li *ngIf="random_anime.rank==null"><strong>Rank: </strong>Unranked<i
+                                    class="fas fa-trophy"></i>
+                            </li>
+                            <li><strong>Type: </strong>{{random_anime.type}}</li>
+                            <li><strong>Duration: </strong>{{random_anime.duration}}</li>
+                            <li><strong>Studio: </strong>
+                                <p *ngFor="let studio of random_anime.studios"> {{studio.name}} </p>
+                            </li>
+
+                        </ul>
+                    </div><!-- END .box-statistics -->
+                </div><!-- END .section-content fluid -->
+
+
+            </div>
+
+            <div style="margin:0 auto;
+            width: 50%;display: block;margin-top: 3%;text-align: center;" *ngIf="random_anime">
+                <button routerLink="/anime/{{random_anime.mal_id}}" type="button" class="btn btn-success"
+                    style="margin-top: -15px;"> Watch Now</button>
+                <p class="search-header">Not satisfied ?</p>
+
+                <p class="search-header">...find another random anime!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div class="section row272" style="margin-top:5% ;">
     <div class="section-content fluid" style="max-width: 100%;">

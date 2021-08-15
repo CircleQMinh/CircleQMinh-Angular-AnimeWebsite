@@ -46,8 +46,8 @@
     <div class="chat-enter" *ngIf="isLogin">
         <textarea placeholder="Come and say hello.Press 'enter' to send message!" style="    width: 75%;height: 75%;
         resize: none;" (keyup.enter)="postChat()" [(ngModel)]="message"></textarea>
-        <button type="button" class="btn btn-info" style="width: 15%;;height: 75%;"><i
-                class="far fa-paper-plane" (click)="postChat()"></i></button>
+        <button type="button" (click)="postChat()" class="btn btn-info" style="width: 15%;;height: 75%;"><i
+                class="far fa-paper-plane" ></i></button>
     </div>
 </div>
 <a class="float-btn" style="    bottom: 40px;

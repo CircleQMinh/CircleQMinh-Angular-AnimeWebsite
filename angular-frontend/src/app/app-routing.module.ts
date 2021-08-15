@@ -5,6 +5,7 @@ import { CharacterInfoComponent } from './component/character-info/character-inf
 import { CharacterListComponent } from './component/character-list/character-list.component';
 import { CharacterComponent } from './component/character/character.component';
 import { HomeComponent } from './component/home/home.component';
+import { InfoComponent } from './component/info/info.component';
 import { LoginComponent } from './component/login/login.component';
 import { MangaInfoComponent } from './component/manga-info/manga-info.component';
 import { MangaComponent } from './component/manga/manga.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'character', component: CharacterComponent },
   { path: 'schedule', component: ScheduleComponent },
+  { path: 'info', component: InfoComponent },
   { path: 'character/:id', component: CharacterInfoComponent },
   { path: 'anime/:id/characters', component: CharacterListComponent },
   { path: 'manga/:id/characters', component: CharacterListComponent },

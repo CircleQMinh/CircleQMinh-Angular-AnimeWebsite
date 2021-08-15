@@ -6,7 +6,7 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
 import { AuthService } from 'src/app/service/auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { formatDate } from '@angular/common';
-import { map } from 'rxjs/operators';
+import { map, timeout } from 'rxjs/operators';
 @Component({
   selector: 'app-anime-info',
   templateUrl: './anime-info.component.html',
@@ -135,19 +135,18 @@ export class AnimeInfoComponent implements OnInit {
         this.other = this.anime.related.Other
         this.summary = this.anime.related.Summary
 
+      },
+      error=>{
+        this.toast.error("Failed to load data from API")
       }
     )
 
     this.delay(1050)
-    this.infoServeice.getAnimeRecommendations(this.anime_id).subscribe(
+    this.infoServeice.getAnimeRecommendations(this.anime_id).pipe(timeout(10000)).subscribe(
       data => {
         //console.log(data)
         this.recom = data.recommendations
         this.getRecomPage()
-      },
-      error => {
-        console.log(error)
-        this.toast.error("Failed to load data from API")
       }
     )
     this.delay(1050)
@@ -182,7 +181,7 @@ export class AnimeInfoComponent implements OnInit {
       )
     }
     this.delay(1050)
-    this.infoServeice.getAnimeChars(this.anime_id).subscribe(
+    this.infoServeice.getAnimeChars(this.anime_id).pipe(timeout(10000)).subscribe(
       data=>{
         //console.log(data)
         this.charList=data.characters
@@ -197,13 +196,14 @@ export class AnimeInfoComponent implements OnInit {
       }
     )
     this.delay(1050)
-    this.infoServeice.getAnimeReviews(this.anime_id, this.current_review_page).subscribe(
+    this.infoServeice.getAnimeReviews(this.anime_id, this.current_review_page).pipe(timeout(10000)).subscribe(
       data => {
         //console.log(data)
         this.mal_review = data.reviews
 
         this.isLoading = false
       }
+      
     )
     this.getFBComment()
   }
@@ -218,7 +218,7 @@ export class AnimeInfoComponent implements OnInit {
   readMore() {
     this.current_review_page += 1
     this.isLoadingComment = true
-    this.infoServeice.getAnimeReviews(this.anime_id, this.current_review_page).subscribe(
+    this.infoServeice.getAnimeReviews(this.anime_id, this.current_review_page).pipe(timeout(10000)).subscribe(
       data => {
         data.reviews.forEach((element: any) => {
           this.mal_review.push(element)
@@ -332,5 +332,17 @@ export class AnimeInfoComponent implements OnInit {
   }
   saveName(name:string){
     localStorage.setItem("anime_name",name);
+  }
+
+  goToSearchGenre(genre: number) {
+    this.searchService.searchMode = 1
+    if (genre == null) {
+      this.searchService.genre = String("")
+    }
+    else {
+      this.searchService.genre = String(genre)
+    }
+
+    this.router.navigateByUrl("/search")
   }
 }

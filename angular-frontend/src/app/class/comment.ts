@@ -1,5 +1,7 @@
 import { Pipe } from "@angular/core";
 
+
+//not used 
 @Pipe({
     name: 'truncate'
 })
