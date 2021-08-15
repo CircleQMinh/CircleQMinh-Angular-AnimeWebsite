@@ -22,3 +22,21 @@ Visit site : https://circleqminh.github.io/random-anime-website/anime <br>
 13-08-2021 : thêm chức năng lưu nhân vật vào danh sách yêu thích, update trang chủ.<br> 
 14-08-2021 : thêm lịch biểu và chat.<br>
 15-08-2021 : thêm chức năng random anime/manga và fix lỗi.<br>
+
+-----Some Screenshot-------------<br>
+Search for anime:
+![alt text](https://github.com/CircleQMinh/CircleQMinh-Angular-AnimeWebsite/blob/master/preview/1.png)
+Home Page:
+![alt text](https://github.com/CircleQMinh/CircleQMinh-Angular-AnimeWebsite/blob/master/preview/2.png)
+Anime Info:
+![alt text](https://github.com/CircleQMinh/CircleQMinh-Angular-AnimeWebsite/blob/master/preview/3.png)
+Watch Anime:
+![alt text](https://github.com/CircleQMinh/CircleQMinh-Angular-AnimeWebsite/blob/master/preview/6.png)
+Schedule:
+![alt text](https://github.com/CircleQMinh/CircleQMinh-Angular-AnimeWebsite/blob/master/preview/5.png)
+Character Info:
+![alt text](https://github.com/CircleQMinh/CircleQMinh-Angular-AnimeWebsite/blob/master/preview/4.png)
+Search:
+![alt text](https://github.com/CircleQMinh/CircleQMinh-Angular-AnimeWebsite/blob/master/preview/7.png)
+Read Manga:
+![alt text](https://github.com/CircleQMinh/CircleQMinh-Angular-AnimeWebsite/blob/master/preview/8.png)
